@@ -5,6 +5,7 @@ export default function Home() {
   return (
     <div className="h-screen w-screen ">
       <Header/>
+      <Hero/>
     </div>
     
   );
@@ -31,6 +32,6 @@ function Header(){
 
 function Hero(){
    return(
-    <div className="bg-black"></div>
+    <div className="bg-black text-white w-full"> hero section</div>
    )
 }
