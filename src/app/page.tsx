@@ -29,4 +29,8 @@ function Header(){
 }
 
 
-function
+function Hero(){
+   return(
+    <div className="bg-black"></div>
+   )
+}
