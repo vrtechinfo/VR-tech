@@ -3,23 +3,27 @@ import Link from "next/link";
 
 export default function Home() {
 	return (
-		<div className="h-screen w-screen ">
+		<div className="h-full w-full">
 			<Header />
 			<Hero />
+			<Features />
+      <Services/>
 		</div>
 	);
 }
 
 function Header() {
 	return (
-		<div className="bg-black text-white px-30 py-10 flex text-2xl justify-between ">
-			<Image
-				src={"/vr-logo.png"}
-				width={160}
-				height={160}
-				alt="vr tech info logo"
-			/>
-			<ul className="flex    w-1/3">
+		<div className="bg-black  text-white px-20  flex text-2xl justify-between fixed top-0 left-0 right-0">
+			<div className="pl-10">
+				<Image
+					src={"/vr-logo.png"}
+					width={146}
+					height={146}
+					alt="vr tech info logo"
+				/>
+			</div>
+			<ul className="flex w-1/3">
 				<div className="self-center flex justify-between w-full ">
 					<li className=" hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
 						<Link href={"/"}>Home</Link>
@@ -45,33 +49,97 @@ function Header() {
 
 function Hero() {
 	return (
-		<div className="bg-black text-white w-full">
-			<div className="flex justify-center pt-30 pb-20">
+		<div className="bg-black text-white pt-80 pb-30">
+			<div className="flex justify-center pt-30 pb-10">
 				<h1 className="text-8xl font-bold">
 					<span className="text-red-800">I</span>nnovate!
 				</h1>
 			</div>
 			<div className="font-medium">
-        <div className="flex justify-center  text-3xl pb-2">
-          <p className="">
-            Empowering Your Business with Cutting-Edge Software, Expert{" "}
-          </p>
-        </div>
-        <div className="flex justify-center  text-3xl pb-2">
-          <p className="">
-            {" "}
-            IT Consulting, Comprehensive Training, and Reliable Support{" "}
-          </p>
-        </div>
-        <div className="flex justify-center  text-3xl ">
-          <p className=""> – All Under One Roof.</p>
-        </div>
-      </div>
+				<div className="flex justify-center  text-3xl pb-2">
+					<p className="">
+						Empowering Your Business with Cutting-Edge Software, Expert{" "}
+					</p>
+				</div>
+				<div className="flex justify-center  text-3xl pb-2">
+					<p className="">
+						{" "}
+						IT Consulting, Comprehensive Training, and Reliable Support{" "}
+					</p>
+				</div>
+				<div className="flex justify-center  text-3xl ">
+					<p className=""> – All Under One Roof.</p>
+				</div>
+			</div>
 
-      <div className="flex justify-center py-20 gap-5 ">
-        <div className="border-2 border-red-800 rounded-xl bg-red-800 px-5 py-1 shadow-inner "><Link href={"/"}>Learn more</Link></div>
-        <div className="border-2 border-white rounded-xl  px-5 py-1 shadow-inner text-gray-200"><Link href={"/"}>Our Services</Link></div>
-      </div>
+			<div className="flex justify-center py-20 gap-5 ">
+				<div className="border-1 border-red-800 rounded-xl bg-red-800 px-5 py-1 shadow-inner ">
+					<Link href={"/"}>Learn more</Link>
+				</div>
+				<div className="border-1 border-white rounded-xl  px-5 py-1 shadow-inner text-gray-200">
+					<Link href={"/"}>Our Services</Link>
+				</div>
+			</div>
 		</div>
 	);
+}
+
+function Features() {
+	return (
+		<div className="bg-[url(/features-bg.png)] h-[691px] w-full bg-cover bg-center text-white ">
+			<div className="flex justify-center ">
+				<h1 className="text-[66px] text-[#E2E2E2] pt-11 pl-2 font-normal self-center">
+					Features
+				</h1>
+			</div>
+      
+			<div className="flex justify-center gap-40 pt-25">
+
+				<div className="">
+					<div className="flex items-center justify-center">
+            <Image src={"/Award.png"} width={59} height={59} alt=""/>
+          </div>
+					<h1 className="text-3xl text-center pt-5">Qualified Team</h1>
+					<div className="text-[20px] font-light  text-center pt-10">
+						<p>Expert designers and developers with </p>
+						<p>experience in top brand websites and</p>
+						<p>apps.</p>
+					</div>
+				</div>
+
+				<div>
+          <div className="flex items-center justify-center">
+            <Image src={"/Award.png"} width={59} height={59} alt="" />
+          </div>
+          <h1 className="text-3xl text-center pt-5">Smart Solutions</h1>
+          <div className="text-[20px] font-light text-center pt-10">
+						<p>We’re a leading website design and </p>
+						<p> development agency, providing expert</p>
+						<p>solutions with personalized projects.</p>
+					</div>
+				</div>
+
+				<div>
+          <div className="flex items-center justify-center">
+            <Image src={"/Award.png"} width={59} height={59} alt=""/>
+          </div>
+          <h1 className="text-3xl text-center pt-5">Dedicated support</h1>
+          <div className="text-[20px] font-light text-center pt-10">
+						<p>We provide timely support via emails,</p>
+						<p> calls, and in-person visits, going the </p>
+						<p>extra mile to meet your needs.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+
+function Services() {
+  return (
+    <h1 className="text-center pt-10 text-6xl font-semibold [text-shadow:_2px_2px_4px_rgba(0,0,0,0.4)]">
+      Our Services
+    </h1>
+  );
 }
