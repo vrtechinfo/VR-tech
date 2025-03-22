@@ -7,7 +7,7 @@ export default function Home() {
 			<Header />
 			<Hero />
 			<Features />
-      <Services/>
+			<Services />
 		</div>
 	);
 }
@@ -92,13 +92,12 @@ function Features() {
 					Features
 				</h1>
 			</div>
-      
-			<div className="flex justify-center gap-40 pt-25">
 
+			<div className="flex justify-center gap-40 pt-25">
 				<div className="">
 					<div className="flex items-center justify-center">
-            <Image src={"/Award.png"} width={59} height={59} alt=""/>
-          </div>
+						<Image src={"/Award.png"} width={59} height={59} alt="" />
+					</div>
 					<h1 className="text-3xl text-center pt-5">Qualified Team</h1>
 					<div className="text-[20px] font-light  text-center pt-10">
 						<p>Expert designers and developers with </p>
@@ -108,11 +107,11 @@ function Features() {
 				</div>
 
 				<div>
-          <div className="flex items-center justify-center">
-            <Image src={"/Award.png"} width={59} height={59} alt="" />
-          </div>
-          <h1 className="text-3xl text-center pt-5">Smart Solutions</h1>
-          <div className="text-[20px] font-light text-center pt-10">
+					<div className="flex items-center justify-center">
+						<Image src={"/Award.png"} width={59} height={59} alt="" />
+					</div>
+					<h1 className="text-3xl text-center pt-5">Smart Solutions</h1>
+					<div className="text-[20px] font-light text-center pt-10">
 						<p>We’re a leading website design and </p>
 						<p> development agency, providing expert</p>
 						<p>solutions with personalized projects.</p>
@@ -120,11 +119,11 @@ function Features() {
 				</div>
 
 				<div>
-          <div className="flex items-center justify-center">
-            <Image src={"/Award.png"} width={59} height={59} alt=""/>
-          </div>
-          <h1 className="text-3xl text-center pt-5">Dedicated support</h1>
-          <div className="text-[20px] font-light text-center pt-10">
+					<div className="flex items-center justify-center">
+						<Image src={"/Award.png"} width={59} height={59} alt="" />
+					</div>
+					<h1 className="text-3xl text-center pt-5">Dedicated support</h1>
+					<div className="text-[20px] font-light text-center pt-10">
 						<p>We provide timely support via emails,</p>
 						<p> calls, and in-person visits, going the </p>
 						<p>extra mile to meet your needs.</p>
@@ -135,11 +134,113 @@ function Features() {
 	);
 }
 
-
 function Services() {
-  return (
-    <h1 className="text-center pt-10 text-6xl font-semibold [text-shadow:_2px_2px_4px_rgba(0,0,0,0.4)]">
-      Our Services
-    </h1>
-  );
+	return (
+		<div className="text-[20px]">
+			<h1
+				className="text-center pt-30 pb-20 text-6xl font-semibold 
+          [text-shadow:_2px_2px_4px_rgba(0,0,0,0.4)]"
+			>
+				Our Services
+			</h1>
+			<div className="pt-10 flex justify-center">
+				<div className="grid grid-cols-3">
+					{/* First Row */}
+					<div className="text-center border-r border-b p-10">
+						<Image
+							src="/computer.png"
+							width={253}
+							height={213}
+							alt="Software Development"
+							className="mx-auto"
+						/>
+						<h1 className="text-[#0F3775] text-3xl font-semibold">
+							Software Development
+						</h1>
+						<p>End-to-end custom software</p>
+						<p>solutions for businesses, including</p>
+						<p>web and mobile app development</p>
+					</div>
+					<div className="text-center border-r border-b p-10">
+						<Image
+							src="/it-consulting.png"
+							width={266}
+							height={210}
+							alt="IT Consulting"
+							className="mx-auto"
+						/>
+						<h1 className="text-[#0F3775] text-3xl font-semibold">
+							IT Consulting
+						</h1>
+						<p>Expert guidance on digital</p>
+						<p>transformation, cloud solutions,</p>
+						<p>and IT infrastructure.</p>
+					</div>
+					<div className="text-center border-b p-10">
+						<Image
+							src="/training.png"
+							width={309}
+							height={214}
+							alt="Training & Development"
+							className="mx-auto"
+						/>
+						<h1 className="text-[#0F3775] text-3xl font-semibold">
+							Training & Development
+						</h1>
+						<p>Professional courses in software</p>
+						<p>development, cloud computing,</p>
+						<p>and DevOps.</p>
+					</div>
+					{/* Second Row */}
+					<div className="text-center border-r p-10">
+						<Image
+							src="/support.png"
+							width={281}
+							height={213}
+							alt="Support & Maintenance"
+							className="mx-auto"
+						/>
+						<h1 className="text-[#0F3775] text-3xl font-semibold">
+							Support & Maintenance
+						</h1>
+						<p>24/7 technical support and system</p>
+						<p>maintenance to ensure seamless</p>
+						<p>operations.</p>
+					</div>
+					<div className="text-center border-r p-10">
+						<Image
+							src="/analytics.png"
+							width={308}
+							height={218}
+							alt="Data Analytics"
+							className="mx-auto"
+						/>
+						<h1 className="text-[#0F3775] text-3xl font-semibold">
+							Data Analytics
+						</h1>
+						<p>Advanced data solutions to help</p>
+						<p>businesses make data-driven</p>
+						<p>decisions.</p>
+					</div>
+					<div className="p-10">
+						<div className="flex flex-col items-center justify-center text-center min-h-[350px]">
+							<Image
+								src="/cybersecurity.png"
+								width={320}
+								height={190}
+								alt="CyberSecurity Solutions"
+								className="mx-auto"
+							/>
+							<h1 className="text-[#0F3775] text-3xl font-semibold">
+								CyberSecurity Solutions
+							</h1>
+							<p>Robust security strategies to</p>
+							<p>protect businesses from digital</p>
+							<p>threats.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
