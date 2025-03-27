@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 import { useState } from "react";
 import React from "react";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { ChevronLeft, ChevronRight } from "lucide-react"; // Importing arrow icons
 
