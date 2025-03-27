@@ -561,7 +561,7 @@ const Testimonials = () => {
 	);
 };
 
-const getPosition = (index, currentIndex, total) => {
+const getPosition = (index: number, currentIndex: number, total: number) => {
 	const pos = (index - currentIndex + total) % total;
 	if (pos === 0) return { scale: 1, x: 0, zIndex: 10, opacity: 1 }; // Center
 	if (pos === 1) return { scale: 0.85, x: 250, zIndex: 5, opacity: 0.55 }; // Right
