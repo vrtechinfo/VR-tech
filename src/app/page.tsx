@@ -504,7 +504,7 @@ function ContactForm() {
 	);
 }
 
-const TestimonialCard = ({ name, roles, content }) => {
+const TestimonialCard = ({ name, roles, content }: { name: string, roles: string, content: string }) => {
 	return (
 		<div className="bg-[#FDF6F6] p-9 rounded-xl shadow-lg w-[450px] h-[400px] relative">
 			{/* Profile Section */}
