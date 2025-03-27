@@ -597,7 +597,7 @@ const CardCarousel = ({ children }) => {
 
 				{/* Updated button positions */}
 				<button
-				   type="button"
+					type="button"
 					onClick={prevCard}
 					className="absolute left-[-300px] top-1/2 transform -translate-y-1/2 bg-white/20 p-3 rounded-full hover:bg-white/30 transition z-50"
 				>
@@ -651,7 +651,7 @@ function Footer() {
 							</li>
 							<li>
 								<a href="#" className="hover:text-white">
-									FAQ's
+									{"FAQ's"}
 								</a>
 							</li>
 						</ul>
