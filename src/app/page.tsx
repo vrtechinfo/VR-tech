@@ -3,17 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
-import { useState } from "react";
-import React from "react";
+import { JSX, useEffect, useState } from "react";
+import React, { ReactNode } from "react"; // Import ReactNode
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion"; // Import Variants
 
 import { ChevronLeft, ChevronRight } from "lucide-react"; // Importing arrow icons
 
-export default function Home() {
+export default function Home(): JSX.Element {
 	return (
 		<div className="h-full w-full">
 			<Header />
+
 			<Hero />
 			<Features />
 			<Services />
@@ -29,9 +30,36 @@ export default function Home() {
 	);
 }
 
-function Header() {
+function Header(): JSX.Element {
+	const [isServicesOpen, setIsServicesOpen] = useState<boolean>(false);
+
+	const serviceOptions: string[] = [
+		"Software Development",
+		"IT Consulting",
+		"Cloud Solutions",
+	];
+
+	const dropdownVariants: Variants = {
+		hidden: {
+			opacity: 0,
+			y: -20,
+			scale: 0.95,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+		},
+		exit: {
+			opacity: 0,
+			y: -10,
+			scale: 0.95,
+			transition: { duration: 0.2 },
+		},
+	};
+
 	return (
-		<div className="bg-black  text-white px-20  flex text-2xl justify-between fixed top-0 left-0 right-0 z-100 tr">
+		<div className="bg-black/90 text-white px-20 flex text-2xl justify-between fixed top-0 left-0 right-0 z-100 tr">
 			<div className="pl-10">
 				<Image
 					src={"/vr-logo.png"}
@@ -41,67 +69,179 @@ function Header() {
 				/>
 			</div>
 			<ul className="flex w-1/3">
-				<div className="self-center flex justify-between w-full ">
-					<li className=" hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
+				<div className="self-center flex justify-between w-full">
+					<li className="hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
 						<Link href={"/"}>Home</Link>
 					</li>
-					<li className=" hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
+					<li className="hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
 						<Link href={"/"}>About Us</Link>
 					</li>
-					<li className=" hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
-						<Link href={"/"}>Services</Link>
+					<li
+						className="relative"
+						onMouseEnter={() => setIsServicesOpen(true)}
+						onMouseLeave={() => setIsServicesOpen(false)}
+					>
+						<div className="hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2 cursor-pointer">
+							Services
+						</div>
+						<AnimatePresence>
+							{isServicesOpen && (
+								<motion.div
+									variants={dropdownVariants}
+									initial="hidden"
+									animate="visible"
+									exit="exit"
+									className="absolute top-full left-0 mt-2 w-64 bg-black/95 rounded-lg overflow-hidden"
+								>
+									{serviceOptions.map((service, index) => (
+										<motion.div
+											key={service}
+											initial={{ opacity: 0, x: -20 }}
+											animate={{ opacity: 1, x: 0 }}
+											transition={{ delay: index * 0.1 }}
+											className="border-b border-gray-800 last:border-none"
+										>
+											<Link
+												href={`/services/${service.toLowerCase().replace(/\s+/g, "-")}`}
+												className="block px-6 py-3 text-lg hover:bg-red-800/20 transition-colors duration-200"
+											>
+												{service}
+											</Link>
+										</motion.div>
+									))}
+								</motion.div>
+							)}
+						</AnimatePresence>
 					</li>
-					<li className=" hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
+					<li className="hover:underline underline-offset-10 decoration-red-800 decoration-4 pb-2">
 						<Link href={"/"}>Careers</Link>
 					</li>
 				</div>
 			</ul>
 
-			<div className="self-center border-2 border-red-800 rounded-3xl hover:bg-red-800 px-5 py-1 shadow-inner">
+			<div className="self-center border-2 border-red-800 rounded-3xl hover:bg-red-800 px-5 py-1 shadow-inner transition-colors duration-300">
 				<Link href="">Contact Us</Link>
 			</div>
 		</div>
 	);
 }
 
-function Hero() {
+function Hero(): JSX.Element {
+	const words: string[] = ["Innovate!", "Adapt!", "Thrive!"];
+	const [currentWord, setCurrentWord] = useState<number>(0);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentWord((prev) => (prev + 1) % words.length);
+		}, 1500);
+
+		return () => clearInterval(interval);
+	}, ); // Added dependency
+
+	const dropAnimation: Variants = {
+		initial: {
+			y: -100,
+			opacity: 0,
+			scale: 1.2,
+			filter: "blur(5px)",
+		},
+		animate: {
+			y: 0,
+			opacity: 1,
+			scale: 1,
+			filter: "blur(0px)",
+		},
+		exit: {
+			opacity: 0,
+			scale: 0.8,
+			filter: "blur(10px)",
+			transition: {
+				duration: 0.2, // Reduced from 0.3
+			},
+		},
+	};
+
 	return (
-		<div className="bg-black text-white pt-80 pb-30">
-			<div className="flex justify-center pt-30 pb-10">
-				<h1 className="text-8xl font-bold">
-					<span className="text-red-800">I</span>nnovate!
+		<div className="bg-black text-white pt-80 pb-30 overflow-hidden">
+			<div className="flex justify-center pt-30 pb-10 h-[180px]">
+				<h1 className="text-8xl font-bold flex items-center">
+					<AnimatePresence mode="wait">
+						<motion.span
+							key={currentWord}
+							variants={dropAnimation}
+							initial="initial"
+							animate="animate"
+							exit="exit"
+							transition={{
+								type: "spring",
+								stiffness: 400, // Increased from 300
+								damping: 15, // Reduced from 20
+								mass: 0.8, // Reduced from 1
+								duration: 0.3, // Added explicit duration
+							}}
+						>
+							<span className="text-red-800">
+								{words[currentWord].charAt(0)}
+							</span>
+							{words[currentWord].slice(1)}
+						</motion.span>
+					</AnimatePresence>
 				</h1>
 			</div>
-			<div className="font-medium">
-				<div className="flex justify-center  text-3xl pb-2">
+
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: 0.5, duration: 0.8 }}
+				className="font-medium mt-10" // Added margin top
+			>
+				<div className="flex justify-center text-3xl pb-2">
 					<p className="">
 						Empowering Your Business with Cutting-Edge Software, Expert{" "}
 					</p>
 				</div>
-				<div className="flex justify-center  text-3xl pb-2">
+				<div className="flex justify-center text-3xl pb-2">
 					<p className="">
 						{" "}
 						IT Consulting, Comprehensive Training, and Reliable Support{" "}
 					</p>
 				</div>
-				<div className="flex justify-center  text-3xl ">
+				<div className="flex justify-center text-3xl ">
 					<p className=""> – All Under One Roof.</p>
 				</div>
-			</div>
+			</motion.div>
 
-			<div className="flex justify-center py-20 gap-5 ">
-				<div className="border-1 border-red-800 rounded-xl bg-red-800 px-5 py-1 shadow-inner ">
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: 0.8, duration: 0.8 }}
+				className="flex justify-center py-20 gap-5"
+			>
+				<motion.div
+					whileHover={{
+						scale: 1.05,
+						backgroundColor: "#9B2C2C",
+					}}
+					whileTap={{ scale: 0.95 }}
+					className="border-1 border-red-800 rounded-xl bg-red-800 px-5 py-1 shadow-inner cursor-pointer"
+				>
 					<Link href={"/"}>Learn more</Link>
-				</div>
-				<div className="border-1 border-white rounded-xl  px-5 py-1 shadow-inner text-gray-200">
+				</motion.div>
+				<motion.div
+					whileHover={{
+						scale: 1.05,
+						backgroundColor: "rgba(255, 255, 255, 0.1)",
+					}}
+					whileTap={{ scale: 0.95 }}
+					className="border-1 border-white rounded-xl px-5 py-1 shadow-inner text-gray-200 cursor-pointer"
+				>
 					<Link href={"/"}>Our Services</Link>
-				</div>
-			</div>
+				</motion.div>
+			</motion.div>
 		</div>
 	);
 }
-
-function Features() {
+function Features(): JSX.Element {
 	return (
 		<div className="bg-[url(/features-bg.png)] h-[691px] w-full bg-cover bg-center text-white ">
 			<div className="flex justify-center ">
@@ -151,11 +291,11 @@ function Features() {
 	);
 }
 
-function Services() {
+function Services(): JSX.Element {
 	return (
 		<div className="text-[20px]">
 			<h1
-				className="text-center pt-30 pb-20 text-6xl font-semibold 
+				className="text-center pt-30 pb-20 text-6xl font-semibold
           [text-shadow:_2px_2px_4px_rgba(0,0,0,0.4)]"
 			>
 				Our Services
@@ -280,15 +420,19 @@ function Services() {
 	);
 }
 
-function Badges({ text }: Readonly<{ text: string }>) {
+interface BadgesProps {
+	text: string;
+}
+
+const Badges: React.FC<Readonly<BadgesProps>> = ({ text }) => {
 	return (
 		<h1 className="text-3xl font-medium border-2 rounded-4xl mx-10 py-[10px] px-[29px]">
 			{text}
 		</h1>
 	);
-}
+};
 
-function WhyChooseUs() {
+function WhyChooseUs(): JSX.Element {
 	return (
 		<div className="bg-[url(/chooseus.png)] h-[1288] w-full bg-cover bg-center text-white">
 			<h1 className="font-bold text-[66px] pl-30 pt-20 tracking-wide">
@@ -334,12 +478,22 @@ function WhyChooseUs() {
 	);
 }
 
-function ChooseIcon() {
+function ChooseIcon(): JSX.Element {
 	return <Image src={"/chooseicon.png"} alt="" height={41} width={41} />;
 }
 
-function ContactForm() {
-	const locations = [
+interface Location {
+	country: string;
+	name: string;
+	title: string;
+	address: string;
+	phone: string;
+	email: string;
+	imageUrl: string;
+}
+
+function ContactForm(): JSX.Element {
+	const locations: Location[] = [
 		{
 			country: "India",
 			name: "Gowtham Porla",
@@ -371,18 +525,24 @@ function ContactForm() {
 		},
 	];
 
-	const [index, setIndex] = useState(0);
+	const [index, setIndex] = useState<number>(0);
 
-	const handlePrev = () => {
+	const handlePrev: React.MouseEventHandler<HTMLImageElement> = () => {
 		setIndex((prevIndex) =>
 			prevIndex === 0 ? locations.length - 1 : prevIndex - 1,
 		);
 	};
 
-	const handleNext = () => {
+	const handleNext: React.MouseEventHandler<HTMLImageElement> = () => {
 		setIndex((prevIndex) =>
 			prevIndex === locations.length - 1 ? 0 : prevIndex + 1,
 		);
+	};
+
+	const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+		e.preventDefault();
+		// Handle form submission logic here
+		console.log("Form submitted");
 	};
 
 	return (
@@ -392,13 +552,16 @@ function ContactForm() {
 					{/* Left Section - Form */}
 					<div className="w-1/2 bg-neutral-900 text-white p-6 flex flex-col items-center shadow-2xl">
 						<h1 className="text-[40px] mb-4 text-center">Reach out to us!</h1>
-						<form className="space-y-4 flex flex-col items-center w-full">
+						<form
+							onSubmit={handleSubmit}
+							className="space-y-4 flex flex-col items-center w-full"
+						>
 							<div className="w-4/5">
 								<label className="block text-sm font-normal mb-1">Name*</label>
 								<input
 									type="text"
 									required
-									className="w-full p-2 rounded-md text-white border border-gray-400"
+									className="w-full p-2 rounded-md text-white border border-gray-400 bg-neutral-800" // Added bg color for visibility
 								/>
 							</div>
 
@@ -407,7 +570,7 @@ function ContactForm() {
 								<input
 									type="email"
 									required
-									className="w-full p-2 rounded-md text-white border border-gray-400"
+									className="w-full p-2 rounded-md text-white border border-gray-400 bg-neutral-800" // Added bg color
 								/>
 							</div>
 
@@ -418,7 +581,7 @@ function ContactForm() {
 								<input
 									type="tel"
 									required
-									className="w-full p-2 rounded-md text-white border border-gray-400"
+									className="w-full p-2 rounded-md text-white border border-gray-400 bg-neutral-800" // Added bg color
 								/>
 							</div>
 
@@ -428,7 +591,7 @@ function ContactForm() {
 								</label>
 								<textarea
 									required
-									className="w-full p-2 rounded-md text-white border border-gray-400 h-24"
+									className="w-full p-2 rounded-md text-white border border-gray-400 h-24 bg-neutral-800" // Added bg color
 								/>
 							</div>
 
@@ -486,7 +649,9 @@ function ContactForm() {
 							{locations[index].name}
 						</h2>
 						<p className="text-sm">{locations[index].title}</p>
-						<p className="text-sm text-gray-600">{locations[index].address}</p>
+						<p className="text-sm text-gray-600 text-center">
+							{locations[index].address}
+						</p>
 						<p className="text-sm font-semibold">{locations[index].phone}</p>
 						<p className="text-sm text-blue-600 underline">
 							{locations[index].email}
@@ -504,13 +669,37 @@ function ContactForm() {
 	);
 }
 
-const TestimonialCard = ({ name, roles, content }: { name: string, roles: string, content: string }) => {
+interface TestimonialCardProps {
+	name: string;
+	roles: string;
+	content: string;
+}
+
+const TestimonialCard: React.FC<Readonly<TestimonialCardProps>> = ({
+	name,
+	roles,
+	content,
+}) => {
 	return (
 		<div className="bg-[#FDF6F6] p-9 rounded-xl shadow-lg w-[450px] h-[400px] relative">
 			{/* Profile Section */}
 			<div className="flex items-center gap-4 mb-10">
-				{/* Profile Image */}
-				<div className="w-24 h-24 bg-gray-200 rounded-full"></div>
+				{/* Profile Image Placeholder */}
+				<div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+					{/* You can add an icon or initials here */}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="h-12 w-12"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+					>
+						<path
+							fillRule="evenodd"
+							d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+							clipRule="evenodd"
+						/>
+					</svg>
+				</div>
 				{/* Name and Role */}
 				<div>
 					<h3 className="text-3xl font-bold text-gray-800">{name}</h3>
@@ -523,7 +712,7 @@ const TestimonialCard = ({ name, roles, content }: { name: string, roles: string
 	);
 };
 
-const Testimonials = () => {
+const Testimonials = (): JSX.Element => {
 	return (
 		<div className="bg-[url(/reviewsbackground.png)] h-[1144px] w-full bg-cover bg-center overflow-x-hidden">
 			<div className="pt-[600px] overflow-hidden">
@@ -540,19 +729,19 @@ const Testimonials = () => {
 							content="The team provided exceptional service, delivering our project ahead of schedule without compromising on quality. Highly recommended!"
 						/>
 						<TestimonialCard
-							name="John Doe"
-							roles="CEO of TechCorp"
-							content="The team provided exceptional service, delivering our project ahead of schedule without compromising on quality. Highly recommended!"
+							name="Jane Smith"
+							roles="Marketing Manager"
+							content="Working with them was a breeze. Their insights and expertise significantly boosted our online presence. Fantastic results!"
 						/>
 						<TestimonialCard
-							name="John Doe"
-							roles="CEO of TechCorp"
-							content="The team provided exceptional service, delivering our project ahead of schedule without compromising on quality. Highly recommended!"
+							name="Alex Johnson"
+							roles="Startup Founder"
+							content="As a startup, we needed a reliable partner. They exceeded our expectations with their innovative solutions and dedicated support."
 						/>
 						<TestimonialCard
-							name="John Doe"
-							roles="CEO of TechCorp"
-							content="The team provided exceptional service, delivering our project ahead of schedule without compromising on quality. Highly recommended!"
+							name="Sarah Lee"
+							roles="Project Lead"
+							content="Professional, responsive, and highly skilled. They understood our requirements perfectly and delivered a top-notch product."
 						/>
 					</CardCarousel>
 				</div>
@@ -561,62 +750,81 @@ const Testimonials = () => {
 	);
 };
 
-const getPosition = (index: number, currentIndex: number, total: number) => {
+interface PositionStyle {
+	scale: number;
+	x: number;
+	zIndex: number;
+	opacity: number;
+}
+
+const getPosition = (
+	index: number,
+	currentIndex: number,
+	total: number,
+): PositionStyle => {
 	const pos = (index - currentIndex + total) % total;
 	if (pos === 0) return { scale: 1, x: 0, zIndex: 10, opacity: 1 }; // Center
 	if (pos === 1) return { scale: 0.85, x: 250, zIndex: 5, opacity: 0.55 }; // Right
 	if (pos === total - 1)
 		return { scale: 0.85, x: -250, zIndex: 5, opacity: 0.55 }; // Left
-	return { scale: 0.7, x: 0, zIndex: 1, opacity: 0 }; // Hide others
+	// Hide others further away
+	return { scale: 0.7, x: pos > total / 2 ? -350 : 350, zIndex: 1, opacity: 0 };
 };
 
-const CardCarousel = ({ children }) => {
-	const total = React.Children.count(children);
-	const [index, setIndex] = useState(0);
+interface CardCarouselProps {
+	children: ReactNode;
+}
 
-	const nextCard = () => setIndex((prev) => (prev + 1) % total);
-	const prevCard = () => setIndex((prev) => (prev - 1 + total) % total);
+const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
+	const total = React.Children.count(children);
+	const [index, setIndex] = useState<number>(0);
+
+	const nextCard: React.MouseEventHandler<HTMLButtonElement> = () =>
+		setIndex((prev) => (prev + 1) % total);
+	const prevCard: React.MouseEventHandler<HTMLButtonElement> = () =>
+		setIndex((prev) => (prev - 1 + total) % total);
 
 	return (
 		<div className="relative flex flex-col items-center justify-center h-screen">
-			<div className="relative w-[450px] h-[500px]">
+			{/* Increased height to prevent overlap with buttons */}
+			<div className="relative w-[450px] h-[550px]">
+				{" "}
 				{React.Children.map(children, (child, i) => {
+					if (!React.isValidElement(child)) return null; // Ensure child is a valid element
 					const { scale, x, zIndex, opacity } = getPosition(i, index, total);
 					return (
 						<motion.div
 							key={i}
-							initial={{ opacity: 0 }}
+							initial={false} // Prevent initial animation on load
 							animate={{ scale, x, zIndex, opacity }}
-							transition={{ duration: 0.5 }}
-							className="absolute w-full  flex items-center justify-center bg-transparent backdrop-blur-lg rounded-xl shadow-lg  "
+							transition={{ duration: 0.5, type: "spring", stiffness: 100 }} // Smoother spring animation
+							className="absolute w-full flex items-center justify-center" // Removed background/blur here, applied on card itself
 						>
 							{child}
 						</motion.div>
 					);
 				})}
-
-				{/* Updated button positions */}
+				{/* Buttons positioned further out and vertically centered */}
 				<button
 					type="button"
 					onClick={prevCard}
-					className="absolute left-[-300px] top-1/2 transform -translate-y-1/2 bg-white/20 p-3 rounded-full hover:bg-white/30 transition z-50"
+					className="absolute left-[-350px] top-1/2 transform -translate-y-1/2 bg-white/30 p-3 rounded-full hover:bg-white/50 transition z-50 shadow-md"
 				>
-					<ChevronLeft size={30} />
+					<ChevronLeft size={30} className="text-gray-800" />
 				</button>
-
 				<button
 					type="button"
 					onClick={nextCard}
-					className="absolute right-[-300px] top-1/2 transform -translate-y-1/2 bg-white/20 p-3 rounded-full hover:bg-white/30 transition z-50"
+					className="absolute right-[-350px] top-1/2 transform -translate-y-1/2 bg-white/30 p-3 rounded-full hover:bg-white/50 transition z-50 shadow-md"
 				>
-					<ChevronRight size={30} />
+					<ChevronRight size={30} className="text-gray-800" />
 				</button>
 			</div>
 		</div>
 	);
 };
 
-function Footer() {
+function Footer(): JSX.Element {
 	return (
 		<footer className="bg-black text-white py-12 px-8 md:px-24">
 			<div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8">
@@ -625,7 +833,7 @@ function Footer() {
 					<img
 						src="/vr-logo.png"
 						alt="VR Tech Info Logo"
-						className="w-16 mb-4"
+						className="w-16 mb-4" // Adjusted size
 					/>
 					<h2 className="text-lg font-semibold mb-2">VR Tech Info Inc.</h2>
 					<p className="text-sm text-gray-400">
@@ -637,20 +845,22 @@ function Footer() {
 				<div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-8 md:ml-24">
 					{/* Company */}
 					<div>
-						<h3 className="text-sm font-bold mb-4">COMPANY</h3>
-						<ul className="text-gray-400 space-y-2">
+						<h3 className="text-sm font-bold mb-4 uppercase tracking-wider">
+							COMPANY
+						</h3>
+						<ul className="text-gray-400 space-y-2 text-sm">
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Blog
 								</a>
 							</li>
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Careers
 								</a>
 							</li>
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									{"FAQ's"}
 								</a>
 							</li>
@@ -659,20 +869,22 @@ function Footer() {
 
 					{/* Quick Links */}
 					<div>
-						<h3 className="text-sm font-bold mb-4">QUICK LINKS</h3>
-						<ul className="text-gray-400 space-y-2">
+						<h3 className="text-sm font-bold mb-4 uppercase tracking-wider">
+							QUICK LINKS
+						</h3>
+						<ul className="text-gray-400 space-y-2 text-sm">
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Services
 								</a>
 							</li>
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									About Us
 								</a>
 							</li>
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Contact Us
 								</a>
 							</li>
@@ -681,25 +893,27 @@ function Footer() {
 
 					{/* Legal */}
 					<div>
-						<h3 className="text-sm font-bold mb-4">LEGAL</h3>
-						<ul className="text-gray-400 space-y-2">
+						<h3 className="text-sm font-bold mb-4 uppercase tracking-wider">
+							LEGAL
+						</h3>
+						<ul className="text-gray-400 space-y-2 text-sm">
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Terms of Service
 								</a>
 							</li>
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Privacy Policy
 								</a>
 							</li>
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Cookies Policy
 								</a>
 							</li>
 							<li>
-								<a href="#" className="hover:text-white">
+								<a href="#" className="hover:text-white transition-colors">
 									Data Processing
 								</a>
 							</li>
@@ -708,12 +922,22 @@ function Footer() {
 
 					{/* Contact */}
 					<div>
-						<h3 className="text-sm font-bold mb-4">CONTACT US</h3>
-						<ul className="text-gray-400 space-y-2">
+						<h3 className="text-sm font-bold mb-4 uppercase tracking-wider">
+							CONTACT US
+						</h3>
+						<ul className="text-gray-400 space-y-2 text-sm">
 							<li>CANADA: +1-647-447-5856</li>
 							<li>INDIA: +91-9052955755</li>
 							<li>USA: +1-618-971-7471</li>
-							<li>Mail: info@vrtechinfolinc.com</li>
+							<li>
+								Mail:{" "}
+								<a
+									href="mailto:info@vrtechinfolinc.com"
+									className="hover:text-white transition-colors"
+								>
+									info@vrtechinfolinc.com
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -722,21 +946,29 @@ function Footer() {
 			{/* Copyright & Social */}
 			<div className="mt-12 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
 				<p className="text-gray-500 text-sm order-2 md:order-1 mt-4 md:mt-0">
-					© 2025 VR Tech Info Inc. All rights reserved.
+					© {new Date().getFullYear()} VR Tech Info Inc. All rights reserved.
 				</p>
 				<div className="flex space-x-6 order-1 md:order-2">
-					<a href="#">
+					<a href="#" aria-label="Instagram">
 						<img
 							src="/instagram-icon.png"
 							alt="Instagram"
-							className="w-6 h-6"
+							className="w-6 h-6 opacity-70 hover:opacity-100 transition-opacity"
 						/>
 					</a>
-					<a href="#">
-						<img src="/facebook-icon.png" alt="Facebook" className="w-6 h-6" />
+					<a href="#" aria-label="Facebook">
+						<img
+							src="/facebook-icon.png"
+							alt="Facebook"
+							className="w-6 h-6 opacity-70 hover:opacity-100 transition-opacity"
+						/>
 					</a>
-					<a href="#">
-						<img src="/youtube-icon.png" alt="YouTube" className="w-6 h-6" />
+					<a href="#" aria-label="YouTube">
+						<img
+							src="/youtube-icon.png"
+							alt="YouTube"
+							className="w-6 h-6 opacity-70 hover:opacity-100 transition-opacity"
+						/>
 					</a>
 				</div>
 			</div>
