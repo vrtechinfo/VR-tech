@@ -5,5 +5,9 @@
   --foreground: #171717;
 }
 
+@theme{
+  --color-customdarkred: #620808;
+  --color-customlightred: #94000B;
+}
 
 

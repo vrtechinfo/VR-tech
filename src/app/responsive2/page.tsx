@@ -249,7 +249,7 @@ function Hero() {
             setCurrentWord((prev) => (prev + 1) % words.length);
         }, 1500);
         return () => clearInterval(interval);
-    }, [words.length]);
+    }, );
 
     const dropAnimation = {
         initial: { y: -50, opacity: 0, scale: 1.1, filter: "blur(3px)" },
