@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
 			<div className="relative">
 				<WhyChooseUs />
 				<Testimonials />
-				<div className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[15%] top-[400px] sm:top-[500px] md:top-[600px] lg:top-[700px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10">
+				<div className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[10%] top-[600px] sm:top-[500px] md:top-[600px] lg:top-[1100px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10">
 					<ContactForm />
 				</div>
 			</div>

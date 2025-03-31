@@ -27,7 +27,7 @@ export default function Header(): JSX.Element {
     };
 
     return (
-        <div className="bg-black/90 text-white px-4 md:px-20 flex flex-col md:flex-row items-center justify-between fixed top-0 left-0 right-0 z-50">
+        <div className="bg-black/50 text-white px-4 md:px-20 flex flex-col md:flex-row items-center justify-between fixed top-0 left-0 right-0 z-50">
             <div className="flex justify-between w-full md:w-auto items-center">
                 <div className="pl-2 md:pl-10 py-2">
                     {/* Added padding for logo */}

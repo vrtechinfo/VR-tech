@@ -72,18 +72,18 @@ export default function Hero(): JSX.Element {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="font-medium mt-5 sm:mt-8 md:mt-10 px-4 sm:px-6 md:px-8" // Added responsive margin and padding
             >
-                <div className="flex justify-center text-lg sm:text-xl md:text-2xl lg:text-3xl pb-2 text-center">
+                <div className="flex justify-center text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] pb-2 text-center">
                     <p>
                         Empowering Your Business with Cutting-Edge Software, Expert{" "}
                     </p>
                 </div>
-                <div className="flex justify-center text-lg sm:text-xl md:text-2xl lg:text-3xl pb-2 text-center">
+                <div className="flex justify-center  text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] pb-2 text-center">
                     <p>
                         {" "}
                         IT Consulting, Comprehensive Training, and Reliable Support{" "}
                     </p>
                 </div>
-                <div className="flex justify-center text-lg sm:text-xl md:text-2xl lg:text-3xl text-center">
+                <div className="flex justify-center  text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] text-center">
                     <p> – All Under One Roof.</p>
                 </div>
             </motion.div>

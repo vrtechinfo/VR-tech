@@ -15,7 +15,7 @@ interface Location {
 }
 
 export default function ContactForm(): React.JSX.Element {
-    const [index, setIndex] = useState<number>(0);
+    const [index, setIndex] = useState<number>(1);
     const locations: Location[] = [
         {
             country: "India",
@@ -70,15 +70,15 @@ export default function ContactForm(): React.JSX.Element {
         <div className="w-full max-w-[1000px] mx-auto px-4 py-10 md:py-0">
             <div className="flex flex-col md:flex-row shadow-2xl border border-gray-400 rounded-xl overflow-hidden bg-white">
                 {/* Left Section - Form */}
-                <div className="w-full md:w-1/2 bg-neutral-900 text-white p-6 md:p-8">
-                    <h1 className="text-3xl md:text-[40px] mb-6 text-center">
+                <div className="w-full md:w-1/2 bg-neutral-900 text-white p-4 md:p-8">
+                    <h1 className="text-2xl md:text-[40px] mb-4 md:mb-6 text-center">
                         Reach out to us!
                     </h1>
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
                                 htmlFor="name"
-                                className="block text-sm font-normal mb-1"
+                                className="block text-sm font-normal mb-0.5 md:mb-1"
                             >
                                 Name*
                             </label>
@@ -86,13 +86,13 @@ export default function ContactForm(): React.JSX.Element {
                                 id="name"
                                 type="text"
                                 required
-                                className="w-full p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
+                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
                             />
                         </div>
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
                                 htmlFor="email"
-                                className="block text-sm font-normal mb-1"
+                                className="block text-sm font-normal mb-0.5 md:mb-1"
                             >
                                 Email*
                             </label>
@@ -100,13 +100,13 @@ export default function ContactForm(): React.JSX.Element {
                                 id="email"
                                 type="email"
                                 required
-                                className="w-full p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
+                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
                             />
                         </div>
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
                                 htmlFor="contact"
-                                className="block text-sm font-normal mb-1"
+                                className="block text-sm font-normal mb-0.5 md:mb-1"
                             >
                                 Contact No.*
                             </label>
@@ -114,26 +114,26 @@ export default function ContactForm(): React.JSX.Element {
                                 id="contact"
                                 type="tel"
                                 required
-                                className="w-full p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
+                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
                             />
                         </div>
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
                                 htmlFor="message"
-                                className="block text-sm font-normal mb-1"
+                                className="block text-sm font-normal mb-0.5 md:mb-1"
                             >
                                 Message*
                             </label>
                             <textarea
                                 id="message"
                                 required
-                                className="w-full p-2 rounded-md bg-neutral-800 text-white border border-gray-600 h-24 focus:border-red-500 focus:ring-red-500 transition"
+                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 h-16 md:h-24 focus:border-red-500 focus:ring-red-500 transition"
                             />
                         </div>
-                        <div className="flex justify-center pt-2">
+                        <div className="flex justify-center pt-1 md:pt-2">
                             <button
                                 type="submit"
-                                className="px-8 py-2 bg-white rounded-full font-bold text-[#EC6B6B] hover:bg-gray-200 transition-all"
+                                className="px-6 py-1.5 md:px-8 md:py-2 bg-white rounded-full font-bold text-[#EC6B6B] hover:bg-gray-200 transition-all"
                             >
                                 Submit
                             </button>
@@ -143,17 +143,17 @@ export default function ContactForm(): React.JSX.Element {
 
                 {/* Right Section - Location Carousel */}
                 <div className="w-full md:w-1/2 bg-white p-6 md:p-8 relative flex flex-col items-center text-center">
-                    {/* Country Icons - Keeping original styling and animation */}
-                    <div
-                        className="flex ml-0 sm:ml-10 md:ml-20 lg:ml-30 space-x-2 sm:space-x-3 md:space-x-4 mb-2 sm:mb-3 md:mb-4 transition-transform duration-300"
-                        style={{ transform: `translateX(-${index * 30}px)` }}
+                    {/* Country Icons - With the selected country centered */}
+                    <div 
+                        className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-2 sm:mb-3 md:mb-4 transition-transform duration-300"
+                        style={{ transform: `translateX(${index === 0 ? '30px' : index === 2 ? '-30px' : '0px'})` }}
                     >
                         {locations.map((loc, i) => (
                             <button
                                 key={`location-${loc.country}-${i}`}
                                 type="button"
                                 onClick={() => setIndex(i)}
-                                className={`w-10 h-8 border-0 p-0 bg-transparent transition-all duration-500 ${i === index ? "border-2 border-black scale-150 rounded-full" : "border-transparent scale-100"}`}
+                                className={`w-10 h-10 p-1 bg-transparent transition-all duration-500 ${i === index ? "border-2 border-black scale-150 rounded-full" : "border-transparent scale-100 rounded-full"}`}
                                 aria-label={`Select ${loc.country} location`}
                             >
                                 <Image
@@ -176,25 +176,25 @@ export default function ContactForm(): React.JSX.Element {
                             height={160}
                             className="rounded-lg border border-gray-300 object-cover mb-6"
                         />
-                        
+
                         <h2 className="text-xl font-bold text-red-600 mb-3">
                             {locations[index].name}
                         </h2>
-                        
+
                         {locations[index].title && (
                             <p className="text-gray-600 mb-4">
                                 {locations[index].title}
                             </p>
                         )}
-                        
+
                         <p className="text-gray-600 text-center mb-6 text-sm">
                             {locations[index].address}
                         </p>
-                        
+
                         <p className="font-semibold mb-6">
                             {locations[index].phone}
                         </p>
-                        
+
                         <a
                             href={`mailto:${locations[index].email}`}
                             className="text-blue-600 underline hover:text-blue-800 text-sm"

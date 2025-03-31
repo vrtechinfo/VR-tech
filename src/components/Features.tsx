@@ -23,7 +23,7 @@ export default function Features(): JSX.Element {
 
                 <div className="mb-12 md:mb-0">
                     <div className="flex items-center justify-center">
-                        <Image src={"/Award.png"} width={59} height={59} alt="Award icon" />
+                        <Image src={"/Smart.png"} width={59} height={59} alt="Award icon" />
                     </div>
                     <h1 className="text-2xl sm:text-2xl md:text-3xl text-center pt-3 sm:pt-4 md:pt-5">Smart Solutions</h1>
                     <div className="text-base sm:text-lg md:text-xl lg:text-[20px] font-light text-center pt-4 sm:pt-6 md:pt-8 lg:pt-10 px-4">
@@ -33,7 +33,7 @@ export default function Features(): JSX.Element {
 
                 <div className="mb-6 md:mb-0">
                     <div className="flex items-center justify-center">
-                        <Image src={"/Award.png"} width={59} height={59} alt="Award icon" />
+                        <Image src={"/Bulb.png"} width={59} height={59} alt="Award icon" />
                     </div>
                     <h1 className="text-2xl sm:text-2xl md:text-3xl text-center pt-3 sm:pt-4 md:pt-5">Dedicated support</h1>
                     <div className="text-base sm:text-lg md:text-xl lg:text-[20px] font-light text-center pt-4 sm:pt-6 md:pt-8 lg:pt-10 px-4">
