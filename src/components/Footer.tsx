@@ -51,7 +51,7 @@ export default function Footer(): JSX.Element {
     ];
 
     return (
-        <footer className="bg-black text-white py-8 md:py-12 px-4 md:px-16 lg:px-24">
+        <footer className="bg-[#191919] text-white py-8 md:py-12 px-4 md:px-16 lg:px-24">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 gap-8">
                 {/* Logo Section */}
                 <div className="md:col-span-2 lg:col-span-1 mb-6 md:mb-0">

@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function AboutUs() {
   return (
     <div className="bg-black text-white">
-      <WhatAreWeSection />
+      <Hero />
       <OurMissionSection />
       <OurVisionSection />
       <FaqSection />
@@ -13,27 +13,43 @@ export default function AboutUs() {
   );
 }
 
-function WhatAreWeSection() {
+function Hero() {
   return (
-    <div className="pt-40 pb-20 px-4 sm:px-6 lg:px-20 bg-[#1A1A1A]">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-5xl font-semibold text-center mb-10">
-          What are we?
-        </h1>
-        <div className="max-w-4xl mx-auto">
-          <p className="text-lg text-center mb-8">
-            <span className="font-bold">VRTech Info is a TRUSTED PARTNER</span> for businesses worldwide. With a passionate team of experts, 
-            we have successfully delivered projects and trained professionals across various domains. Our 
-            success stories include collaborating with Fortune 500 companies, helping startups scale, and 
-            empowering individuals to achieve their career goals.
-          </p>
-          <p className="text-lg text-center">
-            Our commitment to innovation, quality, and customer satisfaction has earned us a reputation as 
-            a reliable technology partner. We continue to push boundaries, embrace new technologies, and 
-            support our clients in navigating the ever-evolving digital landscape.
-          </p>
-        </div>
+    <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-visible pb-20">
+      {/* Shape 1 - Top right */}
+      <div className="absolute top-[180px] right-[150px] z-2 opacity-80">
+        <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
       </div>
+
+      {/* Shape 2 - Bottom left */}
+      <div className="absolute top-[280px] right-[600px] opacity-80">
+        <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit " />
+      </div>
+
+      {/* Shape 3 - Top right */}
+      <div className="absolute top-[130px] right-[250px] z-1 opacity-80">
+        <img src="/shape3.png" alt="Shape 3" className="w-[150px] h-[150px]" />
+      </div>
+
+      {/* Shape 4 - Bottom right */}
+      <div className="absolute bottom-[150px] left-[200px] opacity-80">
+        <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]" />
+      </div>
+
+      <h1 className="text-6xl text-center font-semibold text-white relative z-10">
+        What are we?
+      </h1>
+      <p className="text-[20px] text-2xl text-center text-white mt-15 relative z-10 px-8 md:px-16 lg:px-32 xl:px-64">
+        <span className="font-bold">VRTech Info is a TRUSTED PARTNER</span> for businesses worldwide. With a passionate team of experts,
+        we have successfully delivered projects and trained professionals across various domains. Our
+        success stories include collaborating with Fortune 500 companies, helping startups scale, and
+        empowering individuals to achieve their career goals.
+      </p>
+      <p className="text-[20px] text-2xl text-center text-white mt-4 relative z-10 px-8 md:px-16 lg:px-32 xl:px-64">
+        Our commitment to innovation, quality, and customer satisfaction has earned us a reputation as 
+        a reliable technology partner. We continue to push boundaries, embrace new technologies, and 
+        support our clients in navigating the ever-evolving digital landscape.
+      </p>
     </div>
   );
 }
@@ -84,10 +100,10 @@ function OurVisionSection() {
           <div className="flex flex-col items-center">
             <div className="relative w-48 h-48">
               <div className="w-48 h-48 rounded-full border-2 border-dashed border-gray-500 flex items-center justify-center relative">
-                <Image 
-                  src="/globe.svg" 
-                  alt="Global Leader" 
-                  width={50} 
+                <Image
+                  src="/globe.svg"
+                  alt="Global Leader"
+                  width={50}
                   height={50}
                   className="absolute top-10"
                 />
@@ -104,14 +120,14 @@ function OurVisionSection() {
               </p>
             </div>
           </div>
-          
+
           <div className="flex flex-col items-center">
             <div className="relative w-48 h-48">
               <div className="w-48 h-48 rounded-full border-2 border-dashed border-gray-500 flex items-center justify-center relative">
-                <Image 
-                  src="/window.svg" 
-                  alt="Innovation" 
-                  width={50} 
+                <Image
+                  src="/window.svg"
+                  alt="Innovation"
+                  width={50}
                   height={50}
                   className="absolute top-10"
                 />
@@ -128,14 +144,14 @@ function OurVisionSection() {
               </p>
             </div>
           </div>
-          
+
           <div className="flex flex-col items-center">
             <div className="relative w-48 h-48">
               <div className="w-48 h-48 rounded-full border-2 border-dashed border-gray-500 flex items-center justify-center relative">
-                <Image 
-                  src="/file.svg" 
-                  alt="Client Partnerships" 
-                  width={50} 
+                <Image
+                  src="/file.svg"
+                  alt="Client Partnerships"
+                  width={50}
                   height={50}
                   className="absolute top-10"
                 />
@@ -203,7 +219,7 @@ function FaqSection() {
         <h2 className="text-5xl font-semibold mb-10">
           FAQ
         </h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <p className="mb-6">Have more Questions? Reach out our Team on WhatsApp!</p>
@@ -211,7 +227,7 @@ function FaqSection() {
               Say Hi!
             </button>
           </div>
-          
+
           <div className="space-y-4">
             {faqItems.map((item, index) => (
               <div key={item.id} className="border border-gray-800 rounded-lg overflow-hidden">

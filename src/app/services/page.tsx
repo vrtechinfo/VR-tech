@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Services() {
     return (
-        <div className="bg-black text-white">
+        <div className="bg-[#131313] text-white">
             <Hero />
             <ServicesSection />
 
@@ -12,18 +12,38 @@ export default function Services() {
 
 function Hero() {
     return (
-        <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[400px] pt-60 px-4">
-            <h1 className="text-6xl text-center font-semibold text-white">
+        <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-visible pb-20">
+            {/* Shape 1 - Top right */}
+            <div className="absolute top-[180px] right-[150px] z-2 opacity-80">
+                <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
+            </div>
+            
+            {/* Shape 2 - Bottom left */}
+            <div className="absolute top-[280px] right-[600px] opacity-80">
+                <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit " />
+            </div>
+            
+            {/* Shape 3 - Top right */}
+            <div className="absolute top-[130px] right-[250px] z-1 opacity-80">
+                <img src="/shape3.png" alt="Shape 3" className="w-[150px] h-[150px]"/>
+            </div>
+            
+            {/* Shape 4 - Bottom right */}
+            <div className="absolute bottom-[150px] left-[200px] opacity-80">
+                <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]"/>
+            </div>
+
+            <h1 className="text-6xl text-center font-semibold text-white relative z-10">
                 Innovative IT Solutions for Your Business Growth
             </h1>
-            <p className="text-[20px] text-2xl text-center text-white mt-6">
+            <p className="text-[20px] text-2xl  text-center text-white mt-15 relative z-10">
                 We offer a wide range of services tailored to meet the diverse needs of
                 our
                 <br />
                 clients. Our core services include:
             </p>
-            <div className="flex justify-center mt-8 ">
-                <button type="button" className="text-center border border-white text-white p-2 rounded-2xl hover:bg-white hover:text-black transition-colors duration-300">
+            <div className="flex justify-center mt-8 relative z-10">
+                <button type="button" className="text-center border border-white text-white px-5 py-3 rounded-2xl hover:bg-white hover:text-black transition-colors duration-300 mt-10">
                     Get a Free Consultation
                 </button>
             </div>
@@ -33,7 +53,7 @@ function Hero() {
 
 function ServicesSection() {
     return (
-        <div className="mt-16">
+        <div className="mt-16 bg-[#131313]">
             <div className="flex justify-center">
                 <div className="text-4xl  font-medium px-5 py-2 rounded-3xl text-[#FF0000] w-fit  bg-white">
                     Our Services
@@ -56,7 +76,7 @@ function SoftwareDevelopmentSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className="bg-black text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section className=" text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 {/* Reduced bottom padding (pb-10) to make space for hr margin */}
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
@@ -161,7 +181,7 @@ function ItConsultingSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className="bg-black text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section className=" text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -262,7 +282,7 @@ function TrainingDevelopmentSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className="bg-black text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section className=" text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -361,7 +381,7 @@ function SupportMaintenanceSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className="bg-black text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section className=" text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -464,7 +484,7 @@ function DataAnalyticsSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className="bg-black text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section className=" text-gray-300 pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -559,7 +579,7 @@ function DataAnalyticsSection() {
 
 function CybersecuritySolutionsSection() {
     return (
-        <section className="bg-black text-gray-300 pt-16 pb-16 px-4 sm:px-6 lg:px-8">
+        <section className=" text-gray-300 pt-16 pb-16 px-4 sm:px-6 lg:px-8">
             {/* Increased bottom padding since hr is removed */}
             <div className="max-w-7xl mx-auto">
                 {/* Main Heading and Description */}
