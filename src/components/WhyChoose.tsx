@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function WhyChooseUs(): JSX.Element {
     return (
-        <div className="bg-[url(/chooseus.png)] min-h-[700px] sm:min-h-[800px] md:min-h-[1000px] lg:min-h-[1390px] w-full overflow-hidden bg-cover bg-right sm:bg-right-top md:bg-center text-white">
+        <div className="bg-[url(/chooseus.webp)] min-h-[700px] sm:min-h-[800px] md:min-h-[1000px] lg:min-h-[1390px] w-full overflow-hidden bg-cover bg-right sm:bg-right-top md:bg-center text-white">
             <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[66px] pl-4 sm:pl-10 md:pl-20 lg:pl-30 pt-8 sm:pt-12 md:pt-16 lg:pt-20 tracking-wide">
                 Why Choose Us?
             </h1>

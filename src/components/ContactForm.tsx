@@ -144,7 +144,7 @@ export default function ContactForm(): React.JSX.Element {
                 {/* Right Section - Location Carousel */}
                 <div className="w-full md:w-1/2 bg-white p-6 md:p-8 relative flex flex-col items-center text-center">
                     {/* Country Icons - With the selected country centered */}
-                    <div 
+                    <div
                         className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-2 sm:mb-3 md:mb-4 transition-transform duration-300"
                         style={{ transform: `translateX(${index === 0 ? '30px' : index === 2 ? '-30px' : '0px'})` }}
                     >

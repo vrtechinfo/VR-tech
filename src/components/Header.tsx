@@ -27,14 +27,14 @@ export default function Header(): JSX.Element {
     };
 
     return (
-        <div className="bg-black/30 text-white px-4 md:px-20 flex flex-col md:flex-row items-center justify-between fixed top-0 left-0 right-0 z-50">
+        <div className="bg-black text-white px-4 md:px-20 flex flex-col md:flex-row items-center justify-between fixed top-0 left-0 right-0 z-50  border-b-1 border-gray-700">
             <div className="flex justify-between w-full md:w-auto items-center">
                 <div className="pl-2 md:pl-10 py-2">
                     {/* Added padding for logo */}
                     <Image
                         src="/vr-logo.png"
-                        width={146}
-                        height={146}
+                        width={134}
+                        height={90}
                         alt="vr tech info logo"
                         className="w-20 md:w-36" // Adjusted size
                     />

@@ -52,7 +52,7 @@ const TestimonialCard: React.FC<Readonly<TestimonialCardProps>> = ({
 
 export default function Testimonials(): JSX.Element {
 	return (
-		<div className="bg-[url(/reviewsbackground.png)] min-h-[1500px] sm:min-h-[900px] md:min-h-[1144px] w-full bg-cover bg-center overflow-hidden">
+		<div className="bg-[url(/reviewsbackground.webp)] min-h-[1500px] sm:min-h-[900px] md:min-h-[1144px] w-full bg-cover bg-center overflow-hidden">
 			<div className="pt-[900px] sm:pt-[400px] md:pt-[500px] lg:pt-[600px]">
 				<div className="mb-8 sm:mb-10 md:mb-12">
 					<h1 className="text-3xl sm:text-4xl md:text-[48px] font-bold text-center text-black">
@@ -99,22 +99,22 @@ interface PositionStyle {
 // Custom hook for responsive values
 const useResponsiveValues = () => {
 	const [isMobile, setIsMobile] = React.useState(false);
-	
+
 	React.useEffect(() => {
 		const checkMobile = () => {
 			setIsMobile(window.innerWidth < 640);
 		};
-		
+
 		// Initial check
 		checkMobile();
-		
+
 		// Add event listener for window resize
 		window.addEventListener('resize', checkMobile);
-		
+
 		// Cleanup
 		return () => window.removeEventListener('resize', checkMobile);
 	}, []);
-	
+
 	return { isMobile };
 };
 
@@ -125,32 +125,32 @@ const getPosition = (
 	isMobile: boolean,
 ): PositionStyle => {
 	const pos = (index - currentIndex + total) % total;
-	
+
 	// Center card
 	if (pos === 0) return { scale: 1, x: 0, zIndex: 10, opacity: 1 };
-	
+
 	// Right card - smaller offset on mobile
-	if (pos === 1) return { 
-		scale: 0.85, 
-		x: isMobile ? 200 : 350, 
-		zIndex: 5, 
-		opacity: 0.55 
+	if (pos === 1) return {
+		scale: 0.85,
+		x: isMobile ? 200 : 350,
+		zIndex: 5,
+		opacity: 0.55
 	};
-	
+
 	// Left card - smaller offset on mobile
-	if (pos === total - 1) return { 
-		scale: 0.85, 
-		x: isMobile ? -200 : -350, 
-		zIndex: 5, 
-		opacity: 0.55 
+	if (pos === total - 1) return {
+		scale: 0.85,
+		x: isMobile ? -200 : -350,
+		zIndex: 5,
+		opacity: 0.55
 	};
-	
+
 	// Hide others further away
-	return { 
-		scale: 0.7, 
-		x: pos > total / 2 ? (isMobile ? -300 : -450) : (isMobile ? 300 : 450), 
-		zIndex: 1, 
-		opacity: 0 
+	return {
+		scale: 0.7,
+		x: pos > total / 2 ? (isMobile ? -300 : -450) : (isMobile ? 300 : 450),
+		zIndex: 1,
+		opacity: 0
 	};
 };
 
@@ -178,7 +178,7 @@ const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
 		if (isMobile && dragStartX !== null) {
 			const dragEndX = event.clientX;
 			const difference = dragEndX - dragStartX;
-			
+
 			// If dragged more than 50px, change slide
 			if (Math.abs(difference) > 50) {
 				if (difference > 0) {
@@ -189,7 +189,7 @@ const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
 					nextCard();
 				}
 			}
-			
+
 			setDragStartX(null);
 		}
 	};
@@ -197,7 +197,7 @@ const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
 	return (
 		<div className="relative flex flex-col items-center justify-center py-8 sm:py-12 md:py-16">
 			{/* Responsive width with percentage for mobile */}
-			<div 
+			<div
 				className="relative w-[90%] max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[650px] h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px]"
 				onPointerDown={handleDragStart}
 				onPointerUp={handleDragEnd}
@@ -225,7 +225,7 @@ const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
 						</motion.div>
 					);
 				})}
-				
+
 				{/* Buttons - hidden on mobile, visible on larger screens */}
 				<button
 					type="button"
@@ -243,20 +243,20 @@ const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
 				>
 					<ChevronRight size={24} className="text-gray-800 sm:h-6 sm:w-6 md:h-8 md:w-8" />
 				</button>
-				
+
 				{/* Mobile swipe indicator - only visible on mobile */}
 				{isMobile && (
 					<div className="absolute bottom-[50px] left-0 right-0 flex justify-center items-center space-x-2">
 						{React.Children.map(children, (child, i) => {
 							if (!React.isValidElement(child)) return null;
-							
+
 							// Extract the name property from the child's props to use in the key
 							const childProps = child.props as TestimonialCardProps;
 							const uniqueId = childProps.name.replace(/\s+/g, '-').toLowerCase();
-							
+
 							return (
-								<div 
-									key={`indicator-${uniqueId}`} 
+								<div
+									key={`indicator-${uniqueId}`}
 									className={`w-2 h-2 rounded-full ${i === index ? 'bg-gray-800' : 'bg-gray-400'}`}
 								/>
 							);
