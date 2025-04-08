@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "VR Tech Info | IT Consulting & Technology Solutions",
   description: "VR Tech Info provides expert IT consulting, cybersecurity, training, and technology solutions to help businesses innovate and grow. Professional IT services across USA, Canada, and India.",
   icons: {
-    icon: "/vr-logo.png",
+    icon: "/favicon.png",
   },
 };
 
