@@ -27,9 +27,9 @@ function TeamJoinSection(): JSX.Element {
           thrive with us and be part of a team dedicated to shaping the future of technology.
         </p>
         <div className="w-full overflow-hidden rounded-lg">
-          <img 
-            src="/team1.png" 
-            alt="Our Team" 
+          <img
+            src="/team1.webp"
+            alt="Our Team"
             className="w-full h-auto object-cover"
           />
         </div>
@@ -43,65 +43,65 @@ function JobVacanciesSection(): JSX.Element {
   return (
     <div className="max-w-6xl mx-auto mb-16 relative z-10">
       <h2 className="text-3xl font-bold mb-8 text-center">Job Vacancies At VRTECH Info</h2>
-      
+
       {/* Search bar */}
       <div className="flex flex-wrap gap-4 mb-8 justify-center">
         <div className="relative flex items-center bg-gray-800/50 rounded-md px-4 py-2 min-w-[200px]">
           <span className="mr-2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Time icon">
               <title>Time icon</title>
-              <path d="M12 6V12H16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2"/>
+              <path d="M12 6V12H16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2" />
             </svg>
           </span>
-          <input 
-            type="text" 
-            placeholder="Industry, department..." 
-            className="bg-transparent border-0 outline-none text-white w-full" 
+          <input
+            type="text"
+            placeholder="Industry, department..."
+            className="bg-transparent border-0 outline-none text-white w-full"
           />
         </div>
-        
+
         <div className="relative flex items-center bg-gray-800/50 rounded-md px-4 py-2 min-w-[150px]">
           <span className="mr-2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Add icon">
               <title>Add icon</title>
-              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" strokeWidth="2"/>
-              <path d="M8 12H16" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M12 8V16" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" strokeWidth="2" />
+              <path d="M8 12H16" stroke="white" strokeWidth="2" strokeLinecap="round" />
+              <path d="M12 8V16" stroke="white" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </span>
-          <input 
-            type="text" 
-            placeholder="Country" 
-            className="bg-transparent border-0 outline-none text-white w-full" 
+          <input
+            type="text"
+            placeholder="Country"
+            className="bg-transparent border-0 outline-none text-white w-full"
           />
         </div>
-        
+
         <div className="relative flex items-center bg-gray-800/50 rounded-md px-4 py-2 min-w-[150px]">
           <span className="mr-2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Location icon">
               <title>Location icon</title>
-              <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2"/>
-              <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2"/>
+              <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
+              <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
             </svg>
           </span>
-          <input 
-            type="text" 
-            placeholder="Location" 
-            className="bg-transparent border-0 outline-none text-white w-full" 
+          <input
+            type="text"
+            placeholder="Location"
+            className="bg-transparent border-0 outline-none text-white w-full"
           />
         </div>
-        
+
         <button type="button" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Search icon">
             <title>Search icon</title>
-            <circle cx="11" cy="11" r="7" stroke="white" strokeWidth="2"/>
-            <path d="M20 20L16 16" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            <circle cx="11" cy="11" r="7" stroke="white" strokeWidth="2" />
+            <path d="M20 20L16 16" stroke="white" strokeWidth="2" strokeLinecap="round" />
           </svg>
           Search
         </button>
       </div>
-      
+
       {/* Job listings */}
       <div className="space-y-4">
         {/* Job 1 */}
@@ -114,7 +114,7 @@ function JobVacanciesSection(): JSX.Element {
             <button type="button" className="text-blue-400">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Expand details">
                 <title>Expand details</title>
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
@@ -124,10 +124,10 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Calendar icon">
                   <title>Calendar icon</title>
-                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2"/>
-                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M4 9H20" stroke="white" strokeWidth="2"/>
+                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2" />
+                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M4 9H20" stroke="white" strokeWidth="2" />
                 </svg>
                 Remote
               </p>
@@ -137,8 +137,8 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Clock icon">
                   <title>Clock icon</title>
-                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2"/>
+                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2" />
                 </svg>
                 Internship
               </p>
@@ -148,8 +148,8 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Pin location icon">
                   <title>Pin location icon</title>
-                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2"/>
-                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2"/>
+                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
+                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
                 </svg>
                 Hyderabad
               </p>
@@ -162,7 +162,7 @@ function JobVacanciesSection(): JSX.Element {
             </div>
           </div>
         </div>
-        
+
         {/* Job 2 */}
         <div className="bg-gray-800/30 rounded-lg overflow-hidden">
           <div className="p-4 flex justify-between items-center">
@@ -173,7 +173,7 @@ function JobVacanciesSection(): JSX.Element {
             <button type="button" className="text-blue-400">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Expand details">
                 <title>Expand details</title>
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
@@ -183,10 +183,10 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Calendar icon">
                   <title>Calendar icon</title>
-                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2"/>
-                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M4 9H20" stroke="white" strokeWidth="2"/>
+                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2" />
+                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M4 9H20" stroke="white" strokeWidth="2" />
                 </svg>
                 Remote
               </p>
@@ -196,8 +196,8 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Clock icon">
                   <title>Clock icon</title>
-                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2"/>
+                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2" />
                 </svg>
                 Internship
               </p>
@@ -207,8 +207,8 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Pin location icon">
                   <title>Pin location icon</title>
-                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2"/>
-                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2"/>
+                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
+                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
                 </svg>
                 Hyderabad
               </p>
@@ -221,7 +221,7 @@ function JobVacanciesSection(): JSX.Element {
             </div>
           </div>
         </div>
-        
+
         {/* Job 3 */}
         <div className="bg-gray-800/30 rounded-lg overflow-hidden">
           <div className="p-4 flex justify-between items-center">
@@ -232,7 +232,7 @@ function JobVacanciesSection(): JSX.Element {
             <button type="button" className="text-blue-400">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Expand details">
                 <title>Expand details</title>
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
@@ -242,10 +242,10 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Calendar icon">
                   <title>Calendar icon</title>
-                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2"/>
-                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M4 9H20" stroke="white" strokeWidth="2"/>
+                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2" />
+                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M4 9H20" stroke="white" strokeWidth="2" />
                 </svg>
                 Remote
               </p>
@@ -255,8 +255,8 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Clock icon">
                   <title>Clock icon</title>
-                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2"/>
+                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2" />
                 </svg>
                 Internship
               </p>
@@ -266,8 +266,8 @@ function JobVacanciesSection(): JSX.Element {
               <p className="flex items-center mt-1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Pin location icon">
                   <title>Pin location icon</title>
-                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2"/>
-                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2"/>
+                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
+                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
                 </svg>
                 Hyderabad
               </p>
@@ -291,18 +291,18 @@ function WhyChooseSection(): JSX.Element {
     <div className="max-w-6xl mx-auto mb-16 relative z-10">
       <div className="flex flex-col lg:flex-row gap-8 items-center">
         <div className="lg:w-1/3">
-          <img 
-            src="/team2.png" 
-            alt="Team meeting" 
+          <img
+            src="/team2.webp"
+            alt="Team meeting"
             className="rounded-lg w-full h-auto object-cover"
           />
         </div>
         <div className="lg:w-2/3">
           <h2 className="text-3xl font-bold mb-6">Why Choose VR Tech Info?</h2>
           <p className="text-lg mb-6">
-            At VR Tech Info, we offer the chance to work on innovative VR and tech 
-            projects that make an impact, with a collaborative, inclusive team with 
-            opportunities for career growth, mentorship, and a flexible work-life 
+            At VR Tech Info, we offer the chance to work on innovative VR and tech
+            projects that make an impact, with a collaborative, inclusive team with
+            opportunities for career growth, mentorship, and a flexible work-life
             balance. Ready to shape the future? Apply today!
           </p>
         </div>
@@ -398,10 +398,10 @@ export default function CareersPage(): JSX.Element {
 
         {/* Team Join Section */}
         <TeamJoinSection />
-        
+
         {/* Job Vacancies Section */}
         <JobVacanciesSection />
-        
+
         {/* Why Choose Section */}
         <WhyChooseSection />
 
