@@ -5,7 +5,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Head from "next/head";
-
+import { Analytics } from "@vercel/analytics/react"
 
 
 const poppins = Poppins({
@@ -31,6 +31,7 @@ export default function RootLayout({
         className={`${poppins.className} antialiased`}
       ><Header />
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>
