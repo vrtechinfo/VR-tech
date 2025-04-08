@@ -184,7 +184,7 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                     </AnimatePresence>
                 </li>
                 <li className="hover:underline underline-offset-8 decoration-red-800 decoration-4 pb-1 md:pb-2">
-                    <Link href="/contact" onClick={onLinkClick}>
+                    <Link href="/careers" onClick={onLinkClick}>
                         Careers
                     </Link>
                 </li>
@@ -192,7 +192,7 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
             <div className="md:ml-8 mb-4 md:mb-0 mt-4 md:mt-0">
                 {/* Added margin top for mobile */}
                 <Link
-                    href="/contact"
+                    href="/#contact"
                     onClick={onLinkClick}
                     className="block text-center border-2 border-red-800 rounded-3xl hover:bg-red-800 px-5 py-1 transition-colors duration-300 text-lg md:text-base lg:text-xl" // Adjusted text size
                 >

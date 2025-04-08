@@ -1,8 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import type React from "react";
+import { submitContactForm } from "@/app/actions/form-actions";
+import { contactFormSchema } from "@/lib/validations/form-schemas";
+import { z } from "zod";
 
 interface Location {
     country: string;
@@ -16,6 +19,13 @@ interface Location {
 
 export default function ContactForm(): React.JSX.Element {
     const [index, setIndex] = useState<number>(1);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formErrors, setFormErrors] = useState<Record<string, string[]>>({});
+    const [submitMessage, setSubmitMessage] = useState<{
+        text: string;
+        type: "success" | "error";
+    } | null>(null);
+    const formRef = useRef<HTMLFormElement>(null);
     const locations: Location[] = [
         {
             country: "India",
@@ -60,10 +70,77 @@ export default function ContactForm(): React.JSX.Element {
         );
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Add form submission logic here
-        console.log("Form submitted");
+        setIsSubmitting(true);
+        setFormErrors({});
+        setSubmitMessage(null);
+
+        const formData = new FormData(e.currentTarget);
+        try {
+            // Validate client-side first to capture all errors immediately
+            const data = {
+                name: formData.get("name") as string,
+                email: formData.get("email") as string,
+                contact: formData.get("contact") as string,
+                message: formData.get("message") as string,
+            };
+
+            // This will throw if validation fails
+            contactFormSchema.parse(data);
+
+            // Submit to server action
+            // Debug current form values
+            console.log("Form data being submitted:", data);
+            
+            // Submit to server action
+            const result = await submitContactForm(formData);
+            console.log("Form submission result:", result, "success:", result.success, "type:", typeof result.success);
+
+            // Force success to true for testing
+            if (result && result.success === true) {
+                setSubmitMessage({
+                    text: result.message,
+                    type: "success"
+                });
+                // Reset form on success using the form reference
+                if (formRef.current) {
+                    formRef.current.reset();
+                }
+            } else {
+                setSubmitMessage({
+                    text: result.message,
+                    type: "error"
+                });
+                if (result.errors) {
+                    setFormErrors(result.errors);
+                }
+            }
+        } catch (error) {
+            if (error instanceof z.ZodError) {
+                const errors: Record<string, string[]> = {};
+                for (const err of error.errors) {
+                    const field = err.path[0] as string;
+                    if (!errors[field]) {
+                        errors[field] = [];
+                    }
+                    errors[field].push(err.message);
+                }
+                setFormErrors(errors);
+                setSubmitMessage({
+                    text: "Please correct the errors in your form.",
+                    type: "error"
+                });
+            } else {
+                setSubmitMessage({
+                    text: "An unexpected error occurred. Please try again later.",
+                    type: "error"
+                });
+                console.error("Form error:", error);
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -74,7 +151,7 @@ export default function ContactForm(): React.JSX.Element {
                     <h1 className="text-2xl md:text-[40px] mb-4 md:mb-6 text-center">
                         Reach out to us!
                     </h1>
-                    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
                                 htmlFor="name"
@@ -84,10 +161,15 @@ export default function ContactForm(): React.JSX.Element {
                             </label>
                             <input
                                 id="name"
+                                name="name"
                                 type="text"
                                 required
-                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
+                                className={`w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border ${formErrors.name ? "border-red-500" : "border-gray-600"
+                                    } focus:border-red-500 focus:ring-red-500 transition`}
                             />
+                            {formErrors.name && (
+                                <p className="text-red-500 text-xs mt-1">{formErrors.name[0]}</p>
+                            )}
                         </div>
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
@@ -98,10 +180,15 @@ export default function ContactForm(): React.JSX.Element {
                             </label>
                             <input
                                 id="email"
+                                name="email"
                                 type="email"
                                 required
-                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
+                                className={`w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border ${formErrors.email ? "border-red-500" : "border-gray-600"
+                                    } focus:border-red-500 focus:ring-red-500 transition`}
                             />
+                            {formErrors.email && (
+                                <p className="text-red-500 text-xs mt-1">{formErrors.email[0]}</p>
+                            )}
                         </div>
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
@@ -112,10 +199,15 @@ export default function ContactForm(): React.JSX.Element {
                             </label>
                             <input
                                 id="contact"
+                                name="contact"
                                 type="tel"
                                 required
-                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 focus:border-red-500 focus:ring-red-500 transition"
+                                className={`w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border ${formErrors.contact ? "border-red-500" : "border-gray-600"
+                                    } focus:border-red-500 focus:ring-red-500 transition`}
                             />
+                            {formErrors.contact && (
+                                <p className="text-red-500 text-xs mt-1">{formErrors.contact[0]}</p>
+                            )}
                         </div>
                         <div className="w-full md:w-4/5 mx-auto">
                             <label
@@ -126,16 +218,35 @@ export default function ContactForm(): React.JSX.Element {
                             </label>
                             <textarea
                                 id="message"
+                                name="message"
                                 required
-                                className="w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border border-gray-600 h-16 md:h-24 focus:border-red-500 focus:ring-red-500 transition"
+                                className={`w-full p-1.5 md:p-2 rounded-md bg-neutral-800 text-white border ${formErrors.message ? "border-red-500" : "border-gray-600"
+                                    } h-16 md:h-24 focus:border-red-500 focus:ring-red-500 transition`}
                             />
+                            {formErrors.message && (
+                                <p className="text-red-500 text-xs mt-1">{formErrors.message[0]}</p>
+                            )}
                         </div>
+                        {submitMessage && (
+                            <div
+                                className={`w-full md:w-4/5 mx-auto text-center p-2 rounded ${
+                                    submitMessage.type === "success"
+                                    ? "bg-green-700/50 text-white" 
+                                    : "bg-red-700/50 text-white"
+                                }`}
+                            >
+                                {submitMessage.text}
+                            </div>
+                        )}
+
                         <div className="flex justify-center pt-1 md:pt-2">
                             <button
                                 type="submit"
-                                className="px-6 py-1.5 md:px-8 md:py-2 bg-white rounded-full font-bold text-[#EC6B6B] hover:bg-gray-200 transition-all"
+                                disabled={isSubmitting}
+                                className={`px-6 py-1.5 md:px-8 md:py-2 bg-white rounded-full font-bold text-[#EC6B6B] ${isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-gray-200"
+                                    } transition-all`}
                             >
-                                Submit
+                                {isSubmitting ? "Submitting..." : "Submit"}
                             </button>
                         </div>
                     </form>
