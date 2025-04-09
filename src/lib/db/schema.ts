@@ -4,6 +4,7 @@ import type { ColumnType, Generated } from "kysely";
 export interface Database {
   contact_submissions: ContactSubmissionTable;
   career_applications: CareerApplicationTable;
+  job_postings: JobPostingTable;
 }
 
 // Define the contact_submissions table schema
@@ -29,6 +30,18 @@ export interface CareerApplicationTable {
   created_at: ColumnType<Date, string | undefined, never>;
 }
 
+// Define the job_postings table schema
+export interface JobPostingTable {
+  id: Generated<number>;
+  title: string;
+  description: string;
+  location: string;
+  department: string;
+  type: string;
+  created_at: ColumnType<Date, string | undefined, never>;
+  updated_at: ColumnType<Date, string | undefined, never>;
+}
+
 // SQL to create the tables if they don't exist
 export const createTablesSQL = `
 CREATE TABLE IF NOT EXISTS contact_submissions (
@@ -49,5 +62,16 @@ CREATE TABLE IF NOT EXISTS career_applications (
   message TEXT NOT NULL,
   resume_path TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS job_postings (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  location TEXT NOT NULL,
+  department TEXT NOT NULL,
+  type TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 `;

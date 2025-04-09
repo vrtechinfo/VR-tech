@@ -26,6 +26,18 @@ export interface CareerSubmission {
   created_at: Date | string;
 }
 
+// Interface for job postings
+export interface JobPosting {
+  id: number;
+  title: string;
+  description: string;
+  location: string;
+  department: string;
+  type: string;
+  created_at: Date | string;
+  updated_at: Date | string;
+}
+
 /**
  * Fetch all contact form submissions
  */
@@ -77,5 +89,64 @@ export async function getCareerSubmissions(): Promise<CareerSubmission[]> {
   } catch (error) {
     console.error("Error fetching career submissions:", error);
     return [];
+  }
+}
+
+/**
+ * Fetch all job postings
+ */
+export async function getJobPostings(): Promise<JobPosting[]> {
+  try {
+    const postings = await db
+      .selectFrom("job_postings")
+      .selectAll()
+      .orderBy("created_at", "desc")
+      .execute();
+    
+    return postings;
+  } catch (error) {
+    console.error("Error fetching job postings:", error);
+    return [];
+  }
+}
+
+/**
+ * Create a new job posting
+ */
+export async function createJobPosting(jobData: Omit<JobPosting, 'id' | 'created_at' | 'updated_at'>): Promise<JobPosting | null> {
+  try {
+    const result = await db
+      .insertInto("job_postings")
+      .values({
+        title: jobData.title,
+        description: jobData.description,
+        location: jobData.location,
+        department: jobData.department,
+        type: jobData.type
+      })
+      .returning(["id", "title", "description", "location", "department", "type", "created_at", "updated_at"])
+      .executeTakeFirstOrThrow();
+    
+    return result;
+  } catch (error) {
+    console.error("Error creating job posting:", error);
+    return null;
+  }
+}
+
+/**
+ * Delete a job posting by ID
+ */
+export async function deleteJobPosting(id: number): Promise<boolean> {
+  try {
+    await db
+      .deleteFrom("job_postings")
+      .where("id", "=", id)
+      .execute();
+    
+    return true;
+  } catch (error) {
+    console.error(`Error deleting job posting with ID ${id}:`, error);
+    return false;
   }
 }

@@ -1,7 +1,9 @@
 "use client";
+import { useState, useEffect } from "react";
 import type { JSX } from "react";
 import Image from "next/image";
 import CareerForm from "@/components/CareerForm";
+import { getJobRoles, type JobRole } from "./actions";
 
 // Career Hero Component
 function CareerHero(): JSX.Element {
@@ -40,246 +42,161 @@ function TeamJoinSection(): JSX.Element {
 
 // Job Vacancies Component
 function JobVacanciesSection(): JSX.Element {
+  const [jobs, setJobs] = useState<JobRole[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [expandedJobId, setExpandedJobId] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const jobData = await getJobRoles();
+        setJobs(jobData);
+      } catch (error) {
+        console.error('Failed to fetch job roles:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
+  const toggleJobExpansion = (jobId: string) => {
+    setExpandedJobId(expandedJobId === jobId ? null : jobId);
+  };
+
+  const filteredJobs = jobs.filter(job => 
+    job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="max-w-6xl mx-auto mb-16 relative z-10">
       <h2 className="text-3xl font-bold mb-8 text-center">Job Vacancies At VRTECH Info</h2>
 
       {/* Search bar */}
-      <div className="flex flex-wrap gap-4 mb-8 justify-center">
-        <div className="relative flex items-center bg-gray-800/50 rounded-md px-4 py-2 min-w-[200px]">
+      <div className="flex justify-center mb-8">
+        <div className="relative flex items-center bg-gray-800/50 rounded-md px-4 py-2 w-full max-w-xl">
           <span className="mr-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Time icon">
-              <title>Time icon</title>
-              <path d="M12 6V12H16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2" />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Search icon">
+              <title>Search icon</title>
+              <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </span>
           <input
             type="text"
-            placeholder="Industry, department..."
+            placeholder="Search by title, department, or location..."
             className="bg-transparent border-0 outline-none text-white w-full"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-
-        <div className="relative flex items-center bg-gray-800/50 rounded-md px-4 py-2 min-w-[150px]">
-          <span className="mr-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Add icon">
-              <title>Add icon</title>
-              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" strokeWidth="2" />
-              <path d="M8 12H16" stroke="white" strokeWidth="2" strokeLinecap="round" />
-              <path d="M12 8V16" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </span>
-          <input
-            type="text"
-            placeholder="Country"
-            className="bg-transparent border-0 outline-none text-white w-full"
-          />
-        </div>
-
-        <div className="relative flex items-center bg-gray-800/50 rounded-md px-4 py-2 min-w-[150px]">
-          <span className="mr-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Location icon">
-              <title>Location icon</title>
-              <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
-              <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
-            </svg>
-          </span>
-          <input
-            type="text"
-            placeholder="Location"
-            className="bg-transparent border-0 outline-none text-white w-full"
-          />
-        </div>
-
-        <button type="button" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md flex items-center justify-center">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Search icon">
-            <title>Search icon</title>
-            <circle cx="11" cy="11" r="7" stroke="white" strokeWidth="2" />
-            <path d="M20 20L16 16" stroke="white" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          Search
-        </button>
       </div>
 
       {/* Job listings */}
       <div className="space-y-4">
-        {/* Job 1 */}
-        <div className="bg-gray-800/30 rounded-lg overflow-hidden">
-          <div className="p-4 flex justify-between items-center">
-            <div>
-              <h3 className="text-xl font-bold">UI/UX Designer</h3>
-              <p className="text-gray-400">VR Tech Info</p>
-            </div>
-            <button type="button" className="text-blue-400">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Expand details">
-                <title>Expand details</title>
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500" />
           </div>
-          <div className="grid grid-cols-3 divide-x divide-gray-700">
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Work Type</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Calendar icon">
-                  <title>Calendar icon</title>
-                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2" />
-                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M4 9H20" stroke="white" strokeWidth="2" />
-                </svg>
-                Remote
-              </p>
-            </div>
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Job Type</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Clock icon">
-                  <title>Clock icon</title>
-                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2" />
-                </svg>
-                Internship
-              </p>
-            </div>
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Location</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Pin location icon">
-                  <title>Pin location icon</title>
-                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
-                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
-                </svg>
-                Hyderabad
-              </p>
-            </div>
+        )}
+        
+        {!loading && filteredJobs.length === 0 && (
+          <div className="text-center py-8 bg-gray-800/30 rounded-lg p-6">
+            <p className="text-gray-300">No job positions found matching your search criteria.</p>
           </div>
-          <div className="bg-gray-800/40 p-3 flex justify-between items-center">
-            <div className="flex items-center">
-              <span className="text-sm text-gray-400 mr-2">Experience:</span>
-              <span className="text-sm">0-1 Yrs</span>
+        )}
+        
+        {!loading && filteredJobs.length > 0 && (
+          filteredJobs.map((job) => (
+            <div key={job.id} className="bg-gray-800/30 rounded-lg overflow-hidden border border-gray-700">
+              <button 
+                type="button"
+                onClick={() => toggleJobExpansion(job.id)}
+                className="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                aria-expanded={expandedJobId === job.id}
+                aria-controls={`job-content-${job.id}`}
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-xl font-bold">{job.title}</h3>
+                    <p className="text-gray-400">VR Tech Info</p>
+                  </div>
+                  <svg 
+                    className={`w-6 h-6 transition-transform duration-300 ${expandedJobId === job.id ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <title>Toggle job details</title>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                <div className="flex flex-wrap gap-4 mt-2">
+                  <span className="text-sm text-gray-400 flex items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1" aria-hidden="true">
+                      <title>Job type icon</title>
+                      <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                      <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2" />
+                    </svg>
+                    {job.type}
+                  </span>
+                  <span className="text-sm text-gray-400 flex items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1" aria-hidden="true">
+                      <title>Location icon</title>
+                      <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
+                      <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
+                    </svg>
+                    {job.location}
+                  </span>
+                  <span className="text-sm text-gray-400 flex items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1" aria-hidden="true">
+                      <title>Department icon</title>
+                      <path d="M4 7H20" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M9 7V5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    {job.department}
+                  </span>
+                </div>
+              </button>
+              
+              {expandedJobId === job.id && (
+                <div 
+                  id={`job-content-${job.id}`}
+                  className="p-6 pt-0 border-t border-gray-700 animate-fadeIn"
+                >
+                  <p className="text-gray-300 mb-6">{job.description}</p>
+                  <button 
+                    type="button"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition duration-300"
+                    onClick={() => {
+                      const careerFormSection = document.getElementById('career-form-section');
+                      if (careerFormSection) {
+                        careerFormSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    Apply Now
+                  </button>
+                </div>
+              )}
             </div>
-          </div>
-        </div>
+          ))
+        )}
+      </div>
 
-        {/* Job 2 */}
-        <div className="bg-gray-800/30 rounded-lg overflow-hidden">
-          <div className="p-4 flex justify-between items-center">
-            <div>
-              <h3 className="text-xl font-bold">UI/UX Designer</h3>
-              <p className="text-gray-400">VR Tech Info</p>
-            </div>
-            <button type="button" className="text-blue-400">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Expand details">
-                <title>Expand details</title>
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-          <div className="grid grid-cols-3 divide-x divide-gray-700">
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Work Type</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Calendar icon">
-                  <title>Calendar icon</title>
-                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2" />
-                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M4 9H20" stroke="white" strokeWidth="2" />
-                </svg>
-                Remote
-              </p>
-            </div>
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Job Type</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Clock icon">
-                  <title>Clock icon</title>
-                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2" />
-                </svg>
-                Internship
-              </p>
-            </div>
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Location</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Pin location icon">
-                  <title>Pin location icon</title>
-                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
-                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
-                </svg>
-                Hyderabad
-              </p>
-            </div>
-          </div>
-          <div className="bg-gray-800/40 p-3 flex justify-between items-center">
-            <div className="flex items-center">
-              <span className="text-sm text-gray-400 mr-2">Experience:</span>
-              <span className="text-sm">0-1 Yrs</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Job 3 */}
-        <div className="bg-gray-800/30 rounded-lg overflow-hidden">
-          <div className="p-4 flex justify-between items-center">
-            <div>
-              <h3 className="text-xl font-bold">UI/UX Designer</h3>
-              <p className="text-gray-400">VR Tech Info</p>
-            </div>
-            <button type="button" className="text-blue-400">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Expand details">
-                <title>Expand details</title>
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-          <div className="grid grid-cols-3 divide-x divide-gray-700">
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Work Type</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Calendar icon">
-                  <title>Calendar icon</title>
-                  <rect x="4" y="5" width="16" height="16" rx="2" stroke="white" strokeWidth="2" />
-                  <path d="M16 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M8 2V5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M4 9H20" stroke="white" strokeWidth="2" />
-                </svg>
-                Remote
-              </p>
-            </div>
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Job Type</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Clock icon">
-                  <title>Clock icon</title>
-                  <path d="M12 6V12L15 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2" />
-                </svg>
-                Internship
-              </p>
-            </div>
-            <div className="p-3 flex flex-col items-center">
-              <h4 className="text-sm text-gray-400">Location</h4>
-              <p className="flex items-center mt-1">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2" aria-label="Pin location icon">
-                  <title>Pin location icon</title>
-                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2" />
-                  <path d="M19 10C19 15.5 12 20 12 20C12 20 5 15.5 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="white" strokeWidth="2" />
-                </svg>
-                Hyderabad
-              </p>
-            </div>
-          </div>
-          <div className="bg-gray-800/40 p-3 flex justify-between items-center">
-            <div className="flex items-center">
-              <span className="text-sm text-gray-400 mr-2">Experience:</span>
-              <span className="text-sm">0-1 Yrs</span>
-            </div>
-          </div>
-        </div>
+      {/* Bottom text */}
+      <div className="mt-12 text-center">
+        <p className="text-gray-300 max-w-3xl mx-auto">
+          Join our dynamic team at VR Tech Info and be part of exciting
+          projects that make an impact, with a collaborative, inclusive team with
+          opportunities for career growth, mentorship, and a flexible work-life
+          balance. Ready to shape the future? Apply today!
+        </p>
       </div>
     </div>
   );
@@ -314,7 +231,7 @@ function WhyChooseSection(): JSX.Element {
 // Career Contact Component
 function ContactSection(): JSX.Element {
   return (
-    <div className="max-w-6xl mx-auto flex flex-col md:flex-row relative z-10">
+    <div id="career-form-section" className="max-w-6xl mx-auto flex flex-col md:flex-row relative z-10">
       {/* Left column - Contact Information */}
       <div className="md:w-2/5 bg-[#FFFFFF]/30 p-8 relative overflow-hidden rounded-l-lg flex flex-col">
         <h2 className="text-3xl font-bold mb-10">Company Information</h2>
