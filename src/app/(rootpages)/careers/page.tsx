@@ -8,9 +8,28 @@ import { getJobRoles, type JobRole } from "./actions";
 // Career Hero Component
 function CareerHero(): JSX.Element {
   return (
-    <div>
-      {/* Heading */}
-      <h1 className="text-4xl md:text-5xl font-semibold text-center mb-10 relative z-10">
+    <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-visible pb-20">
+      {/* Shape 1 - Top right */}
+      <div className="absolute top-[180px] right-[150px] z-2 opacity-80">
+        <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
+      </div>
+      
+      {/* Shape 2 - Bottom left */}
+      <div className="absolute top-[280px] right-[600px] opacity-80">
+        <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit " />
+      </div>
+      
+      {/* Shape 3 - Top right */}
+      <div className="absolute top-[130px] right-[250px] z-1 opacity-80">
+        <img src="/shape3.png" alt="Shape 3" className="w-[150px] h-[150px]" />
+      </div>
+      
+      {/* Shape 4 - Bottom right */}
+      <div className="absolute bottom-[150px] left-[200px] opacity-80">
+        <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]" />
+      </div>
+
+      <h1 className="text-6xl text-center font-semibold text-white relative z-10 mt-16">
         Start Your Journey With Us Today
       </h1>
     </div>
@@ -21,7 +40,7 @@ function CareerHero(): JSX.Element {
 function TeamJoinSection(): JSX.Element {
   return (
     <div className="max-w-6xl mx-auto mb-16 relative z-10">
-      <div className="bg-[#000000]/70 p-8 rounded-lg border border-gray-700">
+      <div className="p-8">
         <h2 className="text-3xl font-bold mb-6 text-center">Join Our Team</h2>
         <p className="text-lg text-center max-w-4xl mx-auto mb-8">
           At VR Tech Info, we're driven by a shared passion for innovation and excellence. We foster
@@ -190,14 +209,7 @@ function JobVacanciesSection(): JSX.Element {
       </div>
 
       {/* Bottom text */}
-      <div className="mt-12 text-center">
-        <p className="text-gray-300 max-w-3xl mx-auto">
-          Join our dynamic team at VR Tech Info and be part of exciting
-          projects that make an impact, with a collaborative, inclusive team with
-          opportunities for career growth, mentorship, and a flexible work-life
-          balance. Ready to shape the future? Apply today!
-        </p>
-      </div>
+      
     </div>
   );
 }
@@ -274,45 +286,16 @@ function ContactSection(): JSX.Element {
   );
 }
 
-// Background Elements Component
-function BackgroundElements(): JSX.Element {
-  return (
-    <>
-      {/* Shape 1 - Top right */}
-      <div className="absolute top-[80px] right-[150px] z-2 opacity-80">
-        <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
-      </div>
-
-      {/* Shape 2 - Bottom left */}
-      <div className="absolute top-[180px] right-[600px] opacity-80">
-        <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit " />
-      </div>
-
-      {/* Shape 3 - Top right */}
-      <div className="absolute top-[30px] right-[250px] z-1 opacity-80">
-        <img src="/shape3.png" alt="Shape 3" className="w-[150px] h-[150px]" />
-      </div>
-
-      {/* Shape 4 - Bottom right */}
-      <div className="absolute bottom-[150px] left-[200px] opacity-80">
-        <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]" />
-      </div>
-    </>
-  );
-}
+// This component is no longer needed as the shapes are now included in the CareerHero component
 
 // Main Careers Page Component
 export default function CareersPage(): JSX.Element {
   return (
     <div className="bg-black text-white">
-      {/* Main content with padding for header */}
-      <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-visible pb-20">
-        {/* Background elements */}
-        <BackgroundElements />
-
-        {/* Hero Section */}
-        <CareerHero />
-
+      {/* Hero Section */}
+      <CareerHero />
+      
+      <div className="px-4 relative overflow-visible pb-20">
         {/* Team Join Section */}
         <TeamJoinSection />
 

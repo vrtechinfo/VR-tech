@@ -1,34 +1,50 @@
 
 
 
+"use client";
+
 import ContactForm from "@/components/ContactForm";
 import Features from "@/components/Features";
-
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import WhyChooseUs from "@/components/WhyChoose";
+import { useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import type { JSX } from "react";
 
 
 
 
 export default function Home(): JSX.Element {
+	const searchParams = useSearchParams();
+	const contactFormRef = useRef<HTMLDivElement>(null);
+	
+	useEffect(() => {
+		// Check if the URL has the contact=true parameter
+		if (searchParams.get('contact') === 'true') {
+			// Scroll to the contact form with a slight delay to ensure the page is fully loaded
+			setTimeout(() => {
+				contactFormRef.current?.scrollIntoView({ behavior: 'smooth' });
+			}, 500);
+		}
+	}, [searchParams]);
+	
 	return (
 		<div className="h-full w-full">
-			
-
 			<Hero />
 			<Features />
 			<Services />
 			<div className="relative">
 				<WhyChooseUs />
 				<Testimonials />
-				<div className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[10%] top-[600px] sm:top-[500px] md:top-[600px] lg:top-[1100px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10">
+				<div 
+					ref={contactFormRef}
+					className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[10%] top-[600px] sm:top-[500px] md:top-[600px] lg:top-[1100px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10"
+				>
 					<ContactForm />
 				</div>
 			</div>
-			
 		</div>
 	);
 }

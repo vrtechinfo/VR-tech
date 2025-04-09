@@ -12,7 +12,7 @@ export default function Header(): JSX.Element {
     const serviceOptions: string[] = [
         "Software Development",
         "IT Consulting",
-        "Cloud Solutions",
+        "Training & Development",
     ];
 
     const dropdownVariants: Variants = {
@@ -171,7 +171,18 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                                         className="border-b border-gray-800 last:border-none"
                                     >
                                         <Link
-                                            href={`/services/${service.toLowerCase().replace(/\s+/g, "-")}`}
+                                            href={(() => {
+                                                switch(service) {
+                                                    case "Software Development":
+                                                        return "/services#software-development";
+                                                    case "IT Consulting":
+                                                        return "/services#it-consulting";
+                                                    case "Training & Development":
+                                                        return "/services#cloud-solutions";
+                                                    default:
+                                                        return "/services";
+                                                }
+                                            })()}
                                             className="block px-6 py-3 text-base hover:bg-red-800/20 transition-colors duration-200" // Adjusted text size
                                             onClick={onLinkClick}
                                         >

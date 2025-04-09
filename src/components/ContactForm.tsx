@@ -18,7 +18,6 @@ interface Location {
 }
 
 export default function ContactForm(): React.JSX.Element {
-    const [index, setIndex] = useState<number>(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formErrors, setFormErrors] = useState<Record<string, string[]>>({});
     const [submitMessage, setSubmitMessage] = useState<{
@@ -26,48 +25,15 @@ export default function ContactForm(): React.JSX.Element {
         type: "success" | "error";
     } | null>(null);
     const formRef = useRef<HTMLFormElement>(null);
-    const locations: Location[] = [
-        {
-            country: "India",
-            name: "Gowtham Porla",
-            title: "",
-            address:
-                "Plot No: 144, Flat No: 302, OM Shakthi Towers, SR Nagar, Hyderabad-18, Telangana State, India",
-            phone: "+91-9052955755",
-            email: "Info@Vrtechinfoinc.Com",
-            imageUrl: "/map-placeholder.png",
-        },
-        {
-            country: "Canada",
-            name: "Vivek Reddy",
-            title: "Founder and CEO",
-            address:
-                "33 candlebrook Crescent, Scarborough, Ontario, Canada- M1W 4B3.",
-            phone: "+1-647-447-5656",
-            email: "Info@Vrtechinfoinc.Com",
-            imageUrl: "/map-placeholder.png",
-        },
-        {
-            country: "USA",
-            name: "Sandeep",
-            title: "",
-            address: "308 shaker run, Albany, New York-12205 USA.",
-            phone: "+1-618-971-7471",
-            email: "Info@Vrtechinfoinc.Com",
-            imageUrl: "/map-placeholder.png",
-        },
-    ];
-
-    const handlePrev = () => {
-        setIndex((prevIndex) =>
-            prevIndex === 0 ? locations.length - 1 : prevIndex - 1,
-        );
-    };
-
-    const handleNext = () => {
-        setIndex((prevIndex) =>
-            prevIndex === locations.length - 1 ? 0 : prevIndex + 1,
-        );
+    const location: Location = {
+        country: "Canada",
+        name: "Vivek Reddy",
+        title: "Founder and CEO",
+        address:
+            "33 candlebrook Crescent, Scarborough, Ontario, Canada- M1W 4B3.",
+        phone: "+1-647-447-5656",
+        email: "Info@Vrtechinfoinc.Com",
+        imageUrl: "/map-placeholder.png",
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -252,36 +218,25 @@ export default function ContactForm(): React.JSX.Element {
                     </form>
                 </div>
 
-                {/* Right Section - Location Carousel */}
+                {/* Right Section - Canadian Location Only */}
                 <div className="w-full md:w-1/2 bg-white p-6 md:p-8 relative flex flex-col items-center text-center">
-                    {/* Country Icons - With the selected country centered */}
-                    <div
-                        className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-2 sm:mb-3 md:mb-4 transition-transform duration-300"
-                        style={{ transform: `translateX(${index === 0 ? '30px' : index === 2 ? '-30px' : '0px'})` }}
-                    >
-                        {locations.map((loc, i) => (
-                            <button
-                                key={`location-${loc.country}-${i}`}
-                                type="button"
-                                onClick={() => setIndex(i)}
-                                className={`w-10 h-10 p-1 bg-transparent transition-all duration-500 ${i === index ? "border-2 border-black scale-150 rounded-full" : "border-transparent scale-100 rounded-full"}`}
-                                aria-label={`Select ${loc.country} location`}
-                            >
-                                <Image
-                                    src={`/${loc.country.toLowerCase()}.png`}
-                                    alt={loc.country}
-                                    width={40}
-                                    height={32}
-                                    className="w-full h-full object-contain"
-                                />
-                            </button>
-                        ))}
+                    {/* Canada Icon */}
+                    <div className="flex justify-center mb-4">
+                        <div className="w-16 h-16 p-2 border-2 border-black rounded-full">
+                            <Image
+                                src="/canada.png"
+                                alt="Canada"
+                                width={48}
+                                height={48}
+                                className="w-full h-full object-contain"
+                            />
+                        </div>
                     </div>
 
                     {/* Location Content */}
                     <div className="flex flex-col items-center justify-center w-full max-w-sm">
                         <Image
-                            src={locations[index].imageUrl}
+                            src={location.imageUrl}
                             alt="Office Location"
                             width={240}
                             height={160}
@@ -289,58 +244,30 @@ export default function ContactForm(): React.JSX.Element {
                         />
 
                         <h2 className="text-xl font-bold text-red-600 mb-3">
-                            {locations[index].name}
+                            {location.name}
                         </h2>
 
-                        {locations[index].title && (
+                        {location.title && (
                             <p className="text-gray-600 mb-4">
-                                {locations[index].title}
+                                {location.title}
                             </p>
                         )}
 
                         <p className="text-gray-600 text-center mb-6 text-sm">
-                            {locations[index].address}
+                            {location.address}
                         </p>
 
                         <p className="font-semibold mb-6">
-                            {locations[index].phone}
+                            {location.phone}
                         </p>
 
                         <a
-                            href={`mailto:${locations[index].email}`}
+                            href={`mailto:${location.email}`}
                             className="text-blue-600 underline hover:text-blue-800 text-sm"
                         >
-                            {locations[index].email}
+                            {location.email}
                         </a>
                     </div>
-
-                    {/* Navigation Arrows */}
-                    <button
-                        type="button"
-                        onClick={handlePrev}
-                        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition"
-                        aria-label="Previous location"
-                    >
-                        <Image
-                            src="/left-arrow.png"
-                            alt="Previous"
-                            width={24}
-                            height={24}
-                        />
-                    </button>
-                    <button
-                        type="button"
-                        onClick={handleNext}
-                        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition"
-                        aria-label="Next location"
-                    >
-                        <Image
-                            src="/right-arrow.png"
-                            alt="Next"
-                            width={24}
-                            height={24}
-                        />
-                    </button>
                 </div>
             </div>
 

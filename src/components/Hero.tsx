@@ -39,7 +39,23 @@ export default function Hero(): JSX.Element {
     };
 
     return (
-        <div className="bg-black text-white pt-20 sm:pt-40 md:pt-60 lg:pt-80 pb-10 sm:pb-15 md:pb-20 lg:pb-30 overflow-hidden">
+        <div className="relative bg-[#111324] text-white pt-20 sm:pt-40 md:pt-60 lg:pt-80 pb-10 sm:pb-15 md:pb-20 lg:pb-30 overflow-hidden">
+            {/* Video Background */}
+            <div className="absolute inset-0 w-4/5 h-4/5 mx-auto my-auto left-0 right-0 top-0 bottom-0 overflow-hidden z-0">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover opacity-50"
+                >
+                    <source src="/herobg.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            {/* Content with higher z-index */}
+            <div className="relative z-10">
             <div className="flex justify-center pt-10 sm:pt-15 md:pt-20 lg:pt-30 pb-5 sm:pb-8 md:pb-10 h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px]">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold flex items-center">
                     <AnimatePresence mode="wait">
@@ -102,7 +118,7 @@ export default function Hero(): JSX.Element {
                     whileTap={{ scale: 0.95 }}
                     className="border-1 border-red-800 rounded-xl bg-red-800 px-5 py-1 shadow-inner cursor-pointer"
                 >
-                    <Link href={"/"}>Learn more</Link>
+                    <Link href={"/aboutus"}>Learn more</Link>
                 </motion.div>
                 <motion.div
                     whileHover={{
@@ -112,9 +128,10 @@ export default function Hero(): JSX.Element {
                     whileTap={{ scale: 0.95 }}
                     className="border-1 border-white rounded-xl px-5 py-1 shadow-inner text-gray-200 cursor-pointer"
                 >
-                    <Link href={"/"}>Our Services</Link>
+                    <Link href={"/services"}>Our Services</Link>
                 </motion.div>
             </motion.div>
+            </div>
         </div>
     );
 }

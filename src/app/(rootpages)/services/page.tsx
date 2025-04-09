@@ -1,4 +1,8 @@
-import React from "react";
+"use client";
+
+import type React from "react";
+
+import { useRouter } from "next/navigation";
 
 export default function Services() {
     return (
@@ -33,17 +37,17 @@ function Hero() {
                 <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]"/>
             </div>
 
-            <div className="container mx-auto pl-20 pr-20">
-                <h1 className="text-6xl text-left font-semibold text-white relative z-10">
+            <div className="container mx-auto px-20 text-center">
+                <h1 className="text-6xl font-semibold text-white relative z-10">
                     Innovative IT Solutions for Your Business Growth
                 </h1>
-                <p className="text-[20px] text-left text-white mt-6 relative z-10">
+                <p className="text-[20px] text-white mt-6 relative z-10 mx-auto max-w-3xl">
                     We offer a wide range of services tailored to meet the diverse needs of our clients. Our core services include:
                 </p>
-                <div className="flex justify-start mt-10 relative z-10">
-                    <button type="button" className="text-center border border-white text-white px-5 py-3 rounded-2xl hover:bg-white hover:text-black transition-colors duration-300">
+                <div className="flex justify-center mt-16 relative z-10">
+                    <ContactButton>
                         Get a Free Consultation
-                    </button>
+                    </ContactButton>
                 </div>
             </div>
         </div>
@@ -75,7 +79,7 @@ function SoftwareDevelopmentSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="software-development" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 {/* Reduced bottom padding (pb-10) to make space for hr margin */}
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
@@ -160,9 +164,9 @@ function SoftwareDevelopmentSection() {
 
                     {/* Consultation Button */}
                     <div className="text-center">
-                        <button type="button" className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
-                            Get a Free Consultation {/* Hardcoded */}
-                        </button>
+                        <ContactButton className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
+                            Get a Free Consultation
+                        </ContactButton>
                     </div>
                 </div>
             </section>
@@ -180,7 +184,7 @@ function ItConsultingSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="it-consulting" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -262,9 +266,9 @@ function ItConsultingSection() {
 
                     {/* Consultation Button */}
                     <div className="text-center">
-                        <button type="button" className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
-                            Talk to an Expert {/* Updated */}
-                        </button>
+                        <ContactButton className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
+                            Talk to an Expert
+                        </ContactButton>
                     </div>
                 </div>
             </section>
@@ -281,7 +285,7 @@ function TrainingDevelopmentSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="cloud-solutions" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -362,9 +366,9 @@ function TrainingDevelopmentSection() {
 
                     {/* Consultation Button */}
                     <div className="text-center">
-                        <button type="button" className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
-                            Join a Course {/* Updated */}
-                        </button>
+                        <ContactButton className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
+                            Join a Course
+                        </ContactButton>
                     </div>
                 </div>
             </section>
@@ -380,7 +384,7 @@ function SupportMaintenanceSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="it-consulting" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -463,9 +467,9 @@ function SupportMaintenanceSection() {
 
                     {/* Consultation Button */}
                     <div className="text-center">
-                        <button type="button" className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
-                            Get Ongoing Support {/* Updated */}
-                        </button>
+                        <ContactButton className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
+                            Get Ongoing Support
+                        </ContactButton>
                     </div>
                 </div>
             </section>
@@ -483,7 +487,7 @@ function DataAnalyticsSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="it-consulting" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
@@ -563,9 +567,9 @@ function DataAnalyticsSection() {
 
                     {/* Consultation Button */}
                     <div className="text-center">
-                        <button type="button" className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
-                            Request a Demo {/* Updated */}
-                        </button>
+                        <ContactButton className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
+                            Request a Demo
+                        </ContactButton>
                     </div>
                 </div>
             </section>
@@ -573,6 +577,29 @@ function DataAnalyticsSection() {
             {/* Horizontal Line - Using the specified style without margin */}
             <hr className="border-t border-gray-700 w-full mx-auto" />
         </>
+    );
+}
+
+// ContactButton component to handle navigation to home page contact form
+function ContactButton({ children, className = "text-center border border-white text-white px-5 py-3 rounded-2xl hover:bg-white hover:text-black transition-colors duration-300" }: {
+    children: React.ReactNode;
+    className?: string;
+}) {
+    const router = useRouter();
+    
+    const handleClick = () => {
+        // Navigate to home page and add a hash to scroll to contact form
+        router.push('/?contact=true');
+    };
+    
+    return (
+        <button 
+            type="button" 
+            className={className}
+            onClick={handleClick}
+        >
+            {children}
+        </button>
     );
 }
 
@@ -660,9 +687,9 @@ function CybersecuritySolutionsSection() {
 
                 {/* Consultation Button */}
                 <div className="text-center">
-                    <button type="button" className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
-                        Secure Your Business {/* Updated */}
-                    </button>
+                    <ContactButton className="bg-[#9A0000] text-white font-medium px-8 py-3 rounded hover:bg-[#7f0000] transition-colors duration-300">
+                        Secure Your Business
+                    </ContactButton>
                 </div>
             </div>
         </section>

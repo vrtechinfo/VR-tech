@@ -118,52 +118,52 @@ function OurVisionSection() {
         <h2 className="text-5xl font-semibold text-center mb-16">
           OUR VISION
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div className="flex flex-col items-center">
-            <div className="relative w-80 h-64">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-20">
+          <div className="flex flex-col items-center mx-4">
+            <div className="relative -mt-16">
               <Image
-                src="/About1.png"
+                src="/About3.png"
                 alt="Global Leader Background"
-                width={320}
-                height={256}
-                className="w-80 h-64"
+                width={357}
+                height={364}
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                <p className="text-lg mt-16">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <p className="text-base text-white max-w-[200px] mt-8">
                   To be a global leader in IT solutions and training.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col items-center">
-            <div className="relative w-80 h-64">
+          <div className="flex flex-col items-center mx-4">
+            <div className="relative -mt-16">
               <Image
                 src="/About2.png"
                 alt="Innovation Background"
-                width={320}
-                height={256}
-                className="w-80 h-64"
+                width={357}
+                height={364}
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                <p className="text-lg mt-16">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <p className="text-base text-white max-w-[200px] mt-8">
                   Inspire innovation and drive technological advancements.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col items-center">
-            <div className="relative w-80 h-64">
+          <div className="flex flex-col items-center mx-4">
+            <div className="relative ">
               <Image
-                src="/About3.png"
+                src="/About1.png"
                 alt="Client Partnerships Background"
-                width={320}
-                height={256}
-                className="w-80 h-64"
+                width={357}
+                height={364}
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                <p className="text-lg mt-16">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <p className="text-base text-white max-w-[200px]">
                   Foster lasting client partnerships through trust & excellence.
                 </p>
               </div>
@@ -295,16 +295,18 @@ function FaqSection() {
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-20 bg-[#1A1A1A]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-semibold mb-10">
-          FAQ
+        <h2 className="text-5xl font-semibold ">
+          FAQ's
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <p className="mb-6">Have more Questions? Reach out our Team on WhatsApp!</p>
-            <button type="button" className="bg-transparent border border-gray-600 text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300">
-              Say Hi!
-            </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-0">
+          <div className="flex flex-col justify-center h-full">
+            <div>
+              <p className="mb-3 text-xl">Have more Questions? Reach out our Team!</p>
+              <button type="button" className="bg-transparent border border-gray-600 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 text-lg">
+                Say Hi!
+              </button>
+            </div>
           </div>
 
           <div className="space-y-4">

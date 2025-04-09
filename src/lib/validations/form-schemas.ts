@@ -18,9 +18,15 @@ export const careerFormSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(1, "Phone number is required")
     .regex(/^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,4}[-\s.]?[0-9]{1,9}$/, "Please enter a valid phone number"),
-  resume: z.instanceof(File, { message: "Resume file is required" })
+  resume: z.any()
     .refine(
       (file) => {
+        // Skip validation if we're on the server side or if no file is provided
+        if (typeof window === "undefined" || !file) return true;
+        
+        // Check if it's a File instance on the client side
+        if (!(file instanceof File)) return false;
+        
         // Check file type
         const acceptedFileTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
         return acceptedFileTypes.includes(file.type);
@@ -28,7 +34,13 @@ export const careerFormSchema = z.object({
       { message: "File must be PDF, DOC or DOCX" }
     )
     .refine(
-      (file) => file.size <= 5 * 1024 * 1024, 
+      (file) => {
+        // Skip validation if we're on the server side or if no file is provided
+        if (typeof window === "undefined" || !file) return true;
+        
+        // Check file size on the client side
+        return file instanceof File ? file.size <= 5 * 1024 * 1024 : true;
+      }, 
       { message: "File size must be less than 5MB" }
     ),
   message: z.string().min(10, "Message must be at least 10 characters")
