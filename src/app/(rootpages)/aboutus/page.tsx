@@ -16,24 +16,24 @@ export default function AboutUs() {
 
 function Hero() {
   return (
-    <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-visible pb-20">
+    <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-hidden pb-20">
       {/* Shape 1 - Top right */}
-      <div className="absolute top-[180px] right-[150px] z-2 opacity-80">
+      <div className="absolute top-[180px] right-[-50px] md:right-[50px] lg:right-[150px] z-2 opacity-80 scale-50 md:scale-75 lg:scale-100">
         <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
       </div>
 
       {/* Shape 2 - Bottom left */}
-      <div className="absolute top-[280px] right-[600px] opacity-80">
-        <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit " />
+      <div className="absolute top-[280px] right-[200px] md:right-[400px] lg:right-[600px] opacity-80 scale-50 md:scale-75 lg:scale-100 hidden sm:block">
+        <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit" />
       </div>
 
       {/* Shape 3 - Top right */}
-      <div className="absolute top-[130px] right-[250px] z-1 opacity-80">
+      <div className="absolute top-[130px] right-[100px] md:right-[180px] lg:right-[250px] z-1 opacity-80 scale-50 md:scale-75 lg:scale-100">
         <img src="/shape3.png" alt="Shape 3" className="w-[150px] h-[150px]" />
       </div>
 
       {/* Shape 4 - Bottom right */}
-      <div className="absolute bottom-[150px] left-[200px] opacity-80">
+      <div className="absolute bottom-[50px] left-[50px] md:bottom-[100px] md:left-[150px] lg:bottom-[150px] lg:left-[200px] opacity-80 scale-50 md:scale-75 lg:scale-100">
         <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]" />
       </div>
 
@@ -205,12 +205,12 @@ function FounderSection() {
                      background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%)',
                      backdropFilter: 'blur(5px)',
                    }}>
-                <div className="flex items-center justify-between">
-                  <p className="text-white font-semibold">Vivek Reddy</p>
+                <div className="flex items-center">
+                  <p className="text-white font-semibold text-lg ml-10 mr-2">Vivek Reddy</p>
                   
                   <div className="flex items-center">
-                    <div className="h-5 w-px bg-gray-500 mx-3" />
-                    <span className="text-gray-300 text-sm mr-2">Director at</span>
+                    <div className="h-5 w-px bg-gray-500 mx-2" />
+                    <span className="text-gray-300 text-lg mr-2">Director at</span>
                     <Image
                       src="/vr-logo.png"
                       alt="VR Tech Logo"
@@ -224,7 +224,7 @@ function FounderSection() {
           </div>
           
           {/* Content with glossy effect */}
-          <div className="w-full md:w-2/3 rounded-xl overflow-hidden p-8"
+          <div className="w-full md:w-2/3 rounded-xl overflow-hidden p-8 flex flex-col justify-center"
                style={{
                  background: 'linear-gradient(135deg, rgba(30,30,30,0.7) 0%, rgba(10,10,10,0.4) 100%)',
                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
@@ -295,21 +295,22 @@ function FaqSection() {
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-20 bg-[#1A1A1A]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-semibold ">
-          FAQ's
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-0">
-          <div className="flex flex-col justify-center h-full">
-            <div>
-              <p className="mb-3 text-xl">Have more Questions? Reach out our Team!</p>
-              <button type="button" className="bg-transparent border border-gray-600 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 text-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-0 items-start">
+          {/* Left side - Heading, text and button */}
+          <div className="self-center md:sticky md:top-20">
+            <h2 className="text-5xl font-semibold mb-8">
+              FAQ's
+            </h2>
+            <div className="pr-6">
+              <p className="mb-4 text-xl">Have more Questions? Reach out our Team!</p>
+              <button type="button" className="bg-transparent border border-gray-600 text-white px-5 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300 text-lg">
                 Say Hi!
               </button>
             </div>
           </div>
 
-          <div className="space-y-4">
+          {/* Right side - Accordion */}
+          <div className="space-y-3">
             {faqItems.map((item, index) => (
               <div key={item.id} className="border border-gray-800 rounded-lg overflow-hidden">
                 <button

@@ -126,11 +126,7 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                         About Us
                     </Link>
                 </li>
-                <li
-                    className="relative flex items-center"
-                    onMouseEnter={() => setIsServicesOpen(true)}
-                    onMouseLeave={() => setIsServicesOpen(false)}
-                >
+                <li className="relative flex items-center">
                     <div className="flex items-center justify-center">
                         <Link href="/services" className="hover:underline underline-offset-8 decoration-red-800 decoration-4 pb-1 md:pb-2 cursor-pointer">
                             Services
@@ -148,6 +144,8 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                             className="ml-1.5 cursor-pointer mt-0.5 md:-mt-1"
                             animate={{ rotate: isServicesOpen ? 180 : 0 }}
                             transition={{ duration: 0.3 }}
+                            onMouseEnter={() => setIsServicesOpen(true)}
+                            onMouseLeave={() => setIsServicesOpen(false)}
                         >
                             <title>Dropdown Arrow</title>
                             <polyline points="6 9 12 15 18 9" />
@@ -161,6 +159,8 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                                 animate="visible"
                                 exit="exit"
                                 className="absolute top-full left-0 mt-2 w-64 bg-black/95 rounded-lg overflow-hidden z-10 border border-red-800/50 shadow-lg" // Added border and shadow
+                                onMouseEnter={() => setIsServicesOpen(true)}
+                                onMouseLeave={() => setIsServicesOpen(false)}
                             >
                                 {serviceOptions.map((service, index) => (
                                     <motion.div

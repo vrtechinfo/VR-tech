@@ -16,24 +16,24 @@ export default function Services() {
 
 function Hero() {
     return (
-        <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-visible pb-20">
+        <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-hidden pb-20">
             {/* Shape 1 - Top right */}
-            <div className="absolute top-[180px] right-[150px] z-2 opacity-80">
+            <div className="absolute top-[180px] right-[-50px] md:right-[50px] lg:right-[150px] z-2 opacity-80 scale-50 md:scale-75 lg:scale-100">
                 <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
             </div>
             
             {/* Shape 2 - Bottom left */}
-            <div className="absolute top-[280px] right-[600px] opacity-80">
-                <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit " />
+            <div className="absolute top-[280px] right-[200px] md:right-[400px] lg:right-[600px] opacity-80 scale-50 md:scale-75 lg:scale-100 hidden sm:block">
+                <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit" />
             </div>
             
             {/* Shape 3 - Top right */}
-            <div className="absolute top-[130px] right-[250px] z-1 opacity-80">
+            <div className="absolute top-[130px] right-[100px] md:right-[180px] lg:right-[250px] z-1 opacity-80 scale-50 md:scale-75 lg:scale-100">
                 <img src="/shape3.png" alt="Shape 3" className="w-[150px] h-[150px]"/>
             </div>
             
             {/* Shape 4 - Bottom right */}
-            <div className="absolute bottom-[150px] left-[200px] opacity-80">
+            <div className="absolute bottom-[50px] left-[50px] md:bottom-[100px] md:left-[150px] lg:bottom-[150px] lg:left-[200px] opacity-80 scale-50 md:scale-75 lg:scale-100">
                 <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]"/>
             </div>
 
