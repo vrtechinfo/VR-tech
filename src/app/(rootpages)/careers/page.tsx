@@ -43,9 +43,7 @@ function TeamJoinSection(): JSX.Element {
       <div className="p-8">
         <h2 className="text-3xl font-bold mb-6 text-center">Join Our Team</h2>
         <p className="text-lg text-center max-w-4xl mx-auto mb-8">
-          At VR Tech Info, we're driven by a shared passion for innovation and excellence. We foster
-          collaboration, innovation and growth, empowering individuals to contribute and
-          thrive with us and be part of a team dedicated to shaping the future of technology.
+          At VR Tech Info, we're a team of passionate people who love working together to build cool technology. We encourage everyone to share ideas, grow, and make a real impact. Come join us and help shape the future!
         </p>
         <div className="w-full overflow-hidden rounded-lg">
           <img
@@ -229,10 +227,7 @@ function WhyChooseSection(): JSX.Element {
         <div className="lg:w-2/3">
           <h2 className="text-3xl font-bold mb-6">Why Choose VR Tech Info?</h2>
           <p className="text-lg mb-6">
-            At VR Tech Info, we offer the chance to work on innovative VR and tech
-            projects that make an impact, with a collaborative, inclusive team with
-            opportunities for career growth, mentorship, and a flexible work-life
-            balance. Ready to shape the future? Apply today!
+            At VR Tech Info, you'll work on exciting VR and tech projects that make a real impact. Join our friendly team where you can grow your career, get support, and enjoy a good work-life balance. Ready to make a difference? Apply today!
           </p>
         </div>
       </div>
