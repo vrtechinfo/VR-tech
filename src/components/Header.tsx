@@ -31,13 +31,15 @@ export default function Header(): JSX.Element {
             <div className="flex justify-between w-full md:w-auto items-center">
                 <div className="pl-2 md:pl-10 py-2">
                     {/* Added padding for logo */}
-                    <Image
-                        src="/vr-logo.png"
-                        width={134}
-                        height={90}
-                        alt="vr tech info logo"
-                        className="w-20 md:w-36" // Adjusted size
-                    />
+                    <Link href="/">
+                        <Image
+                            src="/vr-logo.png"
+                            width={134}
+                            height={90}
+                            alt="vr tech info logo"
+                            className="w-20 md:w-36 cursor-pointer" // Adjusted size and added cursor-pointer
+                        />
+                    </Link>
                 </div>
                 <button
                     type="button"
@@ -122,7 +124,7 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                     </Link>
                 </li>
                 <li className="hover:underline underline-offset-8 decoration-red-800 decoration-4 pb-1 md:pb-2">
-                    <Link href="/aboutus" onClick={onLinkClick}>
+                    <Link href="/about-us" onClick={onLinkClick}>
                         About Us
                     </Link>
                 </li>
