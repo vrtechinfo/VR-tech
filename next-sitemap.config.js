@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL || 'https://vrtechinfoinc.com',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL || 'https://vrtechinfoinc.ca',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -10,8 +10,8 @@ module.exports = {
       },
     ],
   },
-  exclude: ['/admin', '/dashboard'],
-  generateIndexSitemap: false,
+  exclude: ['/bolg'],
+  generateIndexSitemap: true,
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
