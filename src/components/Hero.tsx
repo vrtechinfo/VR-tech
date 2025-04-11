@@ -118,7 +118,7 @@ export default function Hero(): JSX.Element {
                     whileTap={{ scale: 0.95 }}
                     className="border-1 border-red-800 rounded-xl bg-red-800 px-5 py-1 shadow-inner cursor-pointer"
                 >
-                    <Link href={"/about-us"}>Learn more</Link>
+                    <Link href={"/about-us"}>Discover More</Link>
                 </motion.div>
                 <motion.div
                     whileHover={{
