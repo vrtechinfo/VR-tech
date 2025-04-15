@@ -29,7 +29,7 @@ function CareerHero(): JSX.Element {
         <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]" />
       </div>
 
-      <h1 className="text-6xl text-center font-semibold text-white relative z-10 mt-16">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-white relative z-10 mt-10 sm:mt-14 md:mt-16">
         Start Your Journey With Us Today
       </h1>
     </div>

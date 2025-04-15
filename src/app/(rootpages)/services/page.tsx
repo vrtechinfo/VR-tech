@@ -38,10 +38,10 @@ function Hero() {
             </div>
 
             <div className="container mx-auto px-20 text-center">
-                <h1 className="text-6xl font-semibold text-white relative z-10">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white relative z-10">
                     Innovative IT Solutions for Your Business Growth
                 </h1>
-                <p className="text-[20px] text-white mt-6 relative z-10 mx-auto max-w-3xl">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-6 relative z-10 mx-auto max-w-3xl">
                     We offer a wide range of services tailored to meet the diverse needs of our clients. Our core services include:
                 </p>
                 <div className="flex justify-center mt-16 relative z-10">
