@@ -4,7 +4,6 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react"
 
 
@@ -27,9 +26,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Favicon */}
+        <link rel="icon" href="/vr-logo.png" type="image/png" />
+
+        {/* Open Graph & Twitter Card */}
+        <meta property="og:image" content="https://vr-tech-info.vercel.app/vr-logo.png" />
+        <meta name="twitter:image" content="https://vr-tech-info.vercel.app/vr-logo.png" />
+      </head>
       <body
         className={`${poppins.className} antialiased`}
-      ><Header />
+      >
+        {/* Organization Structured Data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "url": "https://vr-tech-info.vercel.app/",
+          "logo": "https://vr-tech-info.vercel.app/vr-logo.png",
+          "name": "VR Tech Info"
+        }) }} />
+        <Header />
         {children}
         <Analytics />
         <Footer />

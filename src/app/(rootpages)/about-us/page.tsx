@@ -214,8 +214,9 @@ function FounderSection() {
                     <Image
                       src="/vr-logo.png"
                       alt="VR Tech Logo"
-                      width={20}
-                      height={20}
+                      width={50}
+                      height={50}
+                      className="ml-4"
                     />
                   </div>
                 </div>
