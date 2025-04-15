@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/vr-logo.png" type="image/png" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
 
         {/* Open Graph & Twitter Card */}
         <meta property="og:image" content="https://vr-tech-info.vercel.app/vr-logo.png" />
