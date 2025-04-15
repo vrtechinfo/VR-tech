@@ -30,9 +30,9 @@ export default function ContactForm(): React.JSX.Element {
         name: "Vivek Reddy",
         title: "Founder and CEO",
         address:
-            "33 candlebrook Crescent, Scarborough, Ontario, Canada- M1W 4B3.",
+            "111-20 Orchid Place Dr, Scarborough, Ontario, M1B 0E1",
         phone: "+1-647-447-5656",
-        email: "Info@Vrtechinfoinc.Com",
+        email: "info@vrtechinfoinc.ca",
         imageUrl: "/map-placeholder.png",
     };
 
@@ -235,13 +235,20 @@ export default function ContactForm(): React.JSX.Element {
 
                     {/* Location Content */}
                     <div className="flex flex-col items-center justify-center w-full max-w-sm">
-                        <Image
-                            src={location.imageUrl}
-                            alt="Office Location"
-                            width={240}
-                            height={160}
-                            className="rounded-lg border border-gray-300 object-cover mb-6"
-                        />
+                        <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="View on Google Maps"
+                        >
+                            <Image
+                                src={location.imageUrl}
+                                alt="Office Location"
+                                width={240}
+                                height={160}
+                                className="rounded-lg border border-gray-300 object-cover mb-6 cursor-pointer hover:opacity-80 transition"
+                            />
+                        </a>
 
                         <h2 className="text-xl font-bold text-red-600 mb-3">
                             {location.name}

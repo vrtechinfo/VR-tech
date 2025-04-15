@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Features(): JSX.Element {
     return (
-        <div className="bg-[url(/features-bg.webp)] min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[691px] w-full bg-cover bg-center text-white py-8 sm:py-12 md:py-16">
+        <div className="bg-[url(/features-bg.webp)] bg-[#111324] min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[691px] w-full bg-cover bg-center text-white pt-2 sm:pt-4 md:pt-6 lg:pt-8 pb-8 sm:pb-12 md:pb-16">
             <div className="flex justify-center">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[66px] text-[#E2E2E2] pt-4 sm:pt-6 md:pt-8 lg:pt-11 pl-2 font-normal self-center">
                     Features

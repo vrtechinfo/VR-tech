@@ -40,7 +40,7 @@ export default function Hero(): JSX.Element {
 
     return (
         <div
-            className="relative text-white pt-20 sm:pt-40 md:pt-60 lg:pt-80 pb-10 sm:pb-15 md:pb-20 lg:pb-30 overflow-hidden"
+            className="relative text-white pt-14 sm:pt-26 md:pt-38 lg:pt-50 pb-8 sm:pb-10 md:pb-12 lg:pb-16 overflow-hidden"
             style={{
                 backgroundImage: "url(/hero-background.webp)",
                 backgroundSize: "cover",
@@ -53,7 +53,7 @@ export default function Hero(): JSX.Element {
             
             {/* Content with higher z-index */}
             <div className="relative z-10">
-            <div className="flex justify-center pt-10 sm:pt-15 md:pt-20 lg:pt-30 pb-5 sm:pb-8 md:pb-10 h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px]">
+            <div className="flex justify-center pt-6 sm:pt-10 md:pt-13 lg:pt-19 pb-3 sm:pb-4 md:pb-5 h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px]">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold flex items-center">
                     <AnimatePresence mode="wait">
                         <motion.span
@@ -105,7 +105,7 @@ export default function Hero(): JSX.Element {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex justify-center py-10 sm:py-12 md:py-16 lg:py-20 gap-3 sm:gap-4 md:gap-5"
+                className="flex justify-center py-5 sm:py-6 md:py-8 lg:py-10 gap-3 sm:gap-4 md:gap-5"
             >
                 <motion.div
                     whileHover={{

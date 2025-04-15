@@ -8,37 +8,35 @@ export default function Footer(): JSX.Element {
         {
             title: "COMPANY",
             links: [
-                { text: "Blog", href: "#" },
-                { text: "Careers", href: "#" },
-                { text: "FAQ's", href: "#" },
+                { text: "Blog", href: "/blog" },
+                { text: "Careers", href: "/careers" },
+                { text: "FAQ's", href: "/faq" },
             ],
         },
         {
             title: "QUICK LINKS",
             links: [
-                { text: "Services", href: "#" },
-                { text: "About Us", href: "#" },
-                { text: "Contact Us", href: "#" },
+                { text: "Services", href: "/services" },
+                { text: "About Us", href: "/about-us" },
+                { text: "Contact Us", href: "/#contact" },
             ],
         },
         {
             title: "LEGAL",
             links: [
-                { text: "Terms of Service", href: "#" },
-                { text: "Privacy Policy", href: "#" },
-                { text: "Cookies Policy", href: "#" },
-                { text: "Data Processing", href: "#" },
+                { text: "Terms of Service", href: "/terms" },
+                { text: "Privacy Policy", href: "/privacy" },
+                { text: "Cookies Policy", href: "/cookies" },
+                { text: "Data Processing", href: "/data-processing" },
             ],
         },
         {
             title: "CONTACT US",
             links: [
                 { text: "CANADA: +1-647-447-5856", href: "tel:+16474475856" },
-                { text: "INDIA: +91-9052955755", href: "tel:+919052955755" },
-                { text: "USA: +1-618-971-7471", href: "tel:+16189717471" },
                 {
-                    text: "Mail: info@vrtechinfolinc.com",
-                    href: "mailto:info@vrtechinfolinc.com",
+                    text: "Mail: info@vrtechinfoinc.ca",
+                    href: "mailto:info@vrtechinfoinc.ca",
                 },
             ],
         },
