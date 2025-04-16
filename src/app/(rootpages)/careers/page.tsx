@@ -253,17 +253,12 @@ function ContactSection(): JSX.Element {
 
             <div className="flex items-center space-x-4">
               <Image src="/Email.png" alt="Email" width={24} height={24} />
-              <p className="text-xl">careers@vrtechinfoinc.com</p>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <Image src="/Globe.png" alt="Globe" width={24} height={24} />
-              <p className="text-xl">wudyfcgvbn</p>
+              <p className="text-xl">careers@vrtechinfoinc.ca</p>
             </div>
 
             <div className="flex items-start space-x-4">
               <Image src="/Location.png" alt="Location" width={24} height={24} className="mt-1" />
-              <p className="text-xl">33 candlebrook Crescent,<br />Scarborough, Ontario,<br />Canada- M1W 4B3.</p>
+              <p className="text-xl">111-20 Orchid Place Dr,<br />Scarborough, Ontario,<br />M1B 0E1</p>
             </div>
           </div>
         </div>

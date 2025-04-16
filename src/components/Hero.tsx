@@ -40,7 +40,7 @@ export default function Hero(): JSX.Element {
 
     return (
         <div
-            className="relative text-white pt-14 sm:pt-26 md:pt-38 lg:pt-50 pb-8 sm:pb-10 md:pb-12 lg:pb-16 overflow-hidden"
+            className="relative text-white pt-24 sm:pt-26 md:pt-38 lg:pt-50 pb-8 sm:pb-10 md:pb-12 lg:pb-16 overflow-hidden"
             style={{
                 backgroundImage: "url(/hero-background.webp)",
                 backgroundSize: "cover",

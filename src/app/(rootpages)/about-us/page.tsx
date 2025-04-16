@@ -16,7 +16,7 @@ export default function AboutUs() {
 
 function Hero() {
   return (
-    <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-hidden pb-20">
+    <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-40 sm:pt-48 md:pt-60 px-4 relative overflow-hidden pb-10 sm:pb-16 md:pb-20">
       {/* Shape 1 - Top right */}
       <div className="absolute top-[180px] right-[-50px] md:right-[50px] lg:right-[150px] z-2 opacity-80 scale-50 md:scale-75 lg:scale-100">
         <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
@@ -37,16 +37,16 @@ function Hero() {
         <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]" />
       </div>
 
-      <h1 className="text-6xl text-center font-semibold text-white relative z-10">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl text-center font-semibold text-white relative z-10">
         What are we?
       </h1>
-      <p className="text-[20px] text-2xl text-center text-white mt-15 relative z-10 px-8 md:px-16 lg:px-32 xl:px-64">
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-center text-white mt-6 sm:mt-10 md:mt-15 relative z-10 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-64">
         <span className="font-bold">VRTech Info is a TRUSTED PARTNER</span> for businesses worldwide. With a passionate team of experts,
         we have successfully delivered projects and trained professionals across various domains. Our
         success stories include collaborating with Fortune 500 companies, helping startups scale, and
         empowering individuals to achieve their career goals.
       </p>
-      <p className="text-[20px] text-2xl text-center text-white mt-4 relative z-10 px-8 md:px-16 lg:px-32 xl:px-64">
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-center text-white mt-4 relative z-10 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-64">
         Our commitment to innovation, quality, and customer satisfaction has earned us a reputation as 
         a reliable technology partner. We continue to push boundaries, embrace new technologies, and 
         support our clients in navigating the ever-evolving digital landscape.
