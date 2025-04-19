@@ -41,7 +41,7 @@ function Hero() {
         What are we?
       </h1>
       <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-center text-white mt-6 sm:mt-10 md:mt-15 relative z-10 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-64">
-        <span className="font-bold">VRTech Info is a TRUSTED PARTNER</span> for businesses worldwide. With a passionate team of experts,
+      VRTech Info is a <span className="font-bold">TRUSTED PARTNER</span> for businesses worldwide. With a passionate team of experts,
         we have successfully delivered projects and trained professionals across various domains. Our
         success stories include collaborating with Fortune 500 companies, helping startups scale, and
         empowering individuals to achieve their career goals.
