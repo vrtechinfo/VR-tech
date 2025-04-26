@@ -7,7 +7,6 @@ export default function AboutUs() {
     <div className="bg-black text-white">
       <Hero />
       <OurMissionSection />
-      <OurVisionSection />
       <FounderSection />
       <FaqSection />
     </div>
@@ -57,53 +56,26 @@ function Hero() {
 
 function OurMissionSection() {
   return (
-    <div className="py-20 px-4 sm:px-6 lg:px-20 bg-black">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-semibold text-center mb-16">
-          OUR MISSION
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div className="flex justify-center">
-            <div className="w-64 h-64 relative flex items-center justify-center">
-              <Image
-                src="/Ellipse.png"
-                alt="Mission Background"
-                width={260}
-                height={260}
-                className="absolute"
-              />
-              <p className="text-center text-lg relative z-10 px-6">
-                Bridge the skill gap by offering top-notch training programs.
-              </p>
-            </div>
+    <div className="w-full bg-black relative">
+      <div className="relative w-full">
+        <Image
+          src="/aboutmission.png"
+          alt="Our Mission and Vision"
+          width={1920}
+          height={1080}
+          className="w-full h-auto"
+          priority
+        />
+        <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-24 px-4 md:px-8 pt-32 md:pt-0">
+          <div className="text-center max-w-xs mt-40 md:mt-56 lg:mt-72 md:ml-8 lg:ml-12">
+            <p className="text-sm md:text-base lg:text-lg text-white">
+              Empower businesses with innovative technology solutions.
+            </p>
           </div>
-          <div className="flex justify-center">
-            <div className="w-64 h-64 relative flex items-center justify-center">
-              <Image
-                src="/Ellipse.png"
-                alt="Mission Background"
-                width={260}
-                height={260}
-                className="absolute"
-              />
-              <p className="text-center text-lg relative z-10 px-6">
-                Empower businesses with innovative technology solutions.
-              </p>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <div className="w-64 h-64 relative flex items-center justify-center">
-              <Image
-                src="/Ellipse.png"
-                alt="Mission Background"
-                width={260}
-                height={260}
-                className="absolute"
-              />
-              <p className="text-center text-lg relative z-10 px-6">
-                Foster a culture of continuous learning and growth.
-              </p>
-            </div>
+          <div className="text-center max-w-xs mt-40 md:mt-56 lg:mt-72 md:ml-12 lg:ml-10">
+            <p className="text-sm md:text-base lg:text-lg text-white">
+              Inspire innovation and drive technological advancements.
+            </p>
           </div>
         </div>
       </div>
@@ -111,69 +83,7 @@ function OurMissionSection() {
   );
 }
 
-function OurVisionSection() {
-  return (
-    <div className="py-20 px-4 sm:px-6 lg:px-20 bg-black">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-semibold text-center mb-16">
-          OUR VISION
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-20">
-          <div className="flex flex-col items-center mx-4">
-            <div className="relative -mt-16">
-              <Image
-                src="/About3.png"
-                alt="Global Leader Background"
-                width={357}
-                height={364}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                <p className="text-base text-white max-w-[200px] mt-8">
-                  To be a global leader in IT solutions and training.
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <div className="flex flex-col items-center mx-4">
-            <div className="relative -mt-16">
-              <Image
-                src="/About2.png"
-                alt="Innovation Background"
-                width={357}
-                height={364}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                <p className="text-base text-white max-w-[200px] mt-8">
-                  Inspire innovation and drive technological advancements.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center mx-4">
-            <div className="relative ">
-              <Image
-                src="/About1.png"
-                alt="Client Partnerships Background"
-                width={357}
-                height={364}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                <p className="text-base text-white max-w-[200px]">
-                  Foster lasting client partnerships through trust & excellence.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function FounderSection() {
   return (
