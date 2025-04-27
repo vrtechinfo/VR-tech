@@ -230,7 +230,7 @@ const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
 				<button
 					type="button"
 					onClick={prevCard}
-					className="hidden sm:block absolute left-[-120px] sm:left-[-200px] md:left-[-300px] lg:left-[-400px] top-1/3 transform -translate-y-1/2 bg-white/50 p-1.5 sm:p-2 md:p-3 rounded-full hover:bg-white/70 transition z-50 shadow-md"
+					className="hidden sm:block absolute left-[-120px] sm:left-[-200px] md:left-[-300px] lg:left-[-400px] top-1/3 transform -translate-y-1/2 bg-white/50 p-1.5 sm:p-2 md:p-3 rounded-full hover:bg-white/70 transition z-10 shadow-md"
 					aria-label="Previous testimonial"
 				>
 					<ChevronLeft size={24} className="text-gray-800 sm:h-6 sm:w-6 md:h-8 md:w-8" />
@@ -238,7 +238,7 @@ const CardCarousel: React.FC<Readonly<CardCarouselProps>> = ({ children }) => {
 				<button
 					type="button"
 					onClick={nextCard}
-					className="hidden sm:block absolute right-[-120px] sm:right-[-200px] md:right-[-300px] lg:right-[-400px] top-1/3 transform -translate-y-1/2 bg-white/50 p-1.5 sm:p-2 md:p-3 rounded-full hover:bg-white/70 transition z-50 shadow-md"
+					className="hidden sm:block absolute right-[-120px] sm:right-[-200px] md:right-[-300px] lg:right-[-400px] top-1/3 transform -translate-y-1/2 bg-white/50 p-1.5 sm:p-2 md:p-3 rounded-full hover:bg-white/70 transition z-10 shadow-md"
 					aria-label="Next testimonial"
 				>
 					<ChevronRight size={24} className="text-gray-800 sm:h-6 sm:w-6 md:h-8 md:w-8" />
