@@ -51,7 +51,6 @@ export default function WhyChooseUs(): JSX.Element {
     );
 }
 
-
 function ChooseIcon(): JSX.Element {
     return <Image src={"/chooseicon.png"} alt="" height={41} width={41} />;
 }
