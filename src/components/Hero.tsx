@@ -40,7 +40,7 @@ export default function Hero(): JSX.Element {
 
     return (
         <div
-            className="relative text-white pt-24 sm:pt-26 md:pt-38 lg:pt-50 pb-8 sm:pb-10 md:pb-12 lg:pb-16 overflow-hidden"
+            className="relative text-white pt-28 sm:pt-30 md:pt-38 lg:pt-50 pb-8 sm:pb-10 md:pb-12 lg:pb-16 overflow-hidden"
             style={{
                 backgroundImage: "url(/hero-background.webp)",
                 backgroundSize: "cover",
@@ -83,22 +83,11 @@ export default function Hero(): JSX.Element {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="font-medium mt-5 sm:mt-8 md:mt-10 px-4 sm:px-6 md:px-8" // Added responsive margin and padding
+                className="font-medium mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6 md:px-8 max-w-4xl mx-auto"
             >
-                <div className="flex justify-center text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] pb-2 text-center">
-                    <p>
-                        Empowering Your Business with Cutting-Edge Software, Expert{" "}
-                    </p>
-                </div>
-                <div className="flex justify-center  text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] pb-2 text-center">
-                    <p>
-                        {" "}
-                        IT Consulting, Comprehensive Training, and Reliable Support{" "}
-                    </p>
-                </div>
-                <div className="flex justify-center  text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] text-center">
-                    <p> – All Under One Roof.</p>
-                </div>
+                <p className="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[26px] text-center leading-tight sm:leading-normal md:leading-relaxed">
+                    Empowering Your Business with Cutting-Edge Software, Expert IT Consulting, Comprehensive Training, and Reliable Support – All Under One Roof.
+                </p>
             </motion.div>
 
             <motion.div

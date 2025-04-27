@@ -59,25 +59,14 @@ function OurMissionSection() {
     <div className="w-full bg-black relative">
       <div className="relative w-full">
         <Image
-          src="/aboutmission.png"
+          src="/aboutmission.webp"
           alt="Our Mission and Vision"
           width={1920}
           height={1080}
           className="w-full h-auto"
           priority
         />
-        <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-24 px-4 md:px-8 pt-32 md:pt-0">
-          <div className="text-center max-w-xs mt-40 md:mt-56 lg:mt-72 md:ml-8 lg:ml-12">
-            <p className="text-sm md:text-base lg:text-lg text-white">
-              Empower businesses with innovative technology solutions.
-            </p>
-          </div>
-          <div className="text-center max-w-xs mt-40 md:mt-56 lg:mt-72 md:ml-12 lg:ml-10">
-            <p className="text-sm md:text-base lg:text-lg text-white">
-              Inspire innovation and drive technological advancements.
-            </p>
-          </div>
-        </div>
+        
       </div>
     </div>
   );
