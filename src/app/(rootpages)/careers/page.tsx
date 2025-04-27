@@ -253,7 +253,7 @@ function ContactSection(): JSX.Element {
 
             <div className="flex items-center space-x-4">
               <Image src="/Email.png" alt="Email" width={24} height={24} />
-              <p className="text-xl">careers@vrtechinfoinc.ca</p>
+              <p className="text-xl">hr@vrtechinfoinc.ca</p>
             </div>
 
             <div className="flex items-start space-x-4">
