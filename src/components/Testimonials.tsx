@@ -53,7 +53,7 @@ const TestimonialCard: React.FC<Readonly<TestimonialCardProps>> = ({
 export default function Testimonials(): JSX.Element {
 	return (
 		<div className="bg-[url(/reviewsbackground.webp)] min-h-[1500px] sm:min-h-[900px] md:min-h-[1144px] w-full bg-cover bg-center overflow-hidden">
-			<div className="pt-[950px] sm:pt-[400px] md:pt-[500px] lg:pt-[600px]">
+			<div className="pt-[980px] sm:pt-[400px] md:pt-[500px] lg:pt-[600px]">
 				<div className="mb-8 sm:mb-10 md:mb-12">
 					<h1 className="text-3xl sm:text-4xl md:text-[48px] font-bold text-center text-black">
 						Hear From Our Customers
