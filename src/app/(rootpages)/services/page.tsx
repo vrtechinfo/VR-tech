@@ -181,7 +181,7 @@ function ItConsultingSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section id="support-maintenance" className="scroll-mt-24 md:scroll-mt-32 text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="it-consulting" className="scroll-mt-24 md:scroll-mt-32 text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
