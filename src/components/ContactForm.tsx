@@ -114,7 +114,7 @@ export default function ContactForm(): React.JSX.Element {
             <div className="flex flex-col md:flex-row shadow-2xl border border-gray-400 rounded-xl overflow-hidden bg-white">
                 {/* Left Section - Form */}
                 <div className="w-full md:w-1/2 bg-neutral-900 text-white p-4 md:p-8">
-                    <h1 className="text-2xl md:text-[40px] mb-4 md:mb-6 text-center">
+                    <h1 id="contact-heading" className="text-2xl md:text-[40px] mb-4 md:mb-6 text-center">
                         Reach out to us!
                     </h1>
                     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 md:space-y-6">

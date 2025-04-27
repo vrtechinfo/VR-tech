@@ -205,8 +205,38 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
             <div className="md:ml-8 mb-4 md:mb-0 mt-4 md:mt-0">
                 {/* Added margin top for mobile */}
                 <Link
-                    href="/#contact"
-                    onClick={onLinkClick}
+                    href="/#contact-heading"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        if (window.location.pathname === '/') {
+                            // Close mobile menu first if needed
+                            if (onLinkClick) onLinkClick();
+                            
+                            // Use setTimeout to ensure DOM is updated after menu closing
+                            setTimeout(() => {
+                                const contactHeading = document.getElementById('contact-heading');
+                                if (contactHeading) {
+                                    // Get the exact position of the contact heading
+                                    const rect = contactHeading.getBoundingClientRect();
+                                    const absoluteTop = rect.top + window.pageYOffset;
+                                    
+                                    // Use a larger offset to ensure the heading is clearly visible
+                                    const headerOffset = 100; // Increased from 80px
+                                    
+                                    // Scroll to position
+                                    window.scrollTo({
+                                        top: absoluteTop - headerOffset,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }, 100); // Small delay to ensure accurate positioning
+                        } else {
+                            // If not on homepage, use default navigation
+                            window.location.href = '/#contact-heading';
+                            // Call the original onLinkClick if provided
+                            if (onLinkClick) onLinkClick();
+                        }
+                    }}
                     className="block text-center border-2 border-red-800 rounded-3xl hover:bg-red-800 px-5 py-1 transition-colors duration-300 text-lg md:text-base lg:text-xl" // Adjusted text size
                 >
                     Contact Us
