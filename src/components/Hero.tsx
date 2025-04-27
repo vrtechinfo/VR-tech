@@ -40,7 +40,7 @@ export default function Hero(): JSX.Element {
 
     return (
         <div
-            className="relative text-white pt-36 sm:pt-30 md:pt-38 lg:pt-50 pb-16 sm:pb-10 md:pb-12 lg:pb-16 overflow-hidden"
+            className="relative text-white pt-36 sm:pt-30 md:pt-38 lg:pt-50 pb-16 sm:pb-10 md:pb-12 lg:pb-16 min-h-[700px] sm:min-h-0 overflow-hidden"
             style={{
                 backgroundImage: "url(/hero-background.webp)",
                 backgroundSize: "cover",
@@ -52,8 +52,8 @@ export default function Hero(): JSX.Element {
 
             
             {/* Content with higher z-index */}
-            <div className="relative z-10">
-            <div className="flex justify-center pt-6 sm:pt-10 md:pt-13 lg:pt-19 pb-3 sm:pb-4 md:pb-5 h-[180px] sm:h-[120px] md:h-[140px] lg:h-[160px]">
+            <div className="relative z-10 flex flex-col justify-start h-full -translate-y-[20%] sm:justify-center sm:translate-y-0">
+            <div className="flex justify-center pb-3 sm:pb-4 md:pb-5 h-[180px] sm:h-[120px] md:h-[140px] lg:h-[160px]">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold flex items-center">
                     <AnimatePresence mode="wait">
                         <motion.span
