@@ -180,7 +180,7 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                                                     case "IT Consulting":
                                                         return "/services#it-consulting";
                                                     case "Training & Development":
-                                                        return "/services#cloud-solutions";
+                                                        return "/services#training-development";
                                                     default:
                                                         return "/services";
                                                 }

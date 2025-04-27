@@ -16,35 +16,32 @@ export default function Services() {
 
 function Hero() {
     return (
-        <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[700px] pt-60 px-4 relative overflow-hidden pb-20">
+        <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] xl:min-h-[800px] pt-24 sm:pt-36 md:pt-48 lg:pt-56 xl:pt-64 px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 relative overflow-hidden pb-10 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-36">
             {/* Shape 1 - Top right */}
-            <div className="absolute top-[180px] right-[-50px] md:right-[50px] lg:right-[150px] z-2 opacity-80 scale-50 md:scale-75 lg:scale-100">
-                <img src="/shape1.png" alt="Shape 1" className="w-[650px] h-fit" />
+            <div className="absolute top-[80px] sm:top-[120px] md:top-[180px] right-[-40px] sm:right-[10px] md:right-[50px] lg:right-[120px] z-2 opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100">
+                <img src="/shape1.png" alt="Shape 1" className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[650px] h-fit" />
             </div>
-            
             {/* Shape 2 - Bottom left */}
-            <div className="absolute top-[280px] right-[200px] md:right-[400px] lg:right-[600px] opacity-80 scale-50 md:scale-75 lg:scale-100 hidden sm:block">
-                <img src="/shape2.png" alt="Shape 2" className="w-[550px] h-fit" />
+            <div className="absolute top-[180px] sm:top-[240px] md:top-[280px] right-[100px] sm:right-[180px] md:right-[300px] lg:right-[500px] opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100 hidden sm:block">
+                <img src="/shape2.png" alt="Shape 2" className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[550px] h-fit" />
             </div>
-            
             {/* Shape 3 - Top right */}
-            <div className="absolute top-[130px] right-[100px] md:right-[180px] lg:right-[250px] z-1 opacity-80 scale-50 md:scale-75 lg:scale-100">
-                <img src="/shape3.png" alt="Shape 3" className="w-[150px] h-[150px]"/>
+            <div className="absolute top-[60px] sm:top-[90px] md:top-[130px] right-[40px] sm:right-[80px] md:right-[120px] lg:right-[200px] z-1 opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100">
+                <img src="/shape3.png" alt="Shape 3" className="w-[80px] sm:w-[100px] md:w-[120px] lg:w-[150px] h-[80px] sm:h-[100px] md:h-[120px] lg:h-[150px]"/>
             </div>
-            
             {/* Shape 4 - Bottom right */}
-            <div className="absolute bottom-[50px] left-[50px] md:bottom-[100px] md:left-[150px] lg:bottom-[150px] lg:left-[200px] opacity-80 scale-50 md:scale-75 lg:scale-100">
-                <img src="/shape4.png" alt="Shape 4" className="w-[136px] h-[136px]"/>
+            <div className="absolute bottom-[20px] sm:bottom-[40px] md:bottom-[80px] left-[20px] sm:left-[60px] md:left-[120px] lg:left-[180px] opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100">
+                <img src="/shape4.png" alt="Shape 4" className="w-[60px] sm:w-[80px] md:w-[100px] lg:w-[136px] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[136px]"/>
             </div>
 
-            <div className="container mx-auto px-20 text-center">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white relative z-10">
+            <div className="container mx-auto px-2 sm:px-6 md:px-12 lg:px-20 xl:px-32 text-center">
+                <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-white relative z-10">
                     Innovative IT Solutions for Your Business Growth
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-6 relative z-10 mx-auto max-w-3xl">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white mt-3 sm:mt-5 relative z-10 mx-auto max-w-3xl">
                     We offer a wide range of services tailored to meet the diverse needs of our clients. Our core services include:
                 </p>
-                <div className="flex justify-center mt-16 relative z-10">
+                <div className="flex justify-center mt-8 sm:mt-12 md:mt-16 relative z-10">
                     <ContactButton>
                         Get a Free Consultation
                     </ContactButton>
@@ -56,9 +53,9 @@ function Hero() {
 
 function ServicesSection() {
     return (
-        <div className="mt-16 bg-[#131313]">
+        <div className="mt-10 sm:mt-14 md:mt-20 lg:mt-24 xl:mt-32 bg-[#131313]">
             <div className="flex justify-center">
-                <div className="text-4xl  font-medium px-5 py-2 rounded-3xl text-[#FF0000] w-fit  bg-white">
+                <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium px-3 sm:px-5 py-2 rounded-3xl text-[#FF0000] w-fit bg-white">
                     Our Services
                 </div>
             </div>
@@ -79,7 +76,7 @@ function SoftwareDevelopmentSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section id="software-development" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="software-development" className="scroll-mt-24 md:scroll-mt-32 text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 {/* Reduced bottom padding (pb-10) to make space for hr margin */}
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
@@ -87,7 +84,7 @@ function SoftwareDevelopmentSection() {
                         <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
                             Software Development {/* Hardcoded */}
                         </h2>
-                        <p className="text-lg max-w-3xl mx-auto text-white">
+                        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto text-white">
                             {/* Hardcoded */}
                             We create custom software solutions that drive efficiency and
                             innovation. Whether you need a robust web or mobile app,
@@ -184,14 +181,14 @@ function ItConsultingSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section id="it-consulting" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="support-maintenance" className="scroll-mt-24 md:scroll-mt-32 text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
                             IT Consulting {/* Updated */}
                         </h2>
-                        <p className="text-lg max-w-3xl mx-auto text-white">
+                        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto text-white">
                             {/* Updated */}
                             We help businesses navigate the ever-changing technology landscape
                             with expert IT consulting services. Our specialists provide
@@ -285,14 +282,14 @@ function TrainingDevelopmentSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section id="cloud-solutions" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="training-development" className="scroll-mt-24 md:scroll-mt-32 text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
                             Training & Development {/* Updated */}
                         </h2>
-                        <p className="text-lg max-w-3xl mx-auto text-white">
+                        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto text-white">
                             {/* Updated */}
                             Stay ahead in the tech industry with professional training
                             programs designed for individuals and corporate teams. We offer
@@ -384,14 +381,14 @@ function SupportMaintenanceSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section id="it-consulting" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="support-maintenance" className="scroll-mt-24 md:scroll-mt-32 text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
                             Support & Maintenance {/* Updated */}
                         </h2>
-                        <p className="text-lg max-w-3xl mx-auto text-white">
+                        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto text-white">
                             {/* Updated */}
                             Ensure your business operations run smoothly with 24/7 technical
                             support and system maintenance. Our team proactively monitors,
@@ -487,14 +484,14 @@ function DataAnalyticsSection() {
     return (
         // Use React.Fragment to wrap the section and the hr
         <>
-            <section id="it-consulting" className=" text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
+            <section id="support-maintenance" className="scroll-mt-24 md:scroll-mt-32 text-white pt-16 pb-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Main Heading and Description */}
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
                             Data Analytics {/* Updated */}
                         </h2>
-                        <p className="text-lg max-w-3xl mx-auto text-white">
+                        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto text-white">
                             {/* Updated */}
                             Turn raw data into actionable insights with our advanced data
                             analytics solutions. We help businesses make informed decisions
@@ -613,7 +610,7 @@ function CybersecuritySolutionsSection() {
                     <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4">
                         Cybersecurity Solutions {/* Updated */}
                     </h2>
-                    <p className="text-lg max-w-3xl mx-auto text-white">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto text-white">
                         {/* Updated */}
                         Protect your business from digital threats with comprehensive
                         cybersecurity strategies. Our team secures your systems, networks,
