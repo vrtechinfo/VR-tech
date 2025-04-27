@@ -19,13 +19,13 @@ export default function Home(): JSX.Element {
 			<Services />
 			<div className="relative">
 				<WhyChooseUs />
-				<Testimonials />
 				<div 
 					id="contact"
-					className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[10%] top-[600px] sm:top-[500px] md:top-[600px] lg:top-[1100px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10"
+					className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[12%] top-[1640px] sm:top-[850px] md:top-[800px] lg:top-[1250px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10"
 				>
 					<ContactForm />
 				</div>
+				<Testimonials />
 			</div>
 		</div>
 	);

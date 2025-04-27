@@ -1,49 +1,69 @@
 import type { JSX } from "react";
-import Image from "next/image";
+import { CheckCircle } from "lucide-react";
 
 export default function WhyChooseUs(): JSX.Element {
     return (
-        <div className="relative min-h-[700px] sm:min-h-[800px] md:min-h-[1000px] lg:min-h-[1390px] w-full overflow-hidden text-white" style={{
+        <div
+            className="relative min-h-[700px] sm:min-h-[800px] md:min-h-[1000px] lg:min-h-[1390px] w-full overflow-hidden text-white"
+            style={{
+                backgroundColor: '#191919',
                 backgroundImage: "url(/chooseus.webp)",
                 backgroundSize: "cover",
                 backgroundPosition: "center right",
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "scroll"
-            }}>
-            <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[66px] pl-4 sm:pl-10 md:pl-20 lg:pl-30 pt-8 sm:pt-12 md:pt-16 lg:pt-20 tracking-wide">
-                Why Choose Us?
-            </h1>
-            <div className="flex justify-center pt-5 ml-0 sm:ml-[200px] md:ml-[400px] lg:ml-[600px] px-4 sm:px-0">
-                <div className="text-lg sm:text-xl md:text-2xl font-light">
-                    <div className="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                        <ChooseIcon />
-                        <div>Expert Trainers with Industry Experience</div>
+            }}
+        >
+            {/* Decorative background image */}
+            <div
+                aria-hidden="true"
+                className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0"
+                style={{
+                    backgroundImage: 'url(/whychooseus.png)',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    backgroundSize: '380px',
+                    opacity: 0.3,
+                    width: '380px',
+                    height: '380px',
+                }}
+            />
+            <div className="flex flex-col items-center justify-center w-full h-full px-4 py-12 sm:py-20 relative z-10">
+                <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[66px] text-center mb-10 tracking-wide drop-shadow-lg">
+                    Why Choose Us?
+                </h1>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl mt-50">
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">Expert Trainers with Industry Experience</div>
                     </div>
-                    <div className="flex items-center pl-0 sm:pl-8 md:pl-12 lg:pl-20 pt-6 sm:pt-10 md:pt-10 lg:pt-20 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                        <ChooseIcon />
-                        <div>Hands-On Projects and Real-World Scenarios</div>
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">Hands-On Projects and Real-World Scenarios</div>
                     </div>
-                    <div className="flex items-center pl-0 sm:pl-16 md:pl-24 lg:pl-40 pt-6 sm:pt-10 md:pt-10 lg:pt-20 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                        <ChooseIcon />
-                        <div>Access to Cutting-Edge Tools and Technologies</div>
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">Personalized Learning Paths and Support</div>
                     </div>
-                    <div className="flex items-center pl-0 sm:pl-20 md:pl-30 lg:pl-50 pt-6 sm:pt-10 md:pt-10 lg:pt-20 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                        <ChooseIcon />
-                        <div>Certification on Course Completion</div>
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">Access to Cutting-Edge Tools and Technologies</div>
                     </div>
-                    <div className="flex items-center pl-0 sm:pl-16 md:pl-24 lg:pl-40 pt-6 sm:pt-10 md:pt-10 lg:pt-20 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                        <ChooseIcon />
-                        <div>Flexible Schedules for Working Professionals</div>
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">Certification on Course Completion</div>
                     </div>
-                    <div className="flex items-center pl-0 sm:pl-8 md:pl-12 lg:pl-20 pt-6 sm:pt-10 md:pt-10 lg:pt-20 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                        <ChooseIcon />
-                        <div>24/7 Student Support</div>
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">Flexible Schedules for Working Professionals</div>
                     </div>
-                    <div className="flex items-center pt-6 sm:pt-10 md:pt-10 lg:pt-20 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                        <ChooseIcon />
-                        <div className="pr-2 sm:pr-4">
-                            Innovation and creativity are our secrets to web designing and development success
-                        </div>
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">24/7 Student Support</div>
+                    </div>
+                    <div className="bg-white/10 rounded-xl p-6 flex flex-col items-center text-lg sm:text-xl md:text-2xl font-light shadow-lg backdrop-blur-sm lg:col-span-2">
+                        <CheckCircle className="text-red-600 w-10 h-10 mb-2" />
+                        <div className="mt-4 text-center">Innovation and creativity are our secrets to web designing and development success</div>
                     </div>
                 </div>
             </div>
@@ -51,6 +71,3 @@ export default function WhyChooseUs(): JSX.Element {
     );
 }
 
-function ChooseIcon(): JSX.Element {
-    return <Image src={"/chooseicon.png"} alt="" height={41} width={41} />;
-}
