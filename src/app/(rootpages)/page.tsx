@@ -21,7 +21,7 @@ export default function Home(): JSX.Element {
 				<WhyChooseUs />
 				<div 
 					id="contact"
-					className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[12%] top-[1640px] sm:top-[850px] md:top-[800px] lg:top-[1250px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10"
+					className="absolute left-0 sm:left-[5%] md:left-[10%] lg:left-[12%] top-[1790px] sm:top-[850px] md:top-[800px] lg:top-[1250px] w-full sm:w-11/12 md:w-10/12 lg:w-3/4 z-10"
 				>
 					<ContactForm />
 				</div>
