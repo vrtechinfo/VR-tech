@@ -29,7 +29,7 @@ export default function WhyChooseUs(): JSX.Element {
                 }}
             />
             <div className="flex flex-col items-center justify-center w-full h-full px-4 py-12 sm:py-20 relative z-10">
-                <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[66px] text-center mb-10 tracking-wide drop-shadow-lg">
+                <h1 className="font-bold text-2xl sm:text-3xl md:text-5xl lg:text-[66px] text-center mb-10 tracking-wide drop-shadow-lg">
                     Why Choose Us?
                 </h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl mt-50">
