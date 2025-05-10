@@ -585,8 +585,8 @@ function ContactButton({ children, className = "text-center border border-white 
     const router = useRouter();
     
     const handleClick = () => {
-        // Navigate to home page and add a hash to scroll to contact form
-        router.push('/?contact=true');
+        // Navigate to home page and scroll to contact heading
+        router.push('/#contact-heading');
     };
     
     return (

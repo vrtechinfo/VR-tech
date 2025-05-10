@@ -56,17 +56,76 @@ function Hero() {
 
 function OurMissionSection() {
   return (
-    <div className="w-full bg-black relative">
-      <div className="relative w-full">
-        <Image
-          src="/aboutmission.webp"
-          alt="Our Mission and Vision"
-          width={1920}
-          height={1080}
-          className="w-full h-auto"
-          priority
-        />
-        
+    <div className="w-full bg-black py-24 px-4 sm:px-6 lg:px-20 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-to-r from-red-500 to-red-700 blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto">
+        {/* Section Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
+            Our Purpose
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-red-500 to-red-700 mx-auto" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+          {/* Mission Section */}
+          <div className="group p-8 rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] border border-gray-800 
+                        hover:border-red-800 transition-all duration-500 ease-in-out 
+                        hover:shadow-[0_0_25px_rgba(255,0,0,0.1)] relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-labelledby="missionTitle">
+                    <title id="missionTitle">Mission Icon</title>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold ml-4 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
+                  Our Mission
+                </h2>
+              </div>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                To empower businesses through innovative technology solutions and expert guidance. 
+                We strive to deliver exceptional value by combining cutting-edge technology with 
+                industry best practices, enabling our clients to achieve their digital transformation 
+                goals and stay ahead in the competitive landscape.
+              </p>
+            </div>
+          </div>
+
+          {/* Vision Section */}
+          <div className="group p-8 rounded-2xl bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] border border-gray-800 
+                        hover:border-red-800 transition-all duration-500 ease-in-out 
+                        hover:shadow-[0_0_25px_rgba(255,0,0,0.1)] relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-labelledby="visionTitle">
+                    <title id="visionTitle">Vision Icon</title>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold ml-4 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
+                  Our Vision
+                </h2>
+              </div>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                To be a global leader in technology solutions and professional development, 
+                recognized for our commitment to excellence, innovation, and client success. 
+                We envision a future where technology bridges gaps, creates opportunities, 
+                and drives sustainable growth for businesses worldwide.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
