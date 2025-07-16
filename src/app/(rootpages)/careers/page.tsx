@@ -283,9 +283,9 @@ export default function CareersPage(): JSX.Element {
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
-      <CareerHero />
       
-      <div className="px-4 relative overflow-visible pb-20">
+      
+      <div className="px-4 relative overflow-visible pb-20 pt-40">
         {/* Team Join Section */}
         <TeamJoinSection />
 
