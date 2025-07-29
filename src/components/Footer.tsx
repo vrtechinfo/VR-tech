@@ -93,9 +93,11 @@ export default function Footer(): JSX.Element {
             {/* Copyright & Social */}
             <div className="mt-8 md:mt-12 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
                 <p className="text-gray-500 text-sm order-2 md:order-1 mt-4 md:mt-0">
-                    © {new Date().getFullYear()} Zynspark Solutions. All rights
+                    © {new Date().getFullYear()} VR Tech Info Inc. All rights
+
                     reserved.
                 </p>
+
                 <div className="flex space-x-6 order-1 md:order-2">
                     {socialLinks.map((social) => (
                         <a
