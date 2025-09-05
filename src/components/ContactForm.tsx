@@ -31,7 +31,7 @@ export default function ContactForm(): React.JSX.Element {
         title: "Director at VR Tech info",
         address:
             "111-20 Orchid Place Dr, Scarborough, Ontario, M1B 0E1",
-        phone: "+1-647-447-5656",
+        phone: "+16474475656",
         email: "info@vrtechinfoinc.ca",
         imageUrl: "/map-placeholder.png",
     };

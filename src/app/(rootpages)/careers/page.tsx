@@ -248,7 +248,7 @@ function ContactSection(): JSX.Element {
           <div className="space-y-6">
             <div className="flex items-center space-x-4">
               <Image src="/phone.png" alt="Phone" width={24} height={24} />
-              <p className="text-xl">+1-647-447-5656</p>
+              <p className="text-xl">+16474475656</p>
             </div>
 
             <div className="flex items-center space-x-4">

@@ -8,7 +8,6 @@ export default function Footer(): JSX.Element {
         {
             title: "COMPANY",
             links: [
-                { text: "Blog", href: "/blog" },
                 { text: "Careers", href: "/careers" },
                 { text: "FAQ's", href: "/faq" },
             ],
@@ -33,7 +32,7 @@ export default function Footer(): JSX.Element {
         {
             title: "CONTACT US",
             links: [
-                { text: "CANADA: +1-647-447-5856", href: "tel:+16474475856" },
+                { text: "CANADA: +16474475656", href: "tel:+16474475656" },
                 {
                     text: "Mail: info@vrtechinfoinc.ca",
                     href: "mailto:info@vrtechinfoinc.ca",
