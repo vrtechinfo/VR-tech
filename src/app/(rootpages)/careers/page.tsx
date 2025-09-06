@@ -258,7 +258,7 @@ function ContactSection(): JSX.Element {
 
             <div className="flex items-start space-x-4">
               <Image src="/Location.png" alt="Location" width={24} height={24} className="mt-1" />
-              <p className="text-xl">111-20 Orchid Place Dr,<br />Scarborough, Ontario,<br />M1B 0E1</p>
+              <p className="text-xl">44 Sandhill Cres,<br />Adjala-Tosorontio, ON<br />L0G 1W0</p>
             </div>
           </div>
         </div>

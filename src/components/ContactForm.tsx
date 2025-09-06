@@ -30,7 +30,7 @@ export default function ContactForm(): React.JSX.Element {
         name: "Vivek Reddy",
         title: "Director at VR Tech info",
         address:
-            "111-20 Orchid Place Dr, Scarborough, Ontario, M1B 0E1",
+            "44 Sandhill Cres, Adjala-Tosorontio, ON L0G 1W0",
         phone: "+16474475656",
         email: "info@vrtechinfoinc.ca",
         imageUrl: "/map-placeholder.png",
