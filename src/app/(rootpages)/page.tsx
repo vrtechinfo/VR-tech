@@ -10,7 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import WhyChooseUs from "@/components/WhyChoose";
 import ScrollGraphics from "@/components/ScrollGraphics";
 import FinalCTA from "@/components/FinalCTA";
-import FuturisticHero from "@/components/ui/hero-futuristic";
+// import FuturisticHero from "@/components/ui/hero-futuristic"; // Disabled - uses three/webgpu which lacks type definitions
 
 const sectionVariants: Variants = {
 	hidden: { opacity: 0, y: 100, scale: 0.9, rotateX: 20 },
