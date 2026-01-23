@@ -193,7 +193,8 @@ export default function DashBoard() {
           description: '',
           location: '',
           department: '',
-          type: ''
+          type: '',
+          status: 'active'
         });
         setShowJobForm(false);
         setFormSuccess('Job posting created successfully!');
