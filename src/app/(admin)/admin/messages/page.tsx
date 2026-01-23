@@ -2,6 +2,8 @@ import { getAllMessages, deleteMessage, updateMessageStatus } from "@/app/action
 import { revalidatePath } from "next/cache";
 import { MessagesClient } from "@/components/admin/MessagesClient";
 
+export const dynamic = "force-dynamic";
+
 export default async function MessagesPage() {
     const messages = await getAllMessages();
 

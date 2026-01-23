@@ -3,6 +3,8 @@ import { revalidatePath } from "next/cache";
 import { JobsClient } from "@/components/admin/JobsClient";
 import type { JobStatus } from "@/lib/db/schema";
 
+export const dynamic = "force-dynamic";
+
 export default async function JobsPage() {
     const jobs = await getAllJobs();
 

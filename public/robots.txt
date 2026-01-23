@@ -3,4 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://vrtechinfoinc.com
+Host: https://vrtechinfoinc.ca
+
+# Sitemaps
+Sitemap: https://vrtechinfoinc.ca/sitemap.xml

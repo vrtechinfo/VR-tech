@@ -2,6 +2,8 @@ import { getAllApplications, deleteApplication, updateApplicationStatus } from "
 import { revalidatePath } from "next/cache";
 import { ApplicationsClient } from "@/components/admin/ApplicationsClient";
 
+export const dynamic = "force-dynamic";
+
 export default async function ApplicationsPage() {
     const applications = await getAllApplications();
 
