@@ -19,19 +19,19 @@ function Hero() {
         <div className="bg-[url(/services/herobg.png)] bg-cover bg-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] xl:min-h-[800px] pt-24 sm:pt-36 md:pt-48 lg:pt-56 xl:pt-64 px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 relative overflow-hidden pb-10 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-36">
             {/* Shape 1 - Top right */}
             <div className="absolute top-[80px] sm:top-[120px] md:top-[180px] right-[-40px] sm:right-[10px] md:right-[50px] lg:right-[120px] z-2 opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100">
-                <img src="/shape1.png" alt="Shape 1" className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[650px] h-fit" />
+                <img src="/shape1.svg" alt="Shape 1" className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[650px] h-fit" />
             </div>
             {/* Shape 2 - Bottom left */}
             <div className="absolute top-[180px] sm:top-[240px] md:top-[280px] right-[100px] sm:right-[180px] md:right-[300px] lg:right-[500px] opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100 hidden sm:block">
-                <img src="/shape2.png" alt="Shape 2" className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[550px] h-fit" />
+                <img src="/shape2.svg" alt="Shape 2" className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[550px] h-fit" />
             </div>
             {/* Shape 3 - Top right */}
             <div className="absolute top-[60px] sm:top-[90px] md:top-[130px] right-[40px] sm:right-[80px] md:right-[120px] lg:right-[200px] z-1 opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100">
-                <img src="/shape3.png" alt="Shape 3" className="w-[80px] sm:w-[100px] md:w-[120px] lg:w-[150px] h-[80px] sm:h-[100px] md:h-[120px] lg:h-[150px]"/>
+                <img src="/shape3.svg" alt="Shape 3" className="w-[80px] sm:w-[100px] md:w-[120px] lg:w-[150px] h-[80px] sm:h-[100px] md:h-[120px] lg:h-[150px]"/>
             </div>
             {/* Shape 4 - Bottom right */}
             <div className="absolute bottom-[20px] sm:bottom-[40px] md:bottom-[80px] left-[20px] sm:left-[60px] md:left-[120px] lg:left-[180px] opacity-80 scale-50 sm:scale-75 md:scale-90 lg:scale-100">
-                <img src="/shape4.png" alt="Shape 4" className="w-[60px] sm:w-[80px] md:w-[100px] lg:w-[136px] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[136px]"/>
+                <img src="/shape4.svg" alt="Shape 4" className="w-[60px] sm:w-[80px] md:w-[100px] lg:w-[136px] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[136px]"/>
             </div>
 
             <div className="container mx-auto px-2 sm:px-6 md:px-12 lg:px-20 xl:px-32 text-center">
