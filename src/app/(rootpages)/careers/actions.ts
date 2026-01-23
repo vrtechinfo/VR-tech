@@ -117,7 +117,7 @@ export async function deleteJobPosting(id: string): Promise<void> {
       .where('id', '=', Number.parseInt(id, 10))
       .execute();
   } catch (error) {
-    console.error(`Failed to delete job posting with ID ${id}:`, error);
+    console.error("Failed to delete job posting:", { jobId: id });
     throw new Error('Failed to delete job posting');
   }
 }

@@ -148,7 +148,7 @@ export async function deleteJobPosting(id: number): Promise<boolean> {
 
     return true;
   } catch (error) {
-    console.error(`Error deleting job posting with ID ${id}:`, error);
+    console.error("Error deleting job posting:", { jobId: id });
     return false;
   }
 }

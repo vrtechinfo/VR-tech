@@ -11,6 +11,11 @@ concurrency:
   group: deployment
   cancel-in-progress: false
 
+permissions:
+  contents: read
+  id-token: write
+  deployments: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest

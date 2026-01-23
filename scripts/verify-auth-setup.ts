@@ -22,7 +22,7 @@ async function verifyAuthSetup() {
         accounts.rows.forEach(a => console.log(`  - Provider: ${a.providerId}, HasPassword: ${a.has_password}, UserId: ${a.userId}`));
 
         // Check session table
-        const sessions = await pool.query('SELECT id, token, "userId" FROM session LIMIT 5');
+        const sessions = await pool.query('SELECT id, "userId" FROM session LIMIT 5');
         console.log('\nSESSIONS:');
         if (sessions.rows.length === 0) {
             console.log('  No sessions yet (this is normal if no one has logged in)');

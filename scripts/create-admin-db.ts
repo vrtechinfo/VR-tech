@@ -62,7 +62,7 @@ async function createAdminDirectDB() {
         console.log('\n🎉 Admin user created successfully!');
         console.log('You can now login with:');
         console.log('Email:', email);
-        console.log('Password:', password);
+        console.log('Password: [REDACTED - Check your secure password manager]');
 
         await pool.end();
         process.exit(0);
