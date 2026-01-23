@@ -7,35 +7,42 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: deployment
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     environment:
       name: production
       url: ${{ secrets.DEPLOYMENT_URL || 'https://your-production-url.com' }}
     
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
+      - name: Install pnpm
+        run: npm install -g pnpm@9
 
       - name: Get pnpm store directory
+        id: pnpm-cache
         shell: bash
         run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
         uses: actions/cache@v3
         with:
-          path: ${{ env.STORE_PATH }}
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -49,31 +56,28 @@ jobs:
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      - name: Deploy to Docker Registry
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        if: success()
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+          push: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
           tags: |
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{ github.sha }}
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Deploy to Vercel (Production)
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-        if: success() && secrets.VERCEL_TOKEN != ''
         continue-on-error: true
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Self-Hosted Server
         if: success() && secrets.DEPLOY_SERVER_HOST != ''
@@ -83,25 +87,34 @@ jobs:
           username: ${{ secrets.DEPLOY_SERVER_USER }}
           key: ${{ secrets.DEPLOY_SERVER_SSH_KEY }}
           script: |
-          cd /app/vr-tech
+            cd /app/vr-tech || exit 1
             git pull origin main
             pnpm install --frozen-lockfile
             pnpm run build
             pm2 restart vr-tech || pm2 start npm --name vr-tech -- start
+        continue-on-error: true
+
+      - name: Deploy to Vercel (Production)
+        if: success() && secrets.VERCEL_TOKEN != ''
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        continue-on-error: true
 
       - name: Send Slack notification
-        uses: slackapi/slack-github-action@v1.24.0
         if: always()
+        uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
             {
-              "text": "Deployment ${{ job.status }}",
+              "text": "VR-Tech Deployment ${{ job.status }}",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*VR-Tech Deployment ${{ job.status }}*\nCommit: ${{ github.sha }}\nBranch: ${{ github.ref }}"
+                    "text": "*VR-Tech Deployment ${{ job.status }}*\nCommit: ${{ github.sha }}\nBranch: ${{ github.ref }}\nAuthor: ${{ github.actor }}"
                   }
                 }
               ]
@@ -109,3 +122,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        continue-on-error: true
