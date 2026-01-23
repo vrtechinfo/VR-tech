@@ -1,4 +1,5 @@
 import SignInForm from "@/components/auth/SignInForm";
+import { AuthDebugPanel } from "@/components/AuthDebugPanel";
 
 export default function SignInPage() {
     return (
@@ -12,6 +13,9 @@ export default function SignInPage() {
             <div className="relative z-10 w-full flex justify-center">
                 <SignInForm />
             </div>
+
+            {/* Debug Panel */}
+            <AuthDebugPanel />
         </div>
     );
 }

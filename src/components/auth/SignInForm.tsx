@@ -18,7 +18,7 @@ export default function SignInForm() {
         setError(null);
 
         try {
-            await signIn.email({
+            const response = await signIn.email({
                 email,
                 password,
                 fetchOptions: {
@@ -26,13 +26,16 @@ export default function SignInForm() {
                         router.push("/admin/dashboard");
                     },
                     onError: (ctx) => {
-                        setError(ctx.error.message);
+                        console.error('SignIn onError:', ctx);
+                        setError(ctx.error?.message || "An unexpected error occurred. Please try again.");
                         setLoading(false);
                     }
                 }
             });
-        } catch (err) {
-            setError("An unexpected error occurred. Please try again.");
+            console.log('SignIn response:', response);
+        } catch (err: any) {
+            console.error('SignIn catch error:', err);
+            setError(err?.message || "An unexpected error occurred. Please try again.");
             setLoading(false);
         }
     };
