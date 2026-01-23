@@ -81,7 +81,7 @@ export async function submitContactForm(formData: FormData): Promise<FormRespons
     if (error instanceof z.ZodError) {
       const errors: Record<string, string[]> = {};
 
-      for (const err of error.errors) {
+      for (const err of error.issues) {
         const field = err.path[0] as string;
         if (!errors[field]) {
           errors[field] = [];
@@ -194,7 +194,7 @@ export async function submitCareerForm(formData: FormData): Promise<FormResponse
     if (error instanceof z.ZodError) {
       const errors: Record<string, string[]> = {};
 
-      for (const err of error.errors) {
+      for (const err of error.issues) {
         const field = err.path[0] as string;
         if (!errors[field]) {
           errors[field] = [];

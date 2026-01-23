@@ -100,7 +100,7 @@ export default function CareerForm({ jobId }: { jobId?: string }) {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const errors: Record<string, string[]> = {};
-        for (const err of error.errors) {
+        for (const err of error.issues) {
           const field = err.path[0] as string;
           if (!errors[field]) {
             errors[field] = [];

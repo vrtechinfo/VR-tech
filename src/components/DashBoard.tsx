@@ -28,7 +28,8 @@ export default function DashBoard() {
     description: '',
     location: '',
     department: '',
-    type: ''
+    type: '',
+    status: 'active'
   });
   const [formError, setFormError] = useState<string | null>(null);
   const [formSuccess, setFormSuccess] = useState<string | null>(null);

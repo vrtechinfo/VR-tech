@@ -22,6 +22,7 @@ async function seed() {
                 type: 'Full-time',
                 location: 'Hyderabad',
                 description: 'We are looking for a skilled Frontend Developer to join our engineering team. You will be responsible for implementing visual elements and user interactions that users see and interact with in our web applications.',
+                status: 'active',
                 updated_at: new Date().toISOString(),
             },
             {
@@ -30,6 +31,7 @@ async function seed() {
                 type: 'Full-time',
                 location: 'Hyderabad',
                 description: 'We are seeking a talented UI/UX Designer to create amazing user experiences. The ideal candidate should have an eye for clean and artful design, possess superior UI skills, and be able to translate high-level requirements into interaction flows and artifacts.',
+                status: 'active',
                 updated_at: new Date().toISOString(),
             },
             {
@@ -38,6 +40,7 @@ async function seed() {
                 type: 'Full-time',
                 location: 'Remote',
                 description: 'Join our core platform team to build scalable VR service infrastructures. Experience with Node.js/TypeScript and PostgreSQL is highly valued.',
+                status: 'active',
                 updated_at: new Date().toISOString(),
             }
         ]).execute();
