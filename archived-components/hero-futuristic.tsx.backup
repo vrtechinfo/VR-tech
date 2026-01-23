@@ -3,7 +3,7 @@
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { useAspect, useTexture } from '@react-three/drei';
 import { useMemo, useRef, useState, useEffect } from 'react';
-// @ts-ignore - three/webgpu lacks type definitions
+// @ts-expect-error - three/webgpu lacks type definitions in @types/three
 import * as THREE from 'three/webgpu';
 import { bloom } from 'three/examples/jsm/tsl/display/BloomNode.js';
 import { Mesh } from 'three';
