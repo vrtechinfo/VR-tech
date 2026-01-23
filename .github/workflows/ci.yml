@@ -19,7 +19,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     
     steps:
       - name: Checkout code
@@ -60,6 +60,7 @@ jobs:
         run: pnpm run build
         env:
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000' }}
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Upload build artifacts
         if: success()
