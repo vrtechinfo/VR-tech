@@ -6,7 +6,7 @@ import { submitCareerForm } from "@/app/actions/form-actions";
 import { careerFormSchema } from "@/lib/validations/form-schemas";
 import { z } from "zod";
 
-export default function CareerForm() {
+export default function CareerForm({ jobId }: { jobId?: string }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string[]>>({});
   const [submitMessage, setSubmitMessage] = useState<{
@@ -45,7 +45,7 @@ export default function CareerForm() {
     setSubmitMessage(null);
 
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       // Client-side validation - need to handle the file separately
       const file = fileInputRef.current?.files?.[0];
@@ -67,7 +67,8 @@ export default function CareerForm() {
         email: formData.get("email") as string,
         phone: formData.get("phone") as string,
         message: formData.get("message") as string,
-        resume: file
+        resume: file,
+        jobId: jobId
       };
 
       // Client-side validation
@@ -125,6 +126,7 @@ export default function CareerForm() {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-8 backdrop-blur-sm">
+      <input type="hidden" name="jobId" value={jobId || ""} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <label htmlFor="firstName" className="block text-sm font-medium mb-2">
@@ -134,9 +136,8 @@ export default function CareerForm() {
             type="text"
             id="firstName"
             name="firstName"
-            className={`w-full px-4 py-2 bg-transparent border-b ${
-              formErrors.firstName ? "border-red-500" : "border-gray-400"
-            } focus:border-white focus:outline-none`}
+            className={`w-full px-4 py-2 bg-transparent border-b ${formErrors.firstName ? "border-red-500" : "border-gray-400"
+              } focus:border-white focus:outline-none`}
             required
           />
           {formErrors.firstName && (
@@ -152,9 +153,8 @@ export default function CareerForm() {
             type="text"
             id="lastName"
             name="lastName"
-            className={`w-full px-4 py-2 bg-transparent border-b ${
-              formErrors.lastName ? "border-red-500" : "border-gray-400"
-            } focus:border-white focus:outline-none`}
+            className={`w-full px-4 py-2 bg-transparent border-b ${formErrors.lastName ? "border-red-500" : "border-gray-400"
+              } focus:border-white focus:outline-none`}
             required
           />
           {formErrors.lastName && (
@@ -172,9 +172,8 @@ export default function CareerForm() {
             type="email"
             id="email"
             name="email"
-            className={`w-full px-4 py-2 bg-transparent border-b ${
-              formErrors.email ? "border-red-500" : "border-gray-400"
-            } focus:border-white focus:outline-none`}
+            className={`w-full px-4 py-2 bg-transparent border-b ${formErrors.email ? "border-red-500" : "border-gray-400"
+              } focus:border-white focus:outline-none`}
             required
           />
           {formErrors.email && (
@@ -190,9 +189,8 @@ export default function CareerForm() {
             type="tel"
             id="phone"
             name="phone"
-            className={`w-full px-4 py-2 bg-transparent border-b ${
-              formErrors.phone ? "border-red-500" : "border-gray-400"
-            } focus:border-white focus:outline-none`}
+            className={`w-full px-4 py-2 bg-transparent border-b ${formErrors.phone ? "border-red-500" : "border-gray-400"
+              } focus:border-white focus:outline-none`}
             required
           />
           {formErrors.phone && (
@@ -207,9 +205,8 @@ export default function CareerForm() {
         </label>
         <button
           type="button"
-          className={`w-full border ${
-            formErrors.resume ? "border-red-500" : "border-gray-400"
-          } rounded-md p-4 text-center cursor-pointer hover:bg-gray-800/20 transition-colors`}
+          className={`w-full border ${formErrors.resume ? "border-red-500" : "border-gray-400"
+            } rounded-md p-4 text-center cursor-pointer hover:bg-gray-800/20 transition-colors`}
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleFileDrop}
           onClick={() => fileInputRef.current?.click()}
@@ -222,15 +219,15 @@ export default function CareerForm() {
             </p>
           </div>
         </button>
-          <input
-            ref={fileInputRef}
-            type="file"
-            id="resume"
-            name="resume"
-            className="hidden"
-            accept=".pdf,.doc,.docx"
-            onChange={handleFileChange}
-          />
+        <input
+          ref={fileInputRef}
+          type="file"
+          id="resume"
+          name="resume"
+          className="hidden"
+          accept=".pdf,.doc,.docx"
+          onChange={handleFileChange}
+        />
         {formErrors.resume && (
           <p className="text-red-500 text-xs mt-1">{formErrors.resume[0]}</p>
         )}
@@ -244,9 +241,8 @@ export default function CareerForm() {
           id="message"
           name="message"
           rows={5}
-          className={`w-full px-4 py-2 bg-transparent border-b ${
-            formErrors.message ? "border-red-500" : "border-gray-400"
-          } focus:border-white focus:outline-none resize-none`}
+          className={`w-full px-4 py-2 bg-transparent border-b ${formErrors.message ? "border-red-500" : "border-gray-400"
+            } focus:border-white focus:outline-none resize-none`}
           required
         />
         {formErrors.message && (
@@ -256,11 +252,10 @@ export default function CareerForm() {
 
       {submitMessage && (
         <div
-          className={`w-full text-center p-2 rounded ${
-            submitMessage.type === "success"
-              ? "bg-green-700/50 text-white"
-              : "bg-red-700/50 text-white"
-          }`}
+          className={`w-full text-center p-2 rounded ${submitMessage.type === "success"
+            ? "bg-green-700/50 text-white"
+            : "bg-red-700/50 text-white"
+            }`}
         >
           {submitMessage.text}
         </div>
@@ -270,9 +265,8 @@ export default function CareerForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`px-8 py-2 bg-white text-black font-medium rounded-full ${
-            isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-gray-200"
-          } transition-colors`}
+          className={`px-8 py-2 bg-white text-black font-medium rounded-full ${isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-gray-200"
+            } transition-colors`}
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>

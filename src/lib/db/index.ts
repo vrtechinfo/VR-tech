@@ -6,6 +6,7 @@ import type { Database } from './schema';
 const dialect = new PostgresDialect({
   pool: new Pool({
     connectionString: process.env.DATABASE_URL,
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
   }),
 });
 
@@ -19,15 +20,16 @@ export async function initializeDatabase(): Promise<void> {
   try {
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
     });
 
     // Import the SQL to create tables
     const { createTablesSQL } = await import('./schema');
-    
+
     // Execute the SQL to create tables if they don't exist
     await pool.query(createTablesSQL);
     console.log('Database tables initialized');
-    
+
     // Release the pool
     await pool.end();
   } catch (error) {

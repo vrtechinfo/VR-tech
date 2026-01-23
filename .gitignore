@@ -32,6 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.docker.example
+!.env.example
+!env.sample
+
+# Docker
+postgres_data/
+pgadmin_data/
 
 # vercel
 .vercel
@@ -39,3 +46,34 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# User generated / logs
+*-test.txt
+*-check.txt
+*-output.txt
+debug-error.json
+package-lock.json
+pnpm-lock.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database backups
+*.sql
+*.dump
+migrations/*.sql
+
+# Uploaded files (resumes, etc.)
+/public/uploads/
+/uploads/
+
+# Antigravity brain artifacts (local AI assistant files)
+.gemini/

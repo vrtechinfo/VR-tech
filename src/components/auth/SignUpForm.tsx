@@ -1,0 +1,130 @@
+"use client";
+
+import { useState } from "react";
+import { signUp } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+import Link from "next/link";
+
+export default function SignUpForm() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            await signUp.email({
+                email,
+                password,
+                name,
+                fetchOptions: {
+                    onSuccess: () => {
+                        router.push("/admin/dashboard");
+                    },
+                    onError: (ctx) => {
+                        setError(ctx.error.message);
+                        setLoading(false);
+                    }
+                }
+            });
+        } catch (err) {
+            setError("An unexpected error occurred. Please try again.");
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="w-full max-w-md p-8 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-xl">
+            <div className="text-center mb-8">
+                <h1 className="text-3xl font-bold text-white mb-2">Create Admin Account</h1>
+                <p className="text-zinc-400">Set up your admin credentials</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-zinc-400 mb-2">
+                        Full Name
+                    </label>
+                    <input
+                        id="name"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-900/50 transition-all"
+                        placeholder="John Doe"
+                        required
+                        disabled={loading}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-zinc-400 mb-2">
+                        Email Address
+                    </label>
+                    <input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-900/50 transition-all"
+                        placeholder="admin@example.com"
+                        required
+                        disabled={loading}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="password" className="block text-sm font-medium text-zinc-400 mb-2">
+                        Password
+                    </label>
+                    <input
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-900/50 transition-all"
+                        placeholder="••••••••"
+                        required
+                        disabled={loading}
+                        minLength={8}
+                    />
+                </div>
+
+                {error && (
+                    <div className="p-3 bg-red-900/20 border border-red-900/50 rounded-lg text-red-500 text-sm text-center">
+                        {error}
+                    </div>
+                )}
+
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3 px-4 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                    {loading ? (
+                        <>
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                            Creating account...
+                        </>
+                    ) : (
+                        "Create Account"
+                    )}
+                </button>
+
+                <div className="text-center text-sm text-zinc-500">
+                    Already have an account?{" "}
+                    <Link href="/sign-in" className="text-red-500 hover:text-red-400 font-medium">
+                        Sign In
+                    </Link>
+                </div>
+            </form>
+        </div>
+    );
+}

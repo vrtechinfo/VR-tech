@@ -27,7 +27,7 @@ export default function Header(): JSX.Element {
     };
 
     return (
-        <div className="bg-black text-white px-4 md:px-20 flex flex-col md:flex-row items-center justify-between fixed top-0 left-0 right-0 z-50  border-b-1 border-gray-700">
+        <div className="bg-black text-white px-4 md:px-20 flex flex-col md:flex-row items-center justify-between fixed top-0 left-0 right-0 z-50  border-b border-gray-700">
             <div className="flex justify-between w-full md:w-auto items-center">
                 <div className="pl-2 md:pl-10 py-2">
                     {/* Added padding for logo */}
@@ -174,7 +174,7 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                                     >
                                         <Link
                                             href={(() => {
-                                                switch(service) {
+                                                switch (service) {
                                                     case "Software Development":
                                                         return "/services#software-development";
                                                     case "IT Consulting":
@@ -211,7 +211,7 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                         if (window.location.pathname === '/') {
                             // Close mobile menu first if needed
                             if (onLinkClick) onLinkClick();
-                            
+
                             // Use setTimeout to ensure DOM is updated after menu closing
                             setTimeout(() => {
                                 const contactHeading = document.getElementById('contact-heading');
@@ -219,10 +219,10 @@ const HeaderNavLinks: React.FC<HeaderNavLinksProps> = ({
                                     // Get the exact position of the contact heading
                                     const rect = contactHeading.getBoundingClientRect();
                                     const absoluteTop = rect.top + window.pageYOffset;
-                                    
+
                                     // Use a larger offset to ensure the heading is clearly visible
                                     const headerOffset = 100; // Increased from 80px
-                                    
+
                                     // Scroll to position
                                     window.scrollTo({
                                         top: absoluteTop - headerOffset,

@@ -1,6 +1,7 @@
 "use client";
 import { type Variants, AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { type JSX, useState, useEffect } from "react";
 
 export default function Hero(): JSX.Element {
@@ -39,85 +40,100 @@ export default function Hero(): JSX.Element {
     };
 
     return (
-        <div
-            className="relative text-white pt-36 sm:pt-30 md:pt-38 lg:pt-50 pb-16 sm:pb-10 md:pb-12 lg:pb-16 min-h-[700px] sm:min-h-0 overflow-hidden"
-            style={{
-                backgroundImage: "url(/hero-background.webp)",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundColor: "#111324",
-            }}
-        >
+        <section className="relative text-white pt-48 md:pt-64 lg:pt-72 pb-24 min-h-screen overflow-hidden flex items-center justify-center bg-[#0A0C16]">
+            {/* Optimized Background Image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/hero-background.webp"
+                    alt="Hero Background"
+                    fill
+                    priority
+                    className="object-cover object-center pointer-events-none opacity-50"
+                    sizes="100vw"
+                />
+            </div>
+            {/* Dark gradient overlays for depth */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0C16]/60 via-[#0A0C16]/80 to-[#0A0C16]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(153,27,27,0.1),transparent_50%)]" />
 
-            
+            {/* Floating decorative glows */}
+            <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-red-900/10 blur-[150px] rounded-full animate-pulse" />
+            <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 blur-[150px] rounded-full animate-pulse" />
+
             {/* Content with higher z-index */}
-            <div className="relative z-10 flex flex-col justify-start h-full -translate-y-[20%] sm:justify-center sm:translate-y-0">
-            <div className="flex justify-center pb-3 sm:pb-4 md:pb-5 h-[180px] sm:h-[120px] md:h-[140px] lg:h-[160px]">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold flex items-center">
-                    <AnimatePresence mode="wait">
-                        <motion.span
-                            key={currentWord}
-                            variants={dropAnimation}
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
-                            transition={{
-                                type: "spring",
-                                stiffness: 400, // Increased from 300
-                                damping: 15, // Reduced from 20
-                                mass: 0.8, // Reduced from 1
-                                duration: 0.3, // Added explicit duration
-                            }}
+            <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center text-center">
+                <div className="h-[120px] sm:h-[140px] md:h-[180px] lg:h-[220px] flex items-center justify-center mb-6">
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[140px] font-black tracking-tighter leading-none">
+                        <AnimatePresence mode="wait">
+                            <motion.span
+                                key={currentWord}
+                                variants={dropAnimation}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 400,
+                                    damping: 15,
+                                    mass: 0.8,
+                                    duration: 0.3,
+                                }}
+                            >
+                                <span className="text-red-700">
+                                    {words[currentWord].charAt(0)}
+                                </span>
+                                {words[currentWord].slice(1)}
+                            </motion.span>
+                        </AnimatePresence>
+                    </h1>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="max-w-5xl mx-auto space-y-8"
+                >
+                    <p className="text-xl md:text-3xl lg:text-4xl font-light text-gray-300 leading-tight tracking-tight px-4">
+                        Empowering Your Business with <span className="text-white font-bold">Cutting-Edge</span> Software, <span className="text-white font-bold">Expert</span> IT Consulting, and <span className="text-white font-bold">Reliable</span> Support.
+                    </p>
+
+                    <div className="w-24 h-1 bg-red-800 mx-auto rounded-full" />
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.8 }}
+                    className="flex flex-col sm:flex-row justify-center mt-12 gap-6"
+                >
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="shadow-2xl shadow-red-900/20"
+                    >
+                        <Link
+                            href="/about-us"
+                            className="bg-red-800 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all block text-center min-w-[200px]"
                         >
-                            <span className="text-red-800">
-                                {words[currentWord].charAt(0)}
-                            </span>
-                            {words[currentWord].slice(1)}
-                        </motion.span>
-                    </AnimatePresence>
-                </h1>
-            </div>
+                            Discover More
+                        </Link>
+                    </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="font-medium mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6 md:px-8 max-w-4xl mx-auto"
-            >
-                <p className="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[26px] text-center leading-tight sm:leading-normal md:leading-relaxed">
-                    Empowering Your Business with Cutting-Edge Software, Expert IT Consulting, Comprehensive Training, and Reliable Support – All Under One Roof.
-                </p>
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex justify-center py-5 sm:py-6 md:py-8 lg:py-10 gap-3 sm:gap-4 md:gap-5"
-            >
-                <motion.div
-                    whileHover={{
-                        scale: 1.05,
-                        backgroundColor: "#9B2C2C",
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-1 border-red-800 rounded-xl bg-red-800 px-5 py-1 shadow-inner cursor-pointer"
-                >
-                    <Link href={"/about-us"}>Discover More</Link>
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="shadow-2xl"
+                    >
+                        <Link
+                            href="/services"
+                            className="bg-white/5 hover:bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full font-bold text-lg transition-all block text-center min-w-[200px]"
+                        >
+                            Our Services
+                        </Link>
+                    </motion.div>
                 </motion.div>
-                <motion.div
-                    whileHover={{
-                        scale: 1.05,
-                        backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-1 border-white rounded-xl px-5 py-1 shadow-inner text-gray-200 cursor-pointer"
-                >
-                    <Link href={"/services"}>Our Services</Link>
-                </motion.div>
-            </motion.div>
             </div>
-        </div>
+        </section>
     );
 }

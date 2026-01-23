@@ -34,6 +34,7 @@ export interface JobPosting {
   location: string;
   department: string;
   type: string;
+  status: 'active' | 'inactive' | 'archived';
   created_at: Date | string;
   updated_at: Date | string;
 }
@@ -48,7 +49,7 @@ export async function getContactSubmissions(): Promise<ContactSubmission[]> {
       .selectAll()
       .orderBy("created_at", "desc")
       .execute();
-    
+
     // Format dates to strings if needed for the UI
     return submissions.map(submission => ({
       ...submission,
@@ -70,7 +71,7 @@ export async function getCareerSubmissions(): Promise<CareerSubmission[]> {
       .selectAll()
       .orderBy("created_at", "desc")
       .execute();
-    
+
     // Generate signed URLs for resume downloads
     const submissionsWithUrls = await Promise.all(
       submissions.map(async (submission) => {
@@ -83,7 +84,7 @@ export async function getCareerSubmissions(): Promise<CareerSubmission[]> {
         }
       })
     );
-    
+
     // Format dates to strings if needed for the UI
     return submissionsWithUrls;
   } catch (error) {
@@ -102,7 +103,7 @@ export async function getJobPostings(): Promise<JobPosting[]> {
       .selectAll()
       .orderBy("created_at", "desc")
       .execute();
-    
+
     return postings;
   } catch (error) {
     console.error("Error fetching job postings:", error);
@@ -122,11 +123,12 @@ export async function createJobPosting(jobData: Omit<JobPosting, 'id' | 'created
         description: jobData.description,
         location: jobData.location,
         department: jobData.department,
-        type: jobData.type
+        type: jobData.type,
+        status: 'active'
       })
-      .returning(["id", "title", "description", "location", "department", "type", "created_at", "updated_at"])
+      .returning(["id", "title", "description", "location", "department", "type", "status", "created_at", "updated_at"])
       .executeTakeFirstOrThrow();
-    
+
     return result;
   } catch (error) {
     console.error("Error creating job posting:", error);
@@ -143,7 +145,7 @@ export async function deleteJobPosting(id: number): Promise<boolean> {
       .deleteFrom("job_postings")
       .where("id", "=", id)
       .execute();
-    
+
     return true;
   } catch (error) {
     console.error(`Error deleting job posting with ID ${id}:`, error);
