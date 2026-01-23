@@ -3,6 +3,11 @@ import { NextResponse, type NextRequest } from "next/server";
 import { type Session } from "better-auth/types";
 
 export async function middleware(request: NextRequest) {
+    // Skip middleware for non-admin routes
+    if (!request.nextUrl.pathname.startsWith("/admin")) {
+        return NextResponse.next();
+    }
+
     const { data: session } = await betterFetch<Session>(
         "/api/auth/get-session",
         {
@@ -22,6 +27,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
 }
 
+// Updated to use newer Next.js config pattern
 export const config = {
     matcher: ["/admin/:path*"],
 };
