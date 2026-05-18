@@ -1065,8 +1065,8 @@ packages:
     resolution: {integrity: sha512-jA5k5Udn7Y5717L86h4EIv06wIr3xn8GM1qHRi/Nf31annXcXHJjBKvgztnbn2TxH3xWrPBfgwHsOwZf0UmQWw==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/chunked-blob-reader@5.2.2':
-    resolution: {integrity: sha512-St+kVicSyayWQca+I1rGitaOEH6uKgE8IUWoYnnEX26SWdWQcL6LvMSD19Lg+vYHKdT9B2Zuu7rd3i6Wnyb/iw==}
+  '@smithy/chunked-blob-reader@5.3.3':
+    resolution: {integrity: sha512-MzMzM5eJAatkoHW331HiaG8DK29LKd0HNWDpvJcp47/fo+ZUEewVr2bf5Hmq+ZS8mL2RilW5LaRttHyB9P7P9Q==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/config-resolver@4.4.17':
@@ -4791,8 +4791,9 @@ snapshots:
       '@smithy/util-base64': 4.3.2
       tslib: 2.8.1
 
-  '@smithy/chunked-blob-reader@5.2.2':
+  '@smithy/chunked-blob-reader@5.3.3':
     dependencies:
+      '@smithy/core': 3.24.3
       tslib: 2.8.1
 
   '@smithy/config-resolver@4.4.17':
@@ -4871,7 +4872,7 @@ snapshots:
 
   '@smithy/hash-blob-browser@4.2.15':
     dependencies:
-      '@smithy/chunked-blob-reader': 5.2.2
+      '@smithy/chunked-blob-reader': 5.3.3
       '@smithy/chunked-blob-reader-native': 4.2.3
       '@smithy/types': 4.14.1
       tslib: 2.8.1
