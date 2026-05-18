@@ -362,10 +362,6 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
-  '@babel/runtime@7.28.6':
-    resolution: {integrity: sha512-05WQkdpL9COIMz4LjTxGpPNCdlpyimKppYNoJ5Di5EUObifl8t4tuLuUBBZEpoLYOmfvIWrsp9fCl0HoPRVTdA==}
-    engines: {node: '>=6.9.0'}
-
   '@babel/runtime@7.29.2':
     resolution: {integrity: sha512-JiDShH45zKHWyGe4ZNVRrCjBz8Nh9TMmZG1kh4QTK8hCBTWBi8Da+i7s1fJw7/lYpM4ccepSNfqzZ/QvABBi5g==}
     engines: {node: '>=6.9.0'}
@@ -4137,8 +4133,6 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.0
 
-  '@babel/runtime@7.28.6': {}
-
   '@babel/runtime@7.29.2': {}
 
   '@babel/template@7.28.6':
@@ -4739,7 +4733,7 @@ snapshots:
 
   '@react-three/drei@10.7.7(@react-three/fiber@9.6.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(three@0.184.0))(@types/react@19.2.14)(@types/three@0.182.0)(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(three@0.184.0)':
     dependencies:
-      '@babel/runtime': 7.28.6
+      '@babel/runtime': 7.29.2
       '@mediapipe/tasks-vision': 0.10.17
       '@monogrid/gainmap-js': 3.4.0(three@0.184.0)
       '@react-three/fiber': 9.6.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(three@0.184.0)
