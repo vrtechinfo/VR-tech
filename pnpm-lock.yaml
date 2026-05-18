@@ -1253,8 +1253,8 @@ packages:
     resolution: {integrity: sha512-a55Tr+3OKld4TTtnT+RhKOQHyPxm3j/xL4OR83WBUhLJaKDS9dnJ7arRMOp3t31dcLhApwG9bgvrRXBHlLdIkg==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/util-hex-encoding@4.2.2':
-    resolution: {integrity: sha512-Qcz3W5vuHK4sLQdyT93k/rfrUwdJ8/HZ+nMUOyGdpeGA1Wxt65zYwi3oEl9kOM+RswvYq90fzkNDahPS8K0OIg==}
+  '@smithy/util-hex-encoding@4.3.3':
+    resolution: {integrity: sha512-5PzHMWfy7lSt2VTINyNVE1S3vDJDtGVwHGPwpHqGTMQBtOhNsvOH2luhCcMukCNzeKGIaBU3Phevj7K93c0Bfg==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-middleware@4.2.14':
@@ -4841,7 +4841,7 @@ snapshots:
     dependencies:
       '@aws-crypto/crc32': 5.2.0
       '@smithy/types': 4.14.1
-      '@smithy/util-hex-encoding': 4.2.2
+      '@smithy/util-hex-encoding': 4.3.3
       tslib: 2.8.1
 
   '@smithy/eventstream-serde-browser@4.2.14':
@@ -5004,7 +5004,7 @@ snapshots:
       '@smithy/is-array-buffer': 4.2.2
       '@smithy/protocol-http': 5.3.14
       '@smithy/types': 4.14.1
-      '@smithy/util-hex-encoding': 4.2.2
+      '@smithy/util-hex-encoding': 4.3.3
       '@smithy/util-middleware': 4.2.14
       '@smithy/util-uri-escape': 4.2.2
       '@smithy/util-utf8': 4.2.2
@@ -5092,8 +5092,9 @@ snapshots:
       '@smithy/types': 4.14.1
       tslib: 2.8.1
 
-  '@smithy/util-hex-encoding@4.2.2':
+  '@smithy/util-hex-encoding@4.3.3':
     dependencies:
+      '@smithy/core': 3.24.3
       tslib: 2.8.1
 
   '@smithy/util-middleware@4.2.14':
@@ -5114,7 +5115,7 @@ snapshots:
       '@smithy/types': 4.14.1
       '@smithy/util-base64': 4.3.2
       '@smithy/util-buffer-from': 4.2.2
-      '@smithy/util-hex-encoding': 4.2.2
+      '@smithy/util-hex-encoding': 4.3.3
       '@smithy/util-utf8': 4.2.2
       tslib: 2.8.1
 
