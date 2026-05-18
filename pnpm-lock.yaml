@@ -1126,8 +1126,8 @@ packages:
     resolution: {integrity: sha512-8ZBDY2DD4wr+GGjTpPtiglEsqr0lUP+KHqgZcWczFf6qeZ/YRjMIOoQWVQlmwu7EtxKTd8YXD8lblmYcpBIA1g==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/hash-stream-node@4.2.14':
-    resolution: {integrity: sha512-tw4GANWkZPb6+BdD4Fgucqzey2+r73Z/GRo9zklsCdwrnxxumUV83ZIaBDdudV4Ylazw3EPTiJZhpX42105ruQ==}
+  '@smithy/hash-stream-node@4.3.3':
+    resolution: {integrity: sha512-ZyDAlpKKc7BKHUp+kDBiTwNhiHrOf3syQdvQadvnwWs0QJhYMHMg6QSarlhpzN6qr+KBFM/oF/xP/bvzR6KI9w==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/invalid-dependency@4.2.14':
@@ -3670,7 +3670,7 @@ snapshots:
       '@smithy/fetch-http-handler': 5.3.17
       '@smithy/hash-blob-browser': 4.2.15
       '@smithy/hash-node': 4.2.14
-      '@smithy/hash-stream-node': 4.2.14
+      '@smithy/hash-stream-node': 4.3.3
       '@smithy/invalid-dependency': 4.2.14
       '@smithy/md5-js': 4.2.14
       '@smithy/middleware-content-length': 4.2.14
@@ -4903,10 +4903,9 @@ snapshots:
       '@smithy/util-utf8': 4.2.2
       tslib: 2.8.1
 
-  '@smithy/hash-stream-node@4.2.14':
+  '@smithy/hash-stream-node@4.3.3':
     dependencies:
-      '@smithy/types': 4.14.1
-      '@smithy/util-utf8': 4.2.2
+      '@smithy/core': 3.24.3
       tslib: 2.8.1
 
   '@smithy/invalid-dependency@4.2.14':
