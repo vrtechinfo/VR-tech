@@ -1230,8 +1230,8 @@ packages:
     resolution: {integrity: sha512-JKCrLNOup3OOgmzeaKQwi4ZCTWlYR5H4Gm1r2uTMVBXoemo1UEghk5vtMi1xSu2ymgKVGW631e2fp9/R610ZjQ==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/util-body-length-node@4.2.3':
-    resolution: {integrity: sha512-ZkJGvqBzMHVHE7r/hcuCxlTY8pQr1kMtdsVPs7ex4mMU+EAbcXppfo5NmyxMYi2XU49eqaz56j2gsk4dHHPG/g==}
+  '@smithy/util-body-length-node@4.3.3':
+    resolution: {integrity: sha512-M+zdSrevWj0grtZx2RBULPUyjTq1aB+n+13Hrm9owiGpow6DqY/WqiSj6sHVQy/rKp0j7NzV3TNf2LrwDel8JQ==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-buffer-from@2.2.0':
@@ -3686,7 +3686,7 @@ snapshots:
       '@smithy/url-parser': 4.2.14
       '@smithy/util-base64': 4.3.2
       '@smithy/util-body-length-browser': 4.2.2
-      '@smithy/util-body-length-node': 4.2.3
+      '@smithy/util-body-length-node': 4.3.3
       '@smithy/util-defaults-mode-browser': 4.3.49
       '@smithy/util-defaults-mode-node': 4.2.54
       '@smithy/util-endpoints': 3.4.2
@@ -3957,7 +3957,7 @@ snapshots:
       '@smithy/url-parser': 4.2.14
       '@smithy/util-base64': 4.3.2
       '@smithy/util-body-length-browser': 4.2.2
-      '@smithy/util-body-length-node': 4.2.3
+      '@smithy/util-body-length-node': 4.3.3
       '@smithy/util-defaults-mode-browser': 4.3.49
       '@smithy/util-defaults-mode-node': 4.2.54
       '@smithy/util-endpoints': 3.4.2
@@ -5067,8 +5067,9 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@smithy/util-body-length-node@4.2.3':
+  '@smithy/util-body-length-node@4.3.3':
     dependencies:
+      '@smithy/core': 3.24.3
       tslib: 2.8.1
 
   '@smithy/util-buffer-from@2.2.0':
