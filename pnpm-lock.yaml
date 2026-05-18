@@ -1149,8 +1149,8 @@ packages:
     resolution: {integrity: sha512-bRt6ZImqVSeTk39Nm81K20ObIiAZ3WefY7G6+iz/0tZjs4dgRRjvRX2sgsH+zi6iDCRR/aQvQofLKxxz4rPBZg==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/middleware-serde@4.2.20':
-    resolution: {integrity: sha512-Lx9JMO9vArPtiChE3wbEZ5akMIDQpWQtlu90lhACQmNOXcGXRbaDywMHDzuDZ2OkZzP+9wQfZi3YJT9F67zTQQ==}
+  '@smithy/middleware-serde@4.3.3':
+    resolution: {integrity: sha512-RUVCZgn92izDAARs5OJSM2+KWSfTRvQWwN9t0MmiybT3pquRgDx9vD9t/YZjd/5lwcFbsNuPojJSddYQEZGeWw==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/middleware-stack@4.2.14':
@@ -3667,7 +3667,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.2.14
       '@smithy/middleware-endpoint': 4.4.32
       '@smithy/middleware-retry': 4.5.7
-      '@smithy/middleware-serde': 4.2.20
+      '@smithy/middleware-serde': 4.3.3
       '@smithy/middleware-stack': 4.2.14
       '@smithy/node-config-provider': 4.3.14
       '@smithy/node-http-handler': 4.6.1
@@ -3935,7 +3935,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.2.14
       '@smithy/middleware-endpoint': 4.4.32
       '@smithy/middleware-retry': 4.5.7
-      '@smithy/middleware-serde': 4.2.20
+      '@smithy/middleware-serde': 4.3.3
       '@smithy/middleware-stack': 4.2.14
       '@smithy/node-config-provider': 4.3.14
       '@smithy/node-http-handler': 4.6.1
@@ -4917,7 +4917,7 @@ snapshots:
   '@smithy/middleware-endpoint@4.4.32':
     dependencies:
       '@smithy/core': 3.23.17
-      '@smithy/middleware-serde': 4.2.20
+      '@smithy/middleware-serde': 4.3.3
       '@smithy/node-config-provider': 4.3.14
       '@smithy/shared-ini-file-loader': 4.4.9
       '@smithy/types': 4.14.1
@@ -4938,11 +4938,9 @@ snapshots:
       '@smithy/uuid': 1.1.2
       tslib: 2.8.1
 
-  '@smithy/middleware-serde@4.2.20':
+  '@smithy/middleware-serde@4.3.3':
     dependencies:
-      '@smithy/core': 3.23.17
-      '@smithy/protocol-http': 5.3.14
-      '@smithy/types': 4.14.1
+      '@smithy/core': 3.24.3
       tslib: 2.8.1
 
   '@smithy/middleware-stack@4.2.14':
