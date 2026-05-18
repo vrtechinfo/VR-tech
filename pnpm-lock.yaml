@@ -1097,8 +1097,8 @@ packages:
     resolution: {integrity: sha512-8IelTCtTctWRbb+0Dcy+C0aICh1qa0qWXqgjcXDmMuCvPJRnv26hiDZoAau2ILOniki65mCPKqOQs/BaWvO4CQ==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/eventstream-serde-config-resolver@4.3.14':
-    resolution: {integrity: sha512-sqHiHpYRYo3FJlaIxD1J8PhbcmJAm7IuM16mVnwSkCToD7g00IBZzKuiLNMGmftULmEUX6/UAz8/NN5uMP8bVA==}
+  '@smithy/eventstream-serde-config-resolver@4.4.3':
+    resolution: {integrity: sha512-MdQxEX5SFNc3QmpiLXtcZXsWk4imCfGVN7Ikz9I/XvavypvHT4mqxwo5JHdr/LBKCfAv89+8193ZWlUwDp8YXQ==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/eventstream-serde-node@4.2.14':
@@ -3660,7 +3660,7 @@ snapshots:
       '@smithy/config-resolver': 4.4.17
       '@smithy/core': 3.23.17
       '@smithy/eventstream-serde-browser': 4.2.14
-      '@smithy/eventstream-serde-config-resolver': 4.3.14
+      '@smithy/eventstream-serde-config-resolver': 4.4.3
       '@smithy/eventstream-serde-node': 4.2.14
       '@smithy/fetch-http-handler': 5.3.17
       '@smithy/hash-blob-browser': 4.2.15
@@ -4850,9 +4850,9 @@ snapshots:
       '@smithy/types': 4.14.1
       tslib: 2.8.1
 
-  '@smithy/eventstream-serde-config-resolver@4.3.14':
+  '@smithy/eventstream-serde-config-resolver@4.4.3':
     dependencies:
-      '@smithy/types': 4.14.1
+      '@smithy/core': 3.24.3
       tslib: 2.8.1
 
   '@smithy/eventstream-serde-node@4.2.14':
